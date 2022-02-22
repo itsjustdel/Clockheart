@@ -27,9 +27,15 @@ const SceneManager = () => {
         setPlayerTargetPosition(newPlayerTargetPosition)
     }
     const updatePlayerItems = (newItem) => {
+
+        console.log("update player items - Scene Manager")
         //create new list with current player items and the passed new item
         const newItems = [...playerItems, newItem]
         setPlayerItems(newItems)
+        //we are re-rendering because we are setting state, so we need ot update player position in state
+        setPlayerStartPosition(playerMesh.current.position)
+
+         
     }
 
     return (

@@ -29,7 +29,7 @@ const TestLevel = ({updatePlayerTarget, playerMesh, updatePlayerItems}) => {
     })
 
     const getShopItems = function(){        
-        fetch('/items?characterId=2')
+        fetch('/items?characterName=Zebediah Flint')
         .then(res => res.json())
         .then(shop => setShopItems(shop))
     }
