@@ -1,21 +1,10 @@
 package com.example.ClockheartBackend.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "players")
-public class Player {
+public class Player extends GameCharacter {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "name")
-    private String name;
     @Column(name = "health_points")
     private int healthPoints;
     @Column(name = "intelligence")
@@ -29,33 +18,19 @@ public class Player {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(mappedBy = "player")
-    @JsonIgnoreProperties({"player"})
-    private List<Item> items;
-
     public Player(String name, int intelligence, int strength, int charisma, String type) {
-        this.name = name;
+        super(name);
         this.healthPoints = 100;
         this.intelligence = intelligence;
         this.strength = strength;
         this.charisma = charisma;
         this.currency = 10;
         this.type = type;
-        this.items = new ArrayList<Item>();
     }
 
-    public Player() {
+    public Player(){
         this.healthPoints = 100;
         this.currency = 10;
-        this.items = new ArrayList<Item>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getHealthPoints() {
@@ -94,14 +69,6 @@ public class Player {
         return type;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
-    }
-
     public int getCurrency() {
         return currency;
     }
@@ -111,7 +78,7 @@ public class Player {
     }
 
     public void addItem(Item item){
-        this.items.add(item);
+        this.getItems().add(item);
     }
 
     public boolean buyItem(Item item) {
@@ -121,14 +88,6 @@ public class Player {
             return true;
         }
         return false;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setType(String type) {
