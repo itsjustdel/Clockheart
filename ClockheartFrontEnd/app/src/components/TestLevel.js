@@ -22,10 +22,10 @@ const TestLevel = ({updatePlayerTarget, playerMesh, updateItems, characters, ite
         //check if the player is close to the target (boss/ loot?)
         const target = new Vector3(0,1,0)
         const distance = playerMesh.current.position.distanceTo( target)
-        if(distance < 1)
+        //if(distance < 1)
             setOpenForm(true)
-        else 
-            setOpenForm(false)
+        //else 
+        //    setOpenForm(false)
     })
 
 
@@ -34,7 +34,7 @@ const TestLevel = ({updatePlayerTarget, playerMesh, updateItems, characters, ite
         <>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} />
                 {openForm == true ? 
-                <Html center className="listContainer" position={[0,4,0]}>
+                <Html  center className="listContainer" position={[0,0,-5]}>
                     
                     <ShopList updateItems={updateItems} characters={characters} 
                     items={items}/>

@@ -34,10 +34,28 @@ Canvas{
 }
 
 .listContainer {
+
+  position: absolute;
+  top: 80px;
+  left: 50px;
+  right: 50px;
+  /* width: 200px; */
+  height: 100px;
+  border: 3px solid #73AD21;
+
   background-color: bisque;
-  position: initial;
+  /* position: initial; */
   
   width: 40vw;
   border: 5px solid black;
+}
+
+.PlayerInventoryImage{
+  width: 5vw;
+}
+
+.PlayerList{
+  display: flex;
+  justify-content: center;
 }
 

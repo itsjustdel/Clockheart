@@ -12,8 +12,11 @@ const ShopList = ({ updateItems, characters, items }) => {
             "damage": items[ index ]["damage"],
             "character": newOwner
         }
-        
-        updateItems(event.target.value, updatedShopItem);
+        //update stae in front end
+        updateItems(index, updatedShopItem);
+
+        //update backend DB
+        //put request here!
     }
 
     const itemsForSale = items.map((item, index) => {  

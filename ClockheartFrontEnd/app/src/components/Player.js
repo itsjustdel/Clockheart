@@ -70,11 +70,13 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
      
       <Suspense fallback={null}>
         <TexturedPlane url={["/redguy.png"]} />       
-      </Suspense>
+      
 
-      <Html>
+      <Html center className="listContainer" position={[0,0,3]}>
             <PlayerItems items={items}/>
       </Html>
+
+      </Suspense>
       
     </>
   )
