@@ -5,10 +5,7 @@ import com.example.ClockheartBackend.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,12 +17,21 @@ public class ItemController {
 
     @GetMapping(value = "/items")
     public ResponseEntity<List<Item>>  getAllItems(
-            @RequestParam(name = "characterId", required = false) Long characterId
+            @RequestParam(name = "characterId", required = false) Long characterId,
+            @RequestParam(name = "characterName", required = false) String characterName
     ){
         if(characterId != null){
             return new ResponseEntity<>(itemRepository.findByGameCharacterId(characterId), HttpStatus.OK);
         }
+        else if(characterName != null){
+            return new ResponseEntity<>(itemRepository.findByGameCharacterName(characterName), HttpStatus.OK);
+        }
         return new ResponseEntity<>(itemRepository.findAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/items/{id}")
+    public void deleteItem(@PathVariable Long id){
+        itemRepository.deleteById(id);
     }
 
 }
