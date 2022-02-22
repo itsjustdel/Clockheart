@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Vector3 } from 'three'
 import ShopList from './ShopList'
 
-const TestLevel = ({updatePlayerTarget, playerMesh}) => {
+const TestLevel = ({updatePlayerTarget, playerMesh, updatePlayerItems}) => {
 
     const [openForm, setOpenForm] = useState(false)
     const [shop, setShop] = useState(null);
@@ -33,14 +33,14 @@ const TestLevel = ({updatePlayerTarget, playerMesh}) => {
         .then(res => res.json())
         .then(shop => setShop(shop))
     }
-
+    
     return(
         <>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} />
                 {openForm == true ? 
                 <Html center className="listContainer" position={[0,4,0]}>
                     
-                    <ShopList shop={shop[0]}/>
+                    <ShopList shop={shop[0]} updatePlayerItems={updatePlayerItems}/>
                         
                     <button>I'm a button</button>
                 </Html> : null}

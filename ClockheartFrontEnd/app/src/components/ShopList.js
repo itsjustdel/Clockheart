@@ -1,4 +1,4 @@
-const ShopList = ({ shop }) => {
+const ShopList = ({ shop, updatePlayerItems }) => {
 
     const NamesToMap = () => {
         
@@ -12,9 +12,21 @@ const ShopList = ({ shop }) => {
         })
     }
 
+    const onPurchaseClick = (event, value) => {
+        console.log("purchase click")
+        //create item object
+         console.log(value)
+    }
+
     const NamesToMapAlternate = () => {
         return Object.keys(shop.items).map(function(key, index) {
-            return <li key={index}> Name: {shop.items[key].name} Value: {shop.items[key].value} </li>;
+
+            return <li key={index} >
+                        <a onClick={onPurchaseClick("hi")}>
+                            Name: {shop.items[key].name} Value: {shop.items[key].value} 
+                        </a>
+                    </li>
+                    
           });
     }
 
