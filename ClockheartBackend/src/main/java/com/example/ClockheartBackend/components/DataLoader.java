@@ -31,5 +31,8 @@ public class DataLoader implements ApplicationRunner {
 
         Attack sword = new Attack("Sword", 5, shop, 5);
         itemRepository.save(sword);
+
+        Attack sword2 = new Attack("Sword2", 5, shop, 5);
+        itemRepository.save(sword2);
     }
 }

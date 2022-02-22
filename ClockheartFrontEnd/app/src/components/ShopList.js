@@ -1,20 +1,24 @@
-const ShopList = ({ shopItems, updatePlayerItems }) => {
+const ShopList = ({ updateItems, characters, items }) => {
+    console.log("Shop list")
 
     const handleItemClick = (event) => {
-        console.log("shop item clicked")
-        const index = event.target.value;
-        console.log(shopItems[index].name)
-
+        const index = event.target.value;       
         
-        //update front end
-        //add to player (state)
-        updatePlayerItems(shopItems[index])
-        //remove from shop items
-        shopItems.splice(index, 1)
+        //player is always first in character array (but has ID 1! Be careful!)
+        const newOwner = characters[0];
+        const updatedShopItem = {
+            "name": items[ index ]["name"],
+            "value": items[ index ]["value"],
+            "damage": items[ index ]["damage"],
+            "character": newOwner
+        }
+        
+        updateItems(event.target.value, updatedShopItem);
     }
 
-    const names = shopItems.map((shopItem, index) => {
-        return <li onClick={handleItemClick} value={index} key ={index}>{shopItem.name}</li>
+    const itemsForSale = items.map((item, index) => {  
+        if(item.character.name == "Zebediah Flint")      
+            return <li onClick={handleItemClick} value={index} key ={index}>{item.name}</li>
 
     })
 
@@ -22,7 +26,7 @@ const ShopList = ({ shopItems, updatePlayerItems }) => {
         <>
             <h2> Shop Item List</h2>
             <ul>
-                {names}
+                {itemsForSale}
             </ul>
         </>
     )
