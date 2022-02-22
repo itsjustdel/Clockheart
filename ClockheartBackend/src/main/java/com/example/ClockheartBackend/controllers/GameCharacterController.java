@@ -19,13 +19,13 @@ public class GameCharacterController {
     GameCharacterRepository gameCharacterRepository;
 
     @GetMapping(value = "/characters")
-    public ResponseEntity<List<Character>> getAllCharacters(){
+    public ResponseEntity<List<GameCharacter>> getAllCharacters(){
         return new ResponseEntity(gameCharacterRepository.findAll(), HttpStatus.OK);
     }
 
 
     @PostMapping(value = "/characters")
-    public ResponseEntity<Character> postCharacter(@RequestBody GameCharacter gameCharacter){
+    public ResponseEntity<GameCharacter> postCharacter(@RequestBody GameCharacter gameCharacter){
         gameCharacterRepository.save(gameCharacter);
         return new ResponseEntity(gameCharacter, HttpStatus.CREATED);
     }
