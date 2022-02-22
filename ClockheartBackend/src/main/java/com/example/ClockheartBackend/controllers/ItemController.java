@@ -20,10 +20,14 @@ public class ItemController {
 
     @GetMapping(value = "/items")
     public ResponseEntity<List<Item>>  getAllItems(
-            @RequestParam(name = "characterId", required = false) Long characterId
+            @RequestParam(name = "characterId", required = false) Long characterId,
+            @RequestParam(name = "characterName", required = false) String characterName
     ){
         if(characterId != null){
             return new ResponseEntity<>(itemRepository.findByGameCharacterId(characterId), HttpStatus.OK);
+        }
+        else if(characterName != null){
+            return new ResponseEntity<>(itemRepository.findByGameCharacterName(characterName), HttpStatus.OK);
         }
         return new ResponseEntity<>(itemRepository.findAll(), HttpStatus.OK);
     }
