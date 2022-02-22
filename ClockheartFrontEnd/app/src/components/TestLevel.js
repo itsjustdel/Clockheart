@@ -8,12 +8,12 @@ import ShopList from './ShopList'
 const TestLevel = ({updatePlayerTarget, playerMesh, updatePlayerItems}) => {
 
     const [openForm, setOpenForm] = useState(false)
-    const [shop, setShop] = useState(null);
+    const [shopItems, setShopItems] = useState(null);
 
     useEffect( () => 
     {
         console.log("use effect test level")
-        getShop()
+        getShopItems()
     }, [])
 
     useFrame( () => {
@@ -28,10 +28,10 @@ const TestLevel = ({updatePlayerTarget, playerMesh, updatePlayerItems}) => {
             setOpenForm(false)
     })
 
-    const getShop = function(){
-        fetch('/shop')
+    const getShopItems = function(){        
+        fetch('/items?characterId=2')
         .then(res => res.json())
-        .then(shop => setShop(shop))
+        .then(shop => setShopItems(shop))
     }
     
     return(
@@ -40,7 +40,7 @@ const TestLevel = ({updatePlayerTarget, playerMesh, updatePlayerItems}) => {
                 {openForm == true ? 
                 <Html center className="listContainer" position={[0,4,0]}>
                     
-                    <ShopList shop={shop[0]} updatePlayerItems={updatePlayerItems}/>
+                    <ShopList shopItems={shopItems} updatePlayerItems={updatePlayerItems}/>
                         
                     <button>I'm a button</button>
                 </Html> : null}
