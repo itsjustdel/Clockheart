@@ -4,7 +4,7 @@ import { Vector3, TextureLoader } from "three";
 import { Html } from '@react-three/drei';
 import PlayerItems from './PlayerItems'
 
-const Player = ({playerStartPosition, playerTargetPosition, mesh, playerItems }) => {
+const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
   console.log("Player Loaded");
 
   //constant variables  
@@ -66,11 +66,16 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh, playerItems })
   //Suspense tag is needed because TextureLoader needs it (async)
   return (
     <> 
+
+     
       <Suspense fallback={null}>
-        <TexturedPlane url={["/redguy.png"]} />
+        <TexturedPlane url={["/redguy.png"]} />       
       </Suspense>
 
-      <PlayerItems playerItems={playerItems}/>
+      <Html>
+            <PlayerItems items={items}/>
+      </Html>
+      
     </>
   )
 };

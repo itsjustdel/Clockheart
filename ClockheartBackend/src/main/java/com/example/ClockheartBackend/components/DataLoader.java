@@ -40,6 +40,6 @@ public class DataLoader implements ApplicationRunner {
         itemRepository.save(pistol);
 
         Healing potion = new Healing("Health Potion", 3, shop, 3);
-        itemRepository.save(potion);
+
     }
 }
