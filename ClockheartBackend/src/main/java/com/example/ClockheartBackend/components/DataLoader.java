@@ -30,17 +30,47 @@ public class DataLoader implements ApplicationRunner {
         Shop shop = new Shop("Zebediah Flint", 2, 2, 2);
         gameCharacterRepository.save(shop);
 
-        Attack sword = new Attack("Sword", 5, shop, 5);
-        itemRepository.save(sword);
+        Attack woodenSword = new Attack("Wooden Sword", 4, shop, 3);
+        itemRepository.save(woodenSword);
+
+        Attack ironSword = new Attack("Iron Sword", 7, shop, 6);
+        itemRepository.save(ironSword);
+
+        Attack silverSword = new Attack("Silver Sword", 11, shop, 9);
+        itemRepository.save(silverSword);
+
+        Attack diamondSword = new Attack("Diamond Sword", 18, shop, 14);
+        itemRepository.save(diamondSword);
 
         Attack knife = new Attack("Knife", 3, shop, 3);
         itemRepository.save(knife);
-        
-        Attack pistol = new Attack("Pistol", 4, shop, 5);
-        itemRepository.save(pistol);
 
-        Healing potion = new Healing("Health Potion", 3, shop, 3);
-        itemRepository.save(potion);
+        Attack silverKnife = new Attack("Silver Knife", 6, shop, 6);
+        itemRepository.save(silverKnife);
+
+        Attack diamondKnife = new Attack("Diamond Knife", 10, shop, 10);
+        itemRepository.save(diamondKnife);
+        
+        Attack flinkLockPistol = new Attack("Flink Lock Pistol", 4, shop, 5);
+        itemRepository.save(flinkLockPistol);
+
+        Attack repeater = new Attack("Repeater", 10, shop, 11);
+        itemRepository.save(repeater);
+
+        Attack blunderbuss = new Attack("Blunderbuss", 19, shop, 21);
+        itemRepository.save(blunderbuss);
+
+        Healing basicPotion = new Healing("Basic Health Potion", 6, shop, 6);
+        itemRepository.save(basicPotion);
+
+        Healing averagePotion = new Healing("Average Health Potion", 10, shop, 10);
+        itemRepository.save(averagePotion);
+
+        Healing greatPotion = new Healing("Great Health Potion", 15, shop, 15);
+        itemRepository.save(greatPotion);
+
+        Healing sage = new Healing("Sage", 3, shop, 3);
+        itemRepository.save(sage);
 
     }
 }
