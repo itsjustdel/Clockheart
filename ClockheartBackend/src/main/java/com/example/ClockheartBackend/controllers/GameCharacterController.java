@@ -1,14 +1,12 @@
 package com.example.ClockheartBackend.controllers;
 
 import com.example.ClockheartBackend.models.GameCharacter;
+import com.example.ClockheartBackend.models.Item;
 import com.example.ClockheartBackend.repositories.GameCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,16 @@ public class GameCharacterController {
         return new ResponseEntity(gameCharacterRepository.findAll(), HttpStatus.OK);
     }
 
+    @PutMapping(value = "/characters/{id}")
+    public ResponseEntity<GameCharacter> putGameCharacter(
+            @RequestBody GameCharacter gameCharacter,
+            @PathVariable Long id){
+        GameCharacter gameCharacterToUpdate = gameCharacterRepository.findById(id).get();
+        gameCharacterToUpdate.setName(gameCharacter.getName());
+        gameCharacterToUpdate.setCurrency(gameCharacter.getCurrency());
+        gameCharacterRepository.save(gameCharacterToUpdate);
+        return new ResponseEntity<>(gameCharacter, HttpStatus.OK);
+    }
 
     @PostMapping(value = "/characters")
     public ResponseEntity<GameCharacter> postCharacter(@RequestBody GameCharacter gameCharacter){

@@ -18,12 +18,15 @@ public class GameCharacter {
     private Long id;
     @Column(name = "name")
     private String name;
+    @Column(name = "currency")
+    private int currency;
     @OneToMany(mappedBy = "gameCharacter")
     @JsonIgnoreProperties({"character"})
     private List<Item> items;
 
     public GameCharacter(String name) {
         this.name = name;
+        this.currency = 10;
         this.items = new ArrayList<Item>();
     }
 
@@ -36,6 +39,14 @@ public class GameCharacter {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(int currency) {
+        this.currency = currency;
     }
 
     public String getName() {
