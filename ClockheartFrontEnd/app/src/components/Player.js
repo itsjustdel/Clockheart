@@ -54,11 +54,6 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
       <mesh ref={mesh} position={playerStartPosition} rotation ={[-Math.PI/2,0,0]}>
         <planeBufferGeometry attach="geometry" args={[1, 2]} />
         <meshStandardMaterial map={texture} transparent={true}/>
-
-        <Html position={[-0.5, 2, 0]}>
-          <div className="label">Player Label</div>
-        </Html>
-
       </mesh>
     );
   };
@@ -72,9 +67,9 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
         <TexturedPlane url={["/redguy.png"]} />       
       </Suspense>
 
-      <Html>
+      {/* <Html>
             <PlayerItems items={items}/>
-      </Html>
+      </Html> */}
       
     </>
   )

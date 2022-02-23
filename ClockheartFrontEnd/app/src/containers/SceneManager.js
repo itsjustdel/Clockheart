@@ -5,7 +5,11 @@ import { Canvas} from "@react-three/fiber"
 //project defined
 import Player from "../components/Player";
 import SceneHelper from '../components/SceneHelper';
-import TestLevel from '../components/TestLevel';
+import ClockTowerBar from '../components/ClockTowerBar';
+import Shop from '../components/Shop';
+import ShopList from '../components/ShopList'
+import PlayerItems from '../components/PlayerItems';
+import QuestList from '../components/QuestList';
 
 const SceneManager = () => {
 
@@ -13,13 +17,15 @@ const SceneManager = () => {
 
     const [characters, setCharacters] = useState([])
     const [items, setItems] = useState([]);
-    //const [playerItems, setPlayerItems] = useState([])   
-    //to move the player, we need to know where to start from
+    const [quests, setQuests] = useState([]);
+
     const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 1, 4))
-    //and where we want to go
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 1, 4))
-    //we move the mesh, we can keep a reference of the mesh for when we need to check it's position
-    //useRef is like an instance variable but gets forgotten on "re-render" (when we change something in state)
+    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 1, 4))    
+    
+    const [shopOpen, setShopOpen] = useState(false)
+    const [questGiverOpen, setQuestGiverOpen] = useState(false)    
+    const [currentQuest, setCurrentQuest] = useState("")
+
     const playerMesh = useRef()
 
     useEffect( () => {
@@ -72,14 +78,25 @@ const SceneManager = () => {
             <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
                 <SceneHelper />
 
-                <TestLevel updatePlayerTarget={updatePlayerTarget} 
-                playerMesh={playerMesh} updateItems={updateItems} updateCharacters={updateCharacters}
-                    characters={characters} items={items}
+                <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh} 
+                   shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen} 
+                   setQuestGiverOpen={setQuestGiverOpen}
+                    setPlayerStartPosition={setPlayerStartPosition}
                 />  
 
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />        
                 
             </Canvas>
+
+            <PlayerItems items={items}/>
+            
+            {shopOpen == true ?  <ShopList updateItems={updateItems} 
+                                        characters={characters} 
+                                        updateCharacters={updateCharacters}
+                                        items={items} /> : null }
+
+            {questGiverOpen == true ? <QuestList characters={characters} /> : null}
+                                        
 
             {/* <ul className='playerItemList'>
                 <li >
