@@ -30,21 +30,26 @@ const SceneManager = () => {
 
     useEffect( () => {
         getCharacters()
-        getItems();
+        getItems()
+        getQuests()
     },[])
 
     const getCharacters = () => {
         fetch('/characters')
         .then(res => res.json())
         .then(characters => setCharacters(characters))
-
     }
 
     const getItems = () => {
         fetch('/items')
         .then(res => res.json())
         .then(items => setItems(items))
+    }
 
+    const getQuests = () => {
+        fetch('/quests')
+        .then(res => res.json())
+        .then(quests => setQuests(quests))
     }
 
     const updatePlayerTarget = (newPlayerTargetPosition) => {
@@ -72,9 +77,6 @@ const SceneManager = () => {
 
     return (
         <>
-
-
-
             <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
                 <SceneHelper />
 
@@ -95,7 +97,9 @@ const SceneManager = () => {
                                         updateCharacters={updateCharacters}
                                         items={items} /> : null }
 
-            {questGiverOpen == true ? <QuestList characters={characters} /> : null}
+            {questGiverOpen == true ? <QuestList characters={characters} quests={quests} setQuests={setQuests}
+                                                setCurrentQuest={setCurrentQuest}
+                                        /> : null}
                                         
 
             {/* <ul className='playerItemList'>
