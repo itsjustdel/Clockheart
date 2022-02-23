@@ -27,7 +27,7 @@ public class DataLoader implements ApplicationRunner {
         Player player = new Player("Clocky", 5, 5, 5, "Broca");
         gameCharacterRepository.save(player);
 
-        Shop shop = new Shop("Zebediah Flint");
+        Shop shop = new Shop("Zebediah Flint", 2, 2, 2);
         gameCharacterRepository.save(shop);
 
         Attack sword = new Attack("Sword", 5, shop, 5);

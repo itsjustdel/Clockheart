@@ -28,6 +28,10 @@ public class GameCharacterController {
         GameCharacter gameCharacterToUpdate = gameCharacterRepository.findById(id).get();
         gameCharacterToUpdate.setName(gameCharacter.getName());
         gameCharacterToUpdate.setCurrency(gameCharacter.getCurrency());
+        gameCharacterToUpdate.setCharisma(gameCharacter.getCharisma());
+        gameCharacterToUpdate.setIntelligence(gameCharacter.getIntelligence());
+        gameCharacterToUpdate.setStrength(gameCharacter.getStrength());
+        gameCharacterToUpdate.setHealthPoints(gameCharacter.getHealthPoints());
         gameCharacterRepository.save(gameCharacterToUpdate);
         return new ResponseEntity<>(gameCharacter, HttpStatus.OK);
     }
