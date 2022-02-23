@@ -13,8 +13,6 @@ public class Player extends GameCharacter {
     private int strength;
     @Column(name = "charisma")
     private int charisma;
-    @Column(name = "currency")
-    private int currency;
     @Column(name = "type")
     private String type;
 
@@ -24,13 +22,11 @@ public class Player extends GameCharacter {
         this.intelligence = intelligence;
         this.strength = strength;
         this.charisma = charisma;
-        this.currency = 10;
         this.type = type;
     }
 
     public Player(){
         this.healthPoints = 100;
-        this.currency = 10;
     }
 
     public int getHealthPoints() {
@@ -69,21 +65,16 @@ public class Player extends GameCharacter {
         return type;
     }
 
-    public int getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(int currency) {
-        this.currency = currency;
-    }
-
     public void addItem(Item item){
         this.getItems().add(item);
     }
 
     public boolean buyItem(Item item) {
-        if (currency >= item.getValue()){
-            currency -= item.getValue();
+        int newCurrency = 0;
+        if (getCurrency() >= item.getValue()){
+            newCurrency =  getCurrency();
+            int itemValue = item.getValue();
+            setCurrency(newCurrency - itemValue);
             this.addItem(item);
             return true;
         }
