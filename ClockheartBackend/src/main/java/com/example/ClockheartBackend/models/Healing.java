@@ -14,6 +14,10 @@ public class Healing extends Item{
         this.healing = healing;
     }
 
+    public Healing(){
+
+    }
+
     public int getHealing() {
         return healing;
     }

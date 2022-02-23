@@ -5,15 +5,15 @@ import React, { useEffect, useState } from 'react'
 import { Vector3 } from 'three'
 import ShopList from './ShopList'
 
-const TestLevel = ({updatePlayerTarget, playerMesh}) => {
+const TestLevel = ({updatePlayerTarget, playerMesh, updateItems, characters, items}) => {
 
+    console.log("Test level")
     const [openForm, setOpenForm] = useState(false)
-    const [shop, setShop] = useState(null);
 
     useEffect( () => 
     {
         console.log("use effect test level")
-        getShop()
+        // getShopItems()
     }, [])
 
     useFrame( () => {
@@ -28,21 +28,19 @@ const TestLevel = ({updatePlayerTarget, playerMesh}) => {
             setOpenForm(false)
     })
 
-    const getShop = function(){
-        fetch('/shop')
-        .then(res => res.json())
-        .then(shop => setShop(shop))
-    }
 
+    
     return(
         <>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} />
                 {openForm == true ? 
                 <Html center className="listContainer" position={[0,4,0]}>
                     
-                    <ShopList shop={shop[0]}/>
+                    <ShopList updateItems={updateItems} characters={characters} 
+                    items={items}/>
                         
-                    <button>I'm a button</button>
+                    
+
                 </Html> : null}
         </>
     )

@@ -1,11 +1,13 @@
 package com.example.ClockheartBackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "items")
-public abstract class Item {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,17 +19,14 @@ public abstract class Item {
     private int value;
 
     @ManyToOne
-    @JoinColumn(name = "shop_id", nullable = true)
-    private Shop shop;
-    @ManyToOne
-    @JoinColumn(name = "player_id", nullable = true)
-    private Player player;
+    @JoinColumn(name = "character_id", nullable = false)
+    @JsonIgnoreProperties({"items"})
+    private GameCharacter gameCharacter;
 
-    public Item(String name, int value, Shop shop) {
+    public Item(String name, int value, GameCharacter gameCharacter) {
         this.name = name;
         this.value = value;
-        this.shop = shop;
-        this.player = null;
+        this.gameCharacter = gameCharacter;
     }
 
     public Item() {
@@ -57,19 +56,11 @@ public abstract class Item {
         this.id = id;
     }
 
-    public Shop getShop() {
-        return shop;
+    public GameCharacter getCharacter() {
+        return gameCharacter;
     }
 
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setCharacter(GameCharacter gameCharacter) {
+        this.gameCharacter = gameCharacter;
     }
 }

@@ -1,28 +1,43 @@
-const ShopList = ({ shop }) => {
+const ShopList = ({ updateItems, characters, items }) => {
+    console.log("Shop list")
 
-    const NamesToMap = () => {
+    const handleItemClick = (event) => {
+        const index = event.target.value;       
         
-        const namesToMap = [];
-        for (let i = 0; i < shop.items.length; i++) {
-            namesToMap.push(shop.items[i].name)
+        //player is always first in character array (but has ID 1! Be careful!)
+        const newOwner = characters[0];
+        const updatedShopItem = {
+            "name": items[ index ]["name"],
+            "value": items[ index ]["value"],
+            "damage": items[ index ]["damage"],
+            "character": newOwner
         }
 
-        return namesToMap.map((name, index) => {
-            return <li key={index}>{name}</li>
+        console.log(updatedShopItem)
+        
+        updateItems(event.target.value, updatedShopItem);        
+     
+        const str = '/items/' + items[ index ]["id"]
+        console.log(str)
+        fetch(str, {
+            method: 'PUT',
+            body: JSON.stringify(updatedShopItem),
+            headers: { 'Content-Type': 'application/json' }
         })
+        .then(res => console.log( res.json()))
     }
 
-    const NamesToMapAlternate = () => {
-        return Object.keys(shop.items).map(function(key, index) {
-            return <li key={index}> Name: {shop.items[key].name} Value: {shop.items[key].value} </li>;
-          });
-    }
+    const itemsForSale = items.map((item, index) => {  
+        if(item.character.name == "Zebediah Flint")      
+            return <li onClick={handleItemClick} value={index} key ={index}>{item.name}</li>
+
+    })
 
     return (
         <>
             <h2> Shop Item List</h2>
             <ul>
-                <NamesToMapAlternate />
+                {itemsForSale}
             </ul>
         </>
     )

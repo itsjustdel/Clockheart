@@ -1,13 +1,15 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 import { Html } from '@react-three/drei';
+import PlayerItems from './PlayerItems'
 
-const Player = ({playerStartPosition, playerTargetPosition, mesh }) => {
+const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
   console.log("Player Loaded");
 
   //constant variables  
   const speed = 0.1;
+
   
   //use frame fires every time a new frame is drawn to the screen (around 60 times a second)
   //think of it almost like a while loop for (isGameRunning?)
@@ -64,9 +66,16 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh }) => {
   //Suspense tag is needed because TextureLoader needs it (async)
   return (
     <> 
+
+     
       <Suspense fallback={null}>
-        <TexturedPlane url={["/redguy.png"]} />
+        <TexturedPlane url={["/redguy.png"]} />       
       </Suspense>
+
+      <Html>
+            <PlayerItems items={items}/>
+      </Html>
+      
     </>
   )
 };

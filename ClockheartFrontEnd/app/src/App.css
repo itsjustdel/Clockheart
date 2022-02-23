@@ -41,3 +41,18 @@ Canvas{
   border: 5px solid black;
 }
 
+.playerItemList{
+  position: absolute;
+  top: 20vh;
+  list-style: none;
+  display: flex;
+  
+}
+
+.playerItem{
+  background-color: burlywood;
+  border: black 5px solid;
+  width: 10vw;
+  height: 10vw;
+}
+
