@@ -10,6 +10,7 @@ import Shop from '../components/Shop';
 import ShopList from '../components/ShopList'
 import PlayerItems from '../components/PlayerItems';
 import QuestList from '../components/QuestList';
+import ReactAudioPlayer from 'react-audio-player';
 
 const SceneManager = () => {
 
@@ -89,7 +90,12 @@ const SceneManager = () => {
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />        
                 
             </Canvas>
-
+            <ReactAudioPlayer
+                src="/SteampunkAmbience.mp3"
+                autoPlay
+                controls
+                volume={0.1}
+            />
             <PlayerItems items={items}/>
             
             {shopOpen == true ?  <ShopList updateItems={updateItems} 
