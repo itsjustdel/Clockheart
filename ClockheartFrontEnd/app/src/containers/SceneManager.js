@@ -60,6 +60,9 @@ const SceneManager = () => {
 
     return (
         <>
+
+
+
             <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
                 <SceneHelper />
 
@@ -71,7 +74,23 @@ const SceneManager = () => {
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />        
                 
             </Canvas>
+
+            {/* <ul className='playerItemList'>
+                <li >
+                        <div className='playerItem'>
+
+                        </div>
+                </li>
+                        <li className='playerItem'>
+                
+                        </li>
+                <li className='playerItem'>
+                        
+                </li>
+            </ul> */}
         </>
+
+        
     )
 }
 
