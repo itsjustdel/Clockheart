@@ -32,6 +32,7 @@ public class GameCharacterController {
         gameCharacterToUpdate.setIntelligence(gameCharacter.getIntelligence());
         gameCharacterToUpdate.setStrength(gameCharacter.getStrength());
         gameCharacterToUpdate.setHealthPoints(gameCharacter.getHealthPoints());
+        gameCharacterToUpdate.setQuests(gameCharacter.getQuests());
         gameCharacterRepository.save(gameCharacterToUpdate);
         return new ResponseEntity<>(gameCharacter, HttpStatus.OK);
     }

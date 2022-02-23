@@ -27,6 +27,9 @@ public class GameCharacter {
     private int strength;
     @Column(name = "charisma")
     private int charisma;
+    @Column(name = "quests")
+    private List<String> quests;
+
     @OneToMany(mappedBy = "gameCharacter")
     @JsonIgnoreProperties({"character"})
     private List<Item> items;
@@ -38,12 +41,21 @@ public class GameCharacter {
         this.strength = strength;
         this.charisma = charisma;
         this.currency = 10;
+        this.quests = new ArrayList<String>();
         this.items = new ArrayList<Item>();
     }
 
     public GameCharacter() {
         this.healthPoints = 100;
         this.currency = 10;
+    }
+
+    public List<String> getQuests() {
+        return quests;
+    }
+
+    public void setQuests(List<String> quests) {
+        this.quests = quests;
     }
 
     public Long getId() {
