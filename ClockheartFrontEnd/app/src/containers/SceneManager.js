@@ -52,10 +52,16 @@ const SceneManager = () => {
         //create new list with current player items and the passed new item
         
         const newItems = [...items]
-        newItems[index] = newItem;
+        newItems[index] = newItem
         setItems(newItems)
         //we are re-rendering because we are setting state, so we need to update player position in state
         setPlayerStartPosition(playerMesh.current.position)
+    }
+
+    const updateCharacters = (index, newCharacter) => {
+        const newCharacters = [...characters]
+        newCharacters[index] = newCharacter
+        setCharacters(newCharacters)
     }
 
     return (
@@ -67,7 +73,7 @@ const SceneManager = () => {
                 <SceneHelper />
 
                 <TestLevel updatePlayerTarget={updatePlayerTarget} 
-                playerMesh={playerMesh} updateItems={updateItems} 
+                playerMesh={playerMesh} updateItems={updateItems} updateCharacters={updateCharacters}
                     characters={characters} items={items}
                 />  
 

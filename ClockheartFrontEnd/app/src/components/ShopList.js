@@ -1,16 +1,29 @@
-const ShopList = ({ updateItems, characters, items }) => {
+const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
     console.log("Shop list")
 
     const handleItemClick = (event) => {
-        const index = event.target.value
 
-        //player is always first in character array (but has ID 1! Be careful!)
-        const newOwner = characters[0]
+        const playerMoney = characters[0].currency
+        const index = event.target.value
+        if(playerMoney >= items[index].value){
+
+            const updatedCharacter = characters[0]
+            updatedCharacter.currency -= items[index].value
+
+            updateCharacters(index, updatedCharacter)
+
+            fetch(`/characters/${updatedCharacter.id}`,{
+                method: 'PUT',
+                body: JSON.stringify(updatedCharacter),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(res => res.json()) 
+
         const updatedShopItem = {
             "name": items[index].name,
             "value": items[index].value,
             "damage": items[index].damage,
-            "character": newOwner
+            "character": updatedCharacter
         }
         updateItems(event.target.value, updatedShopItem)
 
@@ -20,7 +33,9 @@ const ShopList = ({ updateItems, characters, items }) => {
             body: JSON.stringify(updatedShopItem),
             headers: { 'Content-Type': 'application/json' }
         })
-            .then(res => res.json())
+            .then(res => res.json()) 
+        }
+        else {console.log("NOT ENOUGH MONEY");}
     }
 
     const itemsForSale = items.map((item, index) => {
