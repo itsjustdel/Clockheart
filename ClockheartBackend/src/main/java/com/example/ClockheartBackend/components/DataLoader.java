@@ -42,6 +42,9 @@ public class DataLoader implements ApplicationRunner {
         Quest rockPaperScissors = new Quest("Rock Paper Scissors", 20, questGiver);
         questRepository.save(rockPaperScissors);
 
+        Quest clockTowerBar = new Quest("ClockTowerBar", 0, shop);
+        questRepository.save(clockTowerBar);
+
         Attack woodenSword = new Attack("Wooden Sword", 4, shop, 3);
         itemRepository.save(woodenSword);
 
