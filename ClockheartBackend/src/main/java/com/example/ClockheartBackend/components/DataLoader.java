@@ -1,11 +1,9 @@
 package com.example.ClockheartBackend.components;
 
-import com.example.ClockheartBackend.models.Attack;
-import com.example.ClockheartBackend.models.Healing;
-import com.example.ClockheartBackend.models.Player;
-import com.example.ClockheartBackend.models.Shop;
+import com.example.ClockheartBackend.models.*;
 import com.example.ClockheartBackend.repositories.GameCharacterRepository;
 import com.example.ClockheartBackend.repositories.ItemRepository;
+import com.example.ClockheartBackend.repositories.QuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -18,6 +16,8 @@ public class DataLoader implements ApplicationRunner {
     GameCharacterRepository gameCharacterRepository;
     @Autowired
     ItemRepository itemRepository;
+    @Autowired
+    QuestRepository questRepository;
 
 
     public DataLoader() {
@@ -29,6 +29,18 @@ public class DataLoader implements ApplicationRunner {
 
         Shop shop = new Shop("Zebediah Flint", 2, 2, 2);
         gameCharacterRepository.save(shop);
+
+        QuestGiver questGiver = new QuestGiver("Cogsworth", 5, 5, 5);
+        gameCharacterRepository.save(questGiver);
+
+        Quest rustAndDust = new Quest("Rust and Dust", 10, questGiver);
+        questRepository.save(rustAndDust);
+
+        Quest defeatDellyWelly = new Quest("Defeat Delly Welly", 18, questGiver);
+        questRepository.save(defeatDellyWelly);
+
+        Quest rockPaperScissors = new Quest("Rock Paper Scissors", 20, questGiver);
+        questRepository.save(rockPaperScissors);
 
         Attack woodenSword = new Attack("Wooden Sword", 4, shop, 3);
         itemRepository.save(woodenSword);
