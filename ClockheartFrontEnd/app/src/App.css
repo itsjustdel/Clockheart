@@ -49,6 +49,11 @@ Canvas{
   
 }
 
+.playerItemImage{
+  width: 8vw;
+  height: 8vw;
+}
+
 .playerItem{
   background-color: burlywood;
   border: black 5px solid;
