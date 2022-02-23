@@ -24,7 +24,7 @@ const SceneManager = () => {
     
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)    
-    const [currentQuest, setCurrentQuest] = useState("")
+    const [currentQuest, setCurrentQuest] = useState("Rust and Dust")
 
     const playerMesh = useRef()
 
@@ -80,11 +80,11 @@ const SceneManager = () => {
             <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
                 <SceneHelper />
 
-                <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh} 
+               {currentQuest.name == "Rust and Dust"? <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh} 
                    shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen} 
                    setQuestGiverOpen={setQuestGiverOpen}
-                    setPlayerStartPosition={setPlayerStartPosition}
-                />  
+                    setPlayerStartPosition={setPlayerStartPosition} /> : null                
+               }
 
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />        
                 
