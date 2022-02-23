@@ -95,6 +95,7 @@ const SceneManager = () => {
                 autoPlay
                 controls
                 volume={0.1}
+                loop
             />
             <PlayerItems items={items}/>
             
