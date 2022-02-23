@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Vector3 } from 'three'
 import ShopList from './ShopList'
 
-const TestLevel = ({updatePlayerTarget, playerMesh, updateItems, characters, items}) => {
+const TestLevel = ({updatePlayerTarget, playerMesh, updateItems, updateCharacters, characters, items}) => {
 
     console.log("Test level")
     const [openForm, setOpenForm] = useState(false)
@@ -36,7 +36,7 @@ const TestLevel = ({updatePlayerTarget, playerMesh, updateItems, characters, ite
                 {openForm == true ? 
                 <Html center className="listContainer" position={[0,4,0]}>
                     
-                    <ShopList updateItems={updateItems} characters={characters} 
+                    <ShopList updateItems={updateItems} characters={characters} updateCharacters={updateCharacters} 
                     items={items}/>
                         
                     
