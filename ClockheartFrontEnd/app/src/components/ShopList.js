@@ -12,26 +12,19 @@ const ShopList = ({ updateItems, characters, items }) => {
             "damage": items[ index ]["damage"],
             "character": newOwner
         }
+
+        console.log(updatedShopItem)
         
-        updateItems(event.target.value, updatedShopItem);
-        
-        const updatedShopItemBE = {
-            "name": "Sword",
-            "value": 5,
-            "damage": 5,
-            "character": 
-                {
-                "id": 1
-                }
-            }
-            const str = '/items/1'
-            console.log(str)
-            fetch(str, {
-                method: 'PUT',
-                body: JSON.stringify(updatedShopItemBE),
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(res => console.log( res.json()))
+        updateItems(event.target.value, updatedShopItem);        
+     
+        const str = '/items/' + items[ index ]["id"]
+        console.log(str)
+        fetch(str, {
+            method: 'PUT',
+            body: JSON.stringify(updatedShopItem),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(res => console.log( res.json()))
     }
 
     const itemsForSale = items.map((item, index) => {  
