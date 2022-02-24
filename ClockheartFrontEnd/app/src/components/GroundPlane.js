@@ -2,7 +2,7 @@
 import { Vector3 } from 'three';
 
 //creates a plane with an onClick method to set position for player movement
-const GroundPlane = ({updatePlayerTarget}) => {
+const GroundPlane = ({updatePlayerTarget, colour}) => {
 
     const handleClick = (event) => {
         //get mouse co-ords from mouse event (relative to mesh clicked)
@@ -24,7 +24,7 @@ const GroundPlane = ({updatePlayerTarget}) => {
 
 
                 <planeBufferGeometry args={[10, 10]} />
-                <meshStandardMaterial color="grey" />
+                <meshStandardMaterial color={colour} />
             </mesh>
 
             
