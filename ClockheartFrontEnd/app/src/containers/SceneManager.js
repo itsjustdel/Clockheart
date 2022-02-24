@@ -29,16 +29,14 @@ const SceneManager = () => {
     const [currentQuest, setCurrentQuest] = useState("")
 
     const playerMesh = useRef()
-
-    const button=document.getElementById("play-button")
-
+    
     useEffect( () => {
         getCharacters()
         getItems()
         getQuests()
-        setTimeout(() => {
-           button.trigger('click') 
-        }, 10) 
+        // setTimeout(() => {
+        //    button.trigger('click') 
+        // }, 10) 
     },[])
 
     const getCharacters = () => {
