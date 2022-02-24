@@ -27,7 +27,7 @@ const BossGUI = ({characters,setCharacters, currentQuest}) => {
     }
 
     const getBossIdFromQuest = () => {
-        if(currentQuest == "Rust and Dust")
+        if(currentQuest.name == "Rust and Dust")
             return 4
     }
 
@@ -36,7 +36,7 @@ const BossGUI = ({characters,setCharacters, currentQuest}) => {
             <h1>BOSS GUI</h1>
             {fightPanel == false ? <InitialOptions/> : null}
 
-            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyID={4} /> : null}
+            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} /> : null}
         </>
     )
 }
