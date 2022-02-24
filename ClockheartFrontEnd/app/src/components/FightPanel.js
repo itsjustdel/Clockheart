@@ -1,14 +1,12 @@
 import { useState } from "react"
 import BossTurn from "./BossTurn"
 
-const FightPanel = ({characters ,setCharacters, enemyID}) => {
+const FightPanel = ({characters ,setCharacters, enemyId}) => {
 
     const [turn, setTurn] = useState(0)
 
     const attackClick = () => {
-        
-        console.log(characters[4])
-        
+        console.log("enemy id  = " + enemyId)
         //remove health form enmy by attack strength
         const attackStrength = 5;//to do
 
@@ -16,7 +14,7 @@ const FightPanel = ({characters ,setCharacters, enemyID}) => {
         const newCharacters = [...characters]
         for(let i = 0; i < newCharacters.length; i++)
         { 
-            if(characters[i].id == enemyID){
+            if(characters[i].id == enemyId){
                 //create copy
                 const newCharacter = characters[i]
                 newCharacter.healthPoints -= attackStrength
@@ -29,6 +27,7 @@ const FightPanel = ({characters ,setCharacters, enemyID}) => {
 
                 }else{
                     //boss turn
+                    console.log("setting turn to 1")
                     setTurn(1)
                 }
 
@@ -66,12 +65,10 @@ const FightPanel = ({characters ,setCharacters, enemyID}) => {
     return(
         <>
             <h1>FIGHT PANEL</h1>
-            {turn == 0 ? <FightButtons/> :  <BossTurn characters={characters} setCharacters={setCharacters}/>}
-
+            {turn == 0 ? <FightButtons/>:<BossTurn characters={characters} setCharacters={setCharacters} enemyId={enemyId} setTurn={setTurn}/>}
 
             <PlayerHealth/>
-            <EnemyHealth/>
-        
+            <EnemyHealth/>        
         </>
     )
 
