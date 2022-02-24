@@ -5,7 +5,7 @@ const Music = url => {
 
 const [play] = useSound(
   'steampunkambience.mp3',
-  { volume: 0.1,
+  { volume: 0.03,
   loop: true }
 );
 
