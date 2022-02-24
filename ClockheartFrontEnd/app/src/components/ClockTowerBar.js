@@ -17,6 +17,8 @@ const ClockTowerBar= ({updatePlayerTarget, playerMesh, shopOpen, setShopOpen, qu
             <Shop shopOpen={shopOpen} setShopOpen={setShopOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
 
             <QuestGiver questGiverOpen={questGiverOpen} setQuestGiverOpen={setQuestGiverOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
+
+            {/* <Music url={"/SteampunkAmbience.mp3"} /> */}
             
         </>
     )

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import BossTurn from "./BossTurn"
+import Music from "./Music"
 
 const FightPanel = ({characters ,setCharacters, enemyID}) => {
 
@@ -42,6 +43,8 @@ const FightPanel = ({characters ,setCharacters, enemyID}) => {
             <>
                 <button onClick={attackClick}>Attack</button>
                 <button>Heal</button>
+
+                
             </>
         )
     }
@@ -71,6 +74,7 @@ const FightPanel = ({characters ,setCharacters, enemyID}) => {
 
             <PlayerHealth/>
             <EnemyHealth/>
+            <Music url={"/BattleMusic.mp3"} soundLevel={0.1}/>
         
         </>
     )

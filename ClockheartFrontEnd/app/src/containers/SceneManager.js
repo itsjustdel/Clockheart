@@ -100,7 +100,7 @@ const SceneManager = () => {
 
             </Canvas>
 
-            <Music url={"/SteampunkAmbience.mp3"} />
+           
 
             <PlayerItems items={items} />
 

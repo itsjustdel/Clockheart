@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import useSound from 'use-sound';
 
-const Music = url => {
+const Music = ({url, soundLevel}) => {
 
 const [play] = useSound(
-  'steampunkambience.mp3',
-  { volume: 0.03,
+  url,
+  { volume: soundLevel,
   loop: true }
 );
 
   return (
     <>
-       {/* {play()} */}
+       {play()}
     </>
   )
 }
