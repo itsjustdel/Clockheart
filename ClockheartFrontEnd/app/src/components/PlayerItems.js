@@ -10,11 +10,10 @@ const PlayerItems = ({items}) => {
     const playerItems = items.map((item, index) => {  
         if(item.character.id == 1)
             return <li className='playerItem' onClick={handleItemClick} 
-                        value={index} key={index}>{item.name}
+                        value={index} key={index}>
                         <img className='playerItemImage' src="/sword.png"/>
                         
                     </li>
-
     })
 
     return(

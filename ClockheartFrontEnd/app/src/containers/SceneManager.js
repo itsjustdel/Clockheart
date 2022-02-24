@@ -102,19 +102,35 @@ const SceneManager = () => {
                                         /> : null}
                                         
 
-            {/* <ul className='playerItemList'>
+            {/* <ul classNameName='playerItemList'>
                 <li >
-                        <div className='playerItem'>
+                        <div classNameName='playerItem'>
 
                         </div>
                 </li>
-                        <li className='playerItem'>
+                        <li classNameName='playerItem'>
                 
                         </li>
-                <li className='playerItem'>
+                <li classNameName='playerItem'>
                         
                 </li>
             </ul> */}
+
+            <div id="push-group-element">
+            <ul className="mosaic-container">
+                <li className="mosaic-item item-small" >1</li>
+                <li className="mosaic-item item-small" >2</li>
+                <li className="mosaic-item item-small" >3</li>
+                <li className="mosaic-item item-big" >4</li>
+                {/* <span style={{"width: 33.3%;"}}> */}
+                <li className="mosaic-item item-small" >5</li>
+                <li className="mosaic-item item-small" >6</li>
+                {/* </span> */}
+                <li className="mosaic-item item-small" >7</li>
+                <li className="mosaic-item item-small" >8</li>
+                <li className="mosaic-item item-small" >9</li>
+            </ul>
+            </div>
         </>
 
         
