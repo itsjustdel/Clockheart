@@ -180,8 +180,8 @@ public class DataLoader implements ApplicationRunner {
         Healing emeraldPotion3 = new Healing("Great Health Potion", 15, emeraldBoss, 15);
         itemRepository.save(sapphirePotion3);
 
-        Healing sapphirePotion4 = new Healing("Great Health Potion", 15, emeraldBoss, 15);
-        itemRepository.save(sapphirePotion4);
+        Healing emeraldPotion4 = new Healing("Great Health Potion", 15, emeraldBoss, 15);
+        itemRepository.save(emeraldPotion4);
 
         Item moneyBagEmerald = new Item("Basic Money Bag", 10, emeraldBoss);
         itemRepository.save(moneyBagEmerald);
