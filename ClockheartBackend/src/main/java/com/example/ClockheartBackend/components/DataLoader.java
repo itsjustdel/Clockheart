@@ -33,6 +33,18 @@ public class DataLoader implements ApplicationRunner {
         QuestGiver questGiver = new QuestGiver("Cogsworth", 5, 5, 5);
         gameCharacterRepository.save(questGiver);
 
+        GameCharacter rubyBoss = new GameCharacter("Ruby Boss", 3, 5, 3);
+        gameCharacterRepository.save(rubyBoss);
+
+        GameCharacter sapphireBoss = new GameCharacter("Sapphire Boss", 5, 3, 3);
+        gameCharacterRepository.save(sapphireBoss);
+
+        GameCharacter emeraldBoss = new GameCharacter("Emerald Boss", 3, 3,5);
+        gameCharacterRepository.save(emeraldBoss);
+
+        GameCharacter diamondBoss = new GameCharacter("Diamond Boss", 8, 5, 8);
+        gameCharacterRepository.save(diamondBoss);
+
         Quest rustAndDust = new Quest("Rust and Dust", 10, questGiver);
         questRepository.save(rustAndDust);
 
@@ -86,6 +98,18 @@ public class DataLoader implements ApplicationRunner {
 
         Healing sage = new Healing("Sage", 3, shop, 3);
         itemRepository.save(sage);
+
+        Item rubyGem = new Item("Ruby Gem", 0, rubyBoss);
+        itemRepository.save(rubyGem);
+
+        Item sapphireGem = new Item("Sapphire Gem", 0, sapphireBoss);
+        itemRepository.save(sapphireGem);
+
+        Item emeraldGem = new Item("Emerald Gem", 0, emeraldBoss);
+        itemRepository.save(emeraldGem);
+
+        Item diamondGem = new Item("Diamond Gem", 0, diamondBoss);
+        itemRepository.save(diamondGem);
 
     }
 }
