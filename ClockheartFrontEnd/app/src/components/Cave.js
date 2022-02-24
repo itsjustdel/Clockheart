@@ -1,9 +1,7 @@
 import GroundPlane from './GroundPlane'
 import React, { useEffect, useState } from 'react'
-const Cave = ({updatePlayerTarget}) => {
-
-    console.log("Test level")
-   // const [openForm, setOpenForm] = useState(false)
+import Boss from './Boss'
+const Cave = ({playerMesh, updatePlayerTarget, bossOpen, setBossOpen}) => {
 
     useEffect( () => 
     {
@@ -13,6 +11,8 @@ const Cave = ({updatePlayerTarget}) => {
     return(
         <>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"brown"} />
+
+            <Boss playerMesh={playerMesh} bossOpen={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget}/>
         </>
     )
 }

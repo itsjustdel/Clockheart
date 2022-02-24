@@ -1,6 +1,5 @@
-const QuestList = ({characters, quests, setQuests, setCurrentQuest}) => {
-    console.log("Quest List")
-
+const QuestList = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen}) => {
+  
     const handleQuestClick = (event) => {
         const questToSet = quests[event.target.value]
 
@@ -12,6 +11,9 @@ const QuestList = ({characters, quests, setQuests, setCurrentQuest}) => {
 
         //front end update state
         setCurrentQuest(questToSet)
+
+        //reset gui panel in state
+        setQuestGiverOpen(false)
 
         //back end put        
         fetch(`/quests/${questToSet.id}`,{

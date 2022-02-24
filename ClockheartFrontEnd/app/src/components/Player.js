@@ -5,8 +5,7 @@ import { Html } from '@react-three/drei';
 import PlayerItems from './PlayerItems'
 
 const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
-  console.log("Player Loaded");
-
+  
   //constant variables  
   const speed = 0.1;
 
@@ -66,11 +65,6 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
       <Suspense fallback={null}>
         <TexturedPlane url={["/redguy.png"]} />       
       </Suspense>
-
-      {/* <Html>
-            <PlayerItems items={items}/>
-      </Html> */}
-      
     </>
   )
 };
