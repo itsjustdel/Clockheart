@@ -7,6 +7,7 @@ import Player from "../components/Player";
 import SceneHelper from '../components/SceneHelper';
 import ClockTowerBar from '../components/ClockTowerBar';
 import Shop from '../components/Shop';
+import Cave from '../components/Cave'
 import ShopList from '../components/ShopList'
 import PlayerItems from '../components/PlayerItems';
 import QuestList from '../components/QuestList';
@@ -25,8 +26,10 @@ const SceneManager = () => {
     const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 1, 4))    
     
     const [shopOpen, setShopOpen] = useState(false)
-    const [questGiverOpen, setQuestGiverOpen] = useState(false)    
-    const [currentQuest, setCurrentQuest] = useState("")
+    const [questGiverOpen, setQuestGiverOpen] = useState(false)  
+    
+    const startLevel = {name:"ClockTowerBar"}
+    const [currentQuest, setCurrentQuest] = useState(startLevel)
 
     const playerMesh = useRef()
     
@@ -85,14 +88,13 @@ const SceneManager = () => {
             <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
                 <SceneHelper />
 
-                <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh} 
+               { currentQuest.name == "ClockTowerBar" ? <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh} 
                    shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen} 
-                   setQuestGiverOpen={setQuestGiverOpen}
-                    setPlayerStartPosition={setPlayerStartPosition}
-                    
-                />  
+                   setQuestGiverOpen={setQuestGiverOpen} setPlayerStartPosition={setPlayerStartPosition} /> : null }
 
-                <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />        
+            {currentQuest.name == "Rust and Dust" ? <Cave updatePlayerTarget={updatePlayerTarget} />  : null}
+             
+            <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />        
                 
             </Canvas>
 

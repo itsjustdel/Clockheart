@@ -17,7 +17,7 @@ const ClockTowerBar= ({updatePlayerTarget, playerMesh, shopOpen, setShopOpen, qu
     
     return(
         <>
-            <GroundPlane updatePlayerTarget={updatePlayerTarget} />
+            <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"grey"}/>
 
             <Shop shopOpen={shopOpen} setShopOpen={setShopOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
             <QuestGiver questGiverOpen={questGiverOpen} setQuestGiverOpen={setQuestGiverOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
