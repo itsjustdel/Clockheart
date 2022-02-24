@@ -1,21 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const useAudio = url => {
-
+  const inputRef = useRef(null)
   const [audio] = useState(new Audio(url))
-  const [playing, setPlaying] = useState(false)
+  const [playing, setPlaying] = useState(true)
 
   const toggle = () => setPlaying(!playing)
+
+  audio.volume = 0.1;
+  audio.loop = true
+
+
+  useEffect(() => {
+    console.log("music test uref");
+    inputRef.current.handleClick()
+  },[])
 
   useEffect(() => {
       playing ? audio.play() : audio.pause()
     },
-    [playing]
+    [audio, playing]
   );
 
   useEffect(() => {
 // newly added
-    audio.addEventListener('canplay', () => setPlaying(true))  
+    // audio.addEventListener('canplay', () => setPlaying(true))  
 
     audio.addEventListener('ended', () => setPlaying(false))
     return () => {
@@ -31,7 +40,7 @@ const Music = ({ url }) => {
 
   return (
     <div>
-      <button id="play-button" onClick={toggle}>{playing ? "Pause" : "Play"}</button>
+      <button id="play-button" ref={inputRef} onClick={toggle}>{playing ? "Pause" : "Play"}</button>
     </div>
   );
 };
