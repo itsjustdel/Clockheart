@@ -1,8 +1,5 @@
 const PlayerItems = ({items}) => {
 
-    console.log("player items")
-    console.log(items)
-
     const handleItemClick = () => {    
         console.log("A player item was clicked")
     }
