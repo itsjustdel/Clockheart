@@ -97,7 +97,9 @@ const SceneManager = () => {
                 <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} /> 
                 : null}
 
-
+                {currentQuest.name == "Street" ? 
+                <Street playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} characters={characters} updateCharacters={updateCharacters} /> 
+                : null}
             </Canvas>
 
            
