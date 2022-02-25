@@ -8,7 +8,7 @@ const PlayerItems = ({items}) => {
         if(item.character.id == 1)
             return <li className='playerItem' onClick={handleItemClick} 
                         value={index} key={index}>
-                        <img className='playerItemImage' src="/sword.png"/>
+                        <img className='playerItemImage' src="/newPngs/sword.png"/>
                         
                     </li>
     })

@@ -43,10 +43,8 @@ const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
         if (item.character.name == "Zebediah Flint")
             return    <li className='npcItem'
                          onClick={handleItemClick} value={index} key={index}>{item.name}
-                        <img className='playerItemImage' src="/sword.png"></img>
+                        <img className='playerItemImage' src="/newPngs/sword.png"></img>
                      </li>
-                          
-
     })
 
     return (
@@ -55,7 +53,7 @@ const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
             <div className="npcContainer">
                 <div className="npcItems">
                     <ul className="npcItemList" >
-                        {/* {itemsForSale} */}
+                        {itemsForSale}
                     </ul>
                 </div>
             </div>
