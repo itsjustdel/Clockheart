@@ -21,6 +21,7 @@ const FightPanel = ({characters ,setCharacters, enemyId}) => {
                 newCharacter.healthPoints -= attackStrength
                 //update characters in state with new character
                 setCharacters(newCharacters)
+                console.log("Player health after attack =" + characters[0].healthPoints)
 
                 if(characters[i].healthPoints <= 0 ){
                     //boss is dead
@@ -37,11 +38,26 @@ const FightPanel = ({characters ,setCharacters, enemyId}) => {
         }
     }
 
+    const healClick= () => {
+        //Below will be set to the used item's healing value
+        const healing = 5;
+
+        const newCharacters = [...characters]
+        const newCharacter = newCharacters[0]
+        console.log("player health after heal= " + newCharacter.healthPoints)
+        if (newCharacter.healthPoints < 100){
+            newCharacter.healthPoints += healing
+        }
+        setCharacters(newCharacters)
+
+        return
+    }
+
     const FightButtons = () => {
         return(
             <>
                 <button onClick={attackClick}>Attack</button>
-                <button>Heal</button>
+                <button onClick={healClick}>Heal</button>
 
                 
             </>
