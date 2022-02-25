@@ -27,6 +27,7 @@ public class GameCharacterController {
             @PathVariable Long id){
         GameCharacter gameCharacterToUpdate = gameCharacterRepository.findById(id).get();
         gameCharacterToUpdate.setName(gameCharacter.getName());
+        gameCharacterToUpdate.setType(gameCharacter.getType());
         gameCharacterToUpdate.setCurrency(gameCharacter.getCurrency());
         gameCharacterToUpdate.setCharisma(gameCharacter.getCharisma());
         gameCharacterToUpdate.setIntelligence(gameCharacter.getIntelligence());

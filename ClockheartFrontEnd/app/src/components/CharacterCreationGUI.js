@@ -1,11 +1,11 @@
 import CharacterCreation from "./CharacterCreation"
 
-const CharacterCreationGUI = ({characters, updateCharacters}) => {
+const CharacterCreationGUI = ({characters, updateCharacters, setCurrentQuest, setCharacterCreationOpen}) => {
     
 
     return(
         <>
-            <CharacterCreation characters={characters} updateCharacters={updateCharacters}/>
+            <CharacterCreation characters={characters} updateCharacters={updateCharacters} setCurrentQuest={setCurrentQuest} setCharacterCreationOpen={setCharacterCreationOpen}/>
         </>
     )
 }

@@ -18,10 +18,13 @@ public class QuestController {
 
     @GetMapping(value = "/quests")
     public ResponseEntity<List<Quest>> getAllQuests(
-            @RequestParam(name="gameCharacterId", required = false) Long gameCharacterId
+            @RequestParam(name="gameCharacterId", required = false) Long gameCharacterId,
+            @RequestParam(name="questName", required = false) String questName
     ){
-        if(gameCharacterId != null){
+        if(gameCharacterId != null) {
             return new ResponseEntity(questRepository.findByGameCharacterId(gameCharacterId), HttpStatus.OK);
+        }else if(questName != null){
+            return new ResponseEntity(questRepository.findByName(questName), HttpStatus.OK);
         }
         return new ResponseEntity(questRepository.findAll(), HttpStatus.OK);
     }

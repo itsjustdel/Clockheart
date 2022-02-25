@@ -27,24 +27,24 @@ public class DataLoader implements ApplicationRunner {
         Player player = new Player("Clocky", 5, 5, 5, "Broca");
         gameCharacterRepository.save(player);
 
-        Shop shop = new Shop("Zebediah Flint", 2, 2, 2);
+        Shop shop = new Shop("Zebediah Flint", 2, 2, 2, "Shop");
         gameCharacterRepository.save(shop);
 
-        QuestGiver questGiver = new QuestGiver("Cogsworth", 5, 5, 5);
+        QuestGiver questGiver = new QuestGiver("Cogsworth", 5, 5, 5, "QuestGiver");
         gameCharacterRepository.save(questGiver);
 
         //BOSSES
 
-        GameCharacter rubyBoss = new GameCharacter("Ruby Boss", 3, 5, 3);
+        GameCharacter rubyBoss = new GameCharacter("Ruby Boss", 3, 5, 3, "Boss");
         gameCharacterRepository.save(rubyBoss);
 
-        GameCharacter sapphireBoss = new GameCharacter("Sapphire Boss", 5, 3, 3);
+        GameCharacter sapphireBoss = new GameCharacter("Sapphire Boss", 5, 3, 3, "Boss");
         gameCharacterRepository.save(sapphireBoss);
 
-        GameCharacter emeraldBoss = new GameCharacter("Emerald Boss", 3, 3,5);
+        GameCharacter emeraldBoss = new GameCharacter("Emerald Boss", 3, 3,5, "Boss");
         gameCharacterRepository.save(emeraldBoss);
 
-        GameCharacter diamondBoss = new GameCharacter("Diamond Boss", 8, 5, 8);
+        GameCharacter diamondBoss = new GameCharacter("Diamond Boss", 8, 5, 8, "Boss");
         gameCharacterRepository.save(diamondBoss);
 
         //QUESTS
