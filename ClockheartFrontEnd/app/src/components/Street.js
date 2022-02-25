@@ -1,6 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 import GroundPlane from "./GroundPlane"
+import Music from "./Music";
 
 const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreationOpen, playerMesh}) => {
     
@@ -34,6 +35,8 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
     return(
         <>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"aquamarine"} />
+            <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
+            <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/>
         </>
     )
 }

@@ -88,7 +88,7 @@ const FightPanel = ({characters ,setCharacters, enemyId}) => {
 
             <PlayerHealth/>
             <EnemyHealth/>
-            <Music url={"/BattleMusic.mp3"} soundLevel={0.1}/>
+            <Music url={"/BattleMusic.mp3"} soundLevel={0.05}/>
         
         </>
     )
