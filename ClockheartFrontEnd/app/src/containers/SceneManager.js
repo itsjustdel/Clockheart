@@ -10,8 +10,10 @@ import Cave from '../components/Cave'
 import ShopList from '../components/ShopList'
 import PlayerItems from '../components/PlayerItems';
 import QuestList from '../components/QuestList';
+import Street from '../components/Street';
 import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
+import CharacterCreationGUI from '../components/CharacterCreationGUI';
 
 const SceneManager = () => {
 
@@ -25,8 +27,9 @@ const SceneManager = () => {
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
     const [bossOpen, setBossOpen] = useState(false)
+    const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "Street" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     
 
@@ -98,7 +101,7 @@ const SceneManager = () => {
                 : null}
 
                 {currentQuest.name == "Street" ? 
-                <Street playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} characters={characters} updateCharacters={updateCharacters} /> 
+                <Street playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
                 : null}
             </Canvas>
 
@@ -115,6 +118,8 @@ const SceneManager = () => {
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
 
             {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest}/> : null}
+
+            {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} /> : null}
 
         </>
     )

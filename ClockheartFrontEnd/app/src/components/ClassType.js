@@ -1,4 +1,4 @@
-const Type = (({type}) => {
+const ClassType = (({type}) => {
     
 
 
@@ -10,4 +10,4 @@ const Type = (({type}) => {
     )
 })
 
-export default Type
+export default ClassType

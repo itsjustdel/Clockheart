@@ -1,4 +1,4 @@
-const Information = ({type}) => {
+const ClassTypeInformation = ({type}) => {
     
 
     return(
@@ -9,4 +9,4 @@ const Information = ({type}) => {
 
 }
 
-export default Information
+export default ClassTypeInformation
