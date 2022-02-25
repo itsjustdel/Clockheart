@@ -1,0 +1,31 @@
+#no-bullets{
+    list-style-type: none;
+    margin: 1vw;
+    margin-top: 35%;
+    margin-left: 3vw;
+}
+
+#paragraphs{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+#page{
+    background-image: url('/public/BackGround.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(110, 63, 31);
+    font-family: 'Special Elite', cursive;
+}
+
+#front-cover{
+    background-image: url('/public/BookCover.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#inside-cover{
+    background-image: url('/public/InsideCover.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
