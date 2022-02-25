@@ -1,6 +1,6 @@
 import GroundPlane from './GroundPlane'
 import React, { useEffect, useState } from 'react'
-
+import Music from './Music'
 import Shop from './Shop'
 import QuestGiver from './QuestGiver'
 const ClockTowerBar= ({updatePlayerTarget, playerMesh, shopOpen, setShopOpen, questGiverOpen,setQuestGiverOpen}) => {
@@ -18,7 +18,7 @@ const ClockTowerBar= ({updatePlayerTarget, playerMesh, shopOpen, setShopOpen, qu
 
             <QuestGiver questGiverOpen={questGiverOpen} setQuestGiverOpen={setQuestGiverOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
 
-            {/* <Music url={"/SteampunkAmbience.mp3"} /> */}
+            <Music url={"/SteampunkAmbience.mp3"} soundLevel={0.03}/>
             
         </>
     )
