@@ -1,6 +1,6 @@
 //libraries, frameworks
 import { Vector3 } from 'three';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { Canvas } from "@react-three/fiber"
 //project defined
 import Player from "../components/Player";
@@ -12,6 +12,7 @@ import PlayerItems from '../components/PlayerItems';
 import QuestList from '../components/QuestList';
 import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
+import RaycastTest from '../components/RaycastTest';
 
 const SceneManager = () => {
 
@@ -19,16 +20,16 @@ const SceneManager = () => {
     const [items, setItems] = useState([]);
     const [quests, setQuests] = useState([]);
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 1, 4))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 1, 4))
+    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 5, 4))
+    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 5, 4))
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
     const [bossOpen, setBossOpen] = useState(false)
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "ClockTowerBar" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
-    
+    const [{ objects, cycle }, setRaycastObjects] = useState({ objects: [], cycle: 0 })
 
     const playerMesh = useRef()
 
@@ -36,6 +37,9 @@ const SceneManager = () => {
         getCharacters()
         getItems()
         getQuests()
+
+        if({objects}!=NaN)
+            console.log({objects})
     }, [])
 
     const getCharacters = () => {
@@ -81,7 +85,8 @@ const SceneManager = () => {
 
     return (
         <>
-            <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
+            <Canvas gl={{ antialias: false }} orthographic camera={{near:-5,far:5, zoom: 60, position: [0, 5, 0] }}>
+                
                 <SceneHelper />
 
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
@@ -96,8 +101,10 @@ const SceneManager = () => {
                 {currentQuest.name == "Rust and Dust" ? 
                 <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} /> 
                 : null}
+                
 
-
+                
+                <RaycastTest setRaycastObjects={setRaycastObjects}/>
             </Canvas>
 
            
@@ -113,6 +120,7 @@ const SceneManager = () => {
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
 
             {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest}/> : null}
+
 
         </>
     )

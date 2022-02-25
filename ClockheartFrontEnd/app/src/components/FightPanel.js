@@ -17,7 +17,7 @@ const FightPanel = ({characters ,setCharacters, enemyId}) => {
         { 
             if(characters[i].id == enemyId){
                 //create copy
-                const newCharacter = characters[i]
+                const newCharacter = newCharacters[i]
                 newCharacter.healthPoints -= attackStrength
                 //update characters in state with new character
                 setCharacters(newCharacters)

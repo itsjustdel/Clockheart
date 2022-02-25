@@ -24,7 +24,7 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
         //if close we can clamp the position - accuracy like probably isn't necessary in a point and click game
         //set the mesh position - has to be done on each axis individually
         mesh.current.position.x = playerTargetPosition.x;
-        mesh.current.position.y = playerTargetPosition.y;
+        mesh.current.position.y = 5//playerTargetPosition.y;
         mesh.current.position.z = playerTargetPosition.z;
         return;
       }
@@ -42,7 +42,7 @@ const Player = ({playerStartPosition, playerTargetPosition, mesh, items }) => {
 
       //set the mesh position - has to be done on each axis individually
       mesh.current.position.x += scaledVector.x;
-      mesh.current.position.y += scaledVector.y;
+      mesh.current.position.y =5;// scaledVector.y;
       mesh.current.position.z += scaledVector.z;
   });
 
