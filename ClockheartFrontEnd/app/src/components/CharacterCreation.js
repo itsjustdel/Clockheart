@@ -1,9 +1,9 @@
 import Carousel from 'react-elastic-carousel'
 import { useEffect, useState } from 'react'
-import Type from "./Type"
-import Information from './Information'
+import ClassType from './ClassType'
+import ClassTypeInformation from './ClassTypeInformation'
 
-const CharacterCreation = ({characters, updateCharacter}) => {
+const CharacterCreation = ({characters, updateCharacters}) => {
     
     const [infoToShow, setInfoToShow] = useState()
 
@@ -35,7 +35,7 @@ const CharacterCreation = ({characters, updateCharacter}) => {
     const types = [Bellum, Cortex, Broca]
 
     const listOfTypes = types.map((type, index) => {
-        return <Type type={type} key={index}/>
+        return <ClassType type={type} key={index}/>
         
     })
 
@@ -56,7 +56,7 @@ const CharacterCreation = ({characters, updateCharacter}) => {
         newCharacter.intelligence = infoToShow.intelligence
         newCharacter.strength = infoToShow.strength
         
-        updateCharacter(1, newCharacter)
+        updateCharacters(1, newCharacter)
 
         const str = `/characters/${1}`
         fetch(str, {
@@ -81,7 +81,7 @@ const CharacterCreation = ({characters, updateCharacter}) => {
                 <input type="submit" value="Submit" />
             </form>    
 
-            {infoToShow == null ? null : <Information type={infoToShow} />}
+            {infoToShow == null ? null : <ClassTypeInformation type={infoToShow} />}
                 
         </>
     )
