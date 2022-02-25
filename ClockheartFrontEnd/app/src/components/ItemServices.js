@@ -1,7 +1,8 @@
 
    
-   export const updateItemInTable = (id, updatedItem) => {
-        const str = `/items/${id}`
+   export const updateItemInTable = (updatedItem) => {
+       console.log()
+        const str = `/items/${updatedItem["id"]}`
         fetch(str, {
             method: 'PUT',
             body: JSON.stringify(updatedItem),
@@ -11,18 +12,23 @@
     }
 
     export const getPlayerItems = (items) => {
-        items.filter((item) => {
-                return item.character.id === 1
-        })
-        .map((item) => {
-            return {
-                "id": item.id,
-                "name": item.name,
-                "value": item.value,
-                "damage": item.damage,
-                "healing": item.healing
-            }
-        })
+        const playerItems = 
+        
+                items.filter((item) => {
+                    return item.character.id === 1
+                })
+                .map((item) => {
+                    return {
+                    "id": item.id,
+                    "name": item.name,
+                    "value": item.value,
+                    "damage": item.damage,
+                    "healing": item.healing,
+                    "character": {"id": item.character.id}
+                    }
+                })
+        
+        return playerItems
     }
 
         

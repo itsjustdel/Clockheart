@@ -1,7 +1,7 @@
 import { useState } from "react"
 import FightPanel from "./FightPanel";
 
-const BossGUI = ({characters,setCharacters, currentQuest}) => {
+const BossGUI = ({characters,setCharacters, currentQuest, items, setItems}) => {
 
     const [fightPanel, setFightPanel] = useState(false)
 
@@ -36,7 +36,7 @@ const BossGUI = ({characters,setCharacters, currentQuest}) => {
             <h1>BOSS GUI</h1>
             {fightPanel == false ? <InitialOptions/> : null}
 
-            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} /> : null}
+            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} /> : null}
         </>
     )
 }

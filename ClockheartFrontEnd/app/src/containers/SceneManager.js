@@ -14,6 +14,7 @@ import Street from '../components/Street';
 import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
 import CharacterCreationGUI from '../components/CharacterCreationGUI';
+import { getPlayerItems } from '../components/ItemServices';
 
 const SceneManager = () => {
 
@@ -41,6 +42,14 @@ const SceneManager = () => {
         getQuests()
     }, [])
 
+    // The below will return an up-to-date array of player items every time an item is bought. DB still updating fine. This isn't stored anywhere though!
+    //The getPlayerItems() function can be imported and used anywhere you are passing in items and need to get a list of current player items.
+    // useEffect(() => {
+    //     const playerItems = getPlayerItems(items)
+    //     // console.log(playerItems)
+    // }, [items])
+    
+
     const getCharacters = () => {
         fetch('/characters')
             .then(res => res.json())
@@ -66,7 +75,7 @@ const SceneManager = () => {
     }
     const updateItems = (index, newItem) => {
 
-        console.log("update player items - Scene Manager")
+        // console.log("update player items - Scene Manager")
         //create new list with current player items and the passed new item
 
         const newItems = [...items]
@@ -117,7 +126,7 @@ const SceneManager = () => {
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
 
-            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest}/> : null}
+            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems}/> : null}
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 

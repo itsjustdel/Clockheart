@@ -21,6 +21,7 @@ const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
             .then(res => res.json()) 
 
         const updatedShopItem = {
+            "id": items[index].id,
             "name": items[index].name,
             "value": items[index].value,
             "damage": items[index].damage,

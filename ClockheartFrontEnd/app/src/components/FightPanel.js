@@ -1,15 +1,31 @@
 import { useState } from "react"
 import BossTurn from "./BossTurn"
+import { getPlayerItems, updateItemInTable } from "./ItemServices"
 import Music from "./Music"
 
-const FightPanel = ({characters ,setCharacters, enemyId}) => {
-
+const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     const [turn, setTurn] = useState(0)
+    const newItems = [...items]
+    
+    //transfers each of boss's items to player and updates DB
+    const transferItemsToPlayer = () => {
+        newItems.map((item) => {
+            if(item.character.id === enemyId){
+                item.character.id = 1
+            }
+        })
+        setItems(newItems)
+        console.log(getPlayerItems(items))
+
+        getPlayerItems(newItems).map((item) => {
+            return updateItemInTable(item)
+        })
+    }
 
     const attackClick = () => {
         console.log("enemy id  = " + enemyId)
         //remove health form enmy by attack strength
-        const attackStrength = 5;//to do
+        const attackStrength = 50;//to do
 
         //find enemy in character array
         const newCharacters = [...characters]
@@ -26,7 +42,7 @@ const FightPanel = ({characters ,setCharacters, enemyId}) => {
                 if(characters[i].healthPoints <= 0 ){
                     //boss is dead
                     console.log("Boss is dead")
-
+                    transferItemsToPlayer()
                 }else{
                     //boss turn
                     console.log("setting turn to 1")
