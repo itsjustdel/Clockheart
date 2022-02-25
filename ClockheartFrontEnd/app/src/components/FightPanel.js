@@ -7,7 +7,7 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     const [turn, setTurn] = useState(0)
     const newItems = [...items]
     
-
+    //transfers each of boss's items to player and updates DB
     const transferItemsToPlayer = () => {
         newItems.map((item) => {
             if(item.character.id === enemyId){
