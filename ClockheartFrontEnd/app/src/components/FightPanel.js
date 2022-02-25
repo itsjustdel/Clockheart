@@ -1,6 +1,6 @@
 import { useState } from "react"
 import BossTurn from "./BossTurn"
-import { getPlayerItems } from "./ItemServices"
+import { getPlayerItems, updateItemInTable } from "./ItemServices"
 import Music from "./Music"
 
 const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
@@ -16,7 +16,10 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
         })
         setItems(newItems)
         console.log(getPlayerItems(items))
-        
+
+        getPlayerItems(newItems).map((item) => {
+            return updateItemInTable(item)
+        })
     }
 
     const attackClick = () => {
