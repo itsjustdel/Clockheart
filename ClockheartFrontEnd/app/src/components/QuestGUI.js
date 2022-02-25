@@ -1,4 +1,4 @@
-const QuestList = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen}) => {
+const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen}) => {
   
     const handleQuestClick = (event) => {
         const questToSet = quests[event.target.value]
@@ -38,4 +38,4 @@ const QuestList = ({characters, quests, setQuests, setCurrentQuest, setQuestGive
     )
 }
 
-export default QuestList
+export default QuestGUI

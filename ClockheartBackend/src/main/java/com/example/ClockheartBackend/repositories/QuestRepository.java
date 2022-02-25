@@ -8,4 +8,5 @@ import java.util.List;
 public interface QuestRepository extends JpaRepository<Quest, Long> {
 
     List<Quest> findByGameCharacterId(Long id);
+    Quest findByName(String name);
 }

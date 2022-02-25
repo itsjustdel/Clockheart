@@ -9,7 +9,7 @@ import ClockTowerBar from '../components/ClockTowerBar';
 import Cave from '../components/Cave'
 import ShopList from '../components/ShopList'
 import PlayerItems from '../components/PlayerItems';
-import QuestList from '../components/QuestList';
+import QuestGUI from '../components/QuestGUI';
 import Street from '../components/Street';
 import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
@@ -114,12 +114,12 @@ const SceneManager = () => {
                 updateCharacters={updateCharacters}
                 items={items} /> : null}
 
-            {questGiverOpen == true ? <QuestList characters={characters} quests={quests} setQuests={setQuests}
+            {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
 
             {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest}/> : null}
 
-            {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} /> : null}
+            {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 
         </>
     )

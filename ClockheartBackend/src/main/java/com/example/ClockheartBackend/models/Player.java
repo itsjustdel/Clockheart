@@ -6,21 +6,14 @@ import javax.persistence.*;
 public class Player extends GameCharacter {
 
 
-    @Column(name = "type")
-    private String type;
-
     public Player(String name, int intelligence, int strength, int charisma, String type) {
-        super(name, intelligence, strength, charisma);
-        this.type = type;
+        super(name, intelligence, strength, charisma, type);
     }
 
     public Player(){
 
     }
 
-    public String getType() {
-        return type;
-    }
 
     public void addItem(Item item){
         this.getItems().add(item);
@@ -38,7 +31,4 @@ public class Player extends GameCharacter {
         return false;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 }

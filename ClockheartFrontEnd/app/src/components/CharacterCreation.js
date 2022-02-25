@@ -3,12 +3,17 @@ import { useEffect, useState } from 'react'
 import ClassType from './ClassType'
 import ClassTypeInformation from './ClassTypeInformation'
 
-const CharacterCreation = ({characters, updateCharacters}) => {
+const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCharacterCreationOpen}) => {
     
     const [infoToShow, setInfoToShow] = useState()
+    const [nextQuest, setNextQuest] = useState()
 
     useEffect(() => {
         setInfoToShow(Bellum)
+    }, [])
+
+    useEffect(() => {
+        getQuest()
     }, [])
     
     const Bellum = {
@@ -45,6 +50,12 @@ const CharacterCreation = ({characters, updateCharacters}) => {
 
     let newCharacters = [...characters]
     let newCharacter = newCharacters[0]
+
+    const getQuest = () => {
+        fetch('/quests?questName=ClockTowerBar')
+            .then(res => res.json())
+            .then(nextQuest => setNextQuest(nextQuest))
+    }
    
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -65,6 +76,9 @@ const CharacterCreation = ({characters, updateCharacters}) => {
             headers: { 'Content-Type': 'application/json' }
         })
             .then(res => res.json()) 
+
+        setCurrentQuest(nextQuest)
+        setCharacterCreationOpen(false)
 
     }
 
