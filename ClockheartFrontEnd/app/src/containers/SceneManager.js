@@ -97,7 +97,7 @@ const SceneManager = () => {
 
     return (
         <>
-            <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
+             <Canvas gl={{ antialias: false }} orthographic camera={{near:-5,far:5, zoom: 60, position: [0, 5, 0] }}>
                 <SceneHelper />
 
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
