@@ -25,6 +25,7 @@ const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
             "name": items[index].name,
             "value": items[index].value,
             "damage": items[index].damage,
+            "healing": items[index].healing,
             "character": updatedCharacter
         }
         updateItems(event.target.value, updatedShopItem)
