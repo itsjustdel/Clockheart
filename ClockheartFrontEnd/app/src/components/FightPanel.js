@@ -5,11 +5,18 @@ import Music from "./Music"
 
 const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     const [turn, setTurn] = useState(0)
+    const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
+    const newCharacters = [...characters]
 
     useEffect(() => {
         PlayerHealth()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [turn])
+
+    useEffect(() => {
+        setEnemy(findEnemy())
+    }, [])
     
     //transfers each of boss's items to player and updates DB
     const transferItemsToPlayer = () => {
@@ -27,53 +34,43 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     }
 
     const findEnemy = () => {
-        const newCharacters = [...characters]
         for(let i = 0; i < newCharacters.length; i++)
         { 
-            if(characters[i].id == enemyId){
+            if(characters[i].id === enemyId){
                 //create copy
-                const newCharacter = characters[i]
+                const newCharacter = newCharacters[i]
                 return newCharacter
     }}}
 
     const attackClick = () => {
-        console.log("enemy id  = " + enemyId)
+        console.log("enemy id  = " + enemy.id)
         //remove health form enmy by attack strength
         const attackStrength = 20;//to do
 
-        //find enemy in character array
-        const newCharacters = [...characters]
-        for(let i = 0; i < newCharacters.length; i++)
-        { 
-            if(characters[i].id == enemyId){
-                //create copy
-                const newCharacter = characters[i]
-                newCharacter.healthPoints -= attackStrength
-                //update characters in state with new character
-                setCharacters(newCharacters)
+        
+        enemy.healthPoints -= attackStrength
+        //update characters in state with new character
+        setCharacters(newCharacters)
                 
-                console.log("Player health after attack =" + characters[0].healthPoints)
+        console.log("Player health after attack =" + characters[0].healthPoints)
 
-                if(characters[i].healthPoints <= 0 ){
-                    //boss is dead
-                    console.log("Boss is dead")
-                    transferItemsToPlayer()
-                }else{
-                    //boss turn
-                    console.log("setting turn to 1")
-                    setTurn(1)
-                }
-
-                return
-            }
+        if(enemy.healthPoints <= 0 ){
+            //boss is dead
+            console.log("Boss is dead")
+            transferItemsToPlayer()
+        }else{
+            //boss turn
+            console.log("setting turn to 1")
+            setTurn(1)
         }
+
+        return
     }
 
     const healClick= () => {
         //Below will be set to the used item's healing value
         const healing = 5;
 
-        const newCharacters = [...characters]
         const newCharacter = newCharacters[0]
         console.log("player health after heal= " + newCharacter.healthPoints)
         if (newCharacter.healthPoints < 100){
@@ -96,8 +93,7 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     }
 
     const PlayerHealth = () => {
-        let newCharacters = [...characters]
-        let newCharacter = newCharacters[0]
+        const newCharacter = newCharacters[0]
 
         return(
         <>
@@ -108,13 +104,13 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     }
 
     
-    const EnemyHealth = () => {
-
-        if(findEnemy().healthPoints > 0){
+    const EnemyHealth = (enemy) => {
+        // console.log(enemy.id)
+        if(enemy.healthPoints > 0){
         return(
         <>
             <h3>EnemyHealth...</h3>
-            {findEnemy().healthPoints} 
+            {enemy.healthPoints} 
         </>
         )}
         else{
