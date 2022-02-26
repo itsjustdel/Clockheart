@@ -18,13 +18,13 @@ const GroundPlane = ({updatePlayerTarget, colour}) => {
    
     return (
         <>
-            <mesh rotation={[-Math.PI / 2, 0, 0]} 
+            <mesh name="GroundPlane" position={[0,0,0]} rotation={[-Math.PI / 2, 0, 0]} 
             
             onClick={handleClick}>
 
 
-                <planeBufferGeometry args={[10, 10]} />
-                <meshStandardMaterial color={colour} />
+                <planeBufferGeometry args={[50, 50]} />
+                <meshStandardMaterial transparent={true} opacity={0} />
             </mesh>
 
             
