@@ -4,7 +4,7 @@ import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 import Music from "./Music"
 
-const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
+const FightPanel = ({characters ,setCharacters, enemyId, items, setItems, selectedItem}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
@@ -46,8 +46,9 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
 
     const attackClick = () => {
         console.log("enemy id  = " + enemy.id)
-        const player = newCharacters[0]
-        let attackStrength = 20
+        console.log("selected item damage: " + selectedItem.damage)
+        let attackStrength = selectedItem.damage
+
         //remove health form enemy by attack strength
         if(player.strength === 10){
             attackStrength += 5
