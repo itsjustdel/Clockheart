@@ -31,7 +31,7 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
 
       //Collision detection ////////-- refactor
       if(intersects[i].object.name == "Collision"){
-        console.log("collision")
+       // console.log("collision")
         playerTargetPosition.x = mesh.current.position.x
         //y is always 5
         playerTargetPosition.z = mesh.current.position.z
