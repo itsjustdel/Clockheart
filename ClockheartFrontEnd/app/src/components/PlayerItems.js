@@ -1,13 +1,17 @@
-const PlayerItems = ({items}) => {
+import { getPlayerItems } from "./ItemServices"
 
-    const handleItemClick = () => {    
-        console.log("A player item was clicked")
+const PlayerItems = ({items, setSelectedItem}) => {
+
+    const handleItemClick = (event) => {
+        const index = event.target.value   
+        console.log("Selected item index: " + index)
+        setSelectedItem(items[index])
     }
 
     const playerItems = items.map((item, index) => {  
         if(item.character.id == 1)
             return <li className='playerItem' onClick={handleItemClick} 
-                        value={index} key={index}>
+                        value={index} key={index}>{item.name}
                         <img className='playerItemImage' src="/newPngs/sword.png"/>
                         
                     </li>
