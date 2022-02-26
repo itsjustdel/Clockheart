@@ -6,7 +6,7 @@ const Music = ({url, soundLevel}) => {
 const [play] = useSound(
   url,
   { volume: soundLevel,
-  loop: true }
+  loop: true}
 );
 
   return (
