@@ -21,6 +21,7 @@ const SceneManager = () => {
     const [characters, setCharacters] = useState([])
     const [items, setItems] = useState([]);
     const [quests, setQuests] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null)
 
     const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 1, 4))
     const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 1, 4))
@@ -116,7 +117,7 @@ const SceneManager = () => {
 
            
 
-            <PlayerItems items={items} />
+            <PlayerItems items={items} setSelectedItem={setSelectedItem}/>
 
             {shopOpen == true ? <ShopList updateItems={updateItems}
                 characters={characters}
