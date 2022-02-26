@@ -83,7 +83,9 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems, select
 
     const healClick= () => {
         //Below will be set to the used item's healing value
-        const healing = 5;
+        // const healing = 5;
+        console.log("selected item healing: " + selectedItem.healing)
+        let healing = selectedItem.healing
 
         const player = newCharacters[0]
         if (player.healthPoints < 100){
