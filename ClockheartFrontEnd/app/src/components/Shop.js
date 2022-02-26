@@ -4,7 +4,7 @@ import { Vector3, TextureLoader } from "three";
 
 const Shop = ({shopOpen, setShopOpen, playerMesh, updatePlayerTarget}) => {
 
-    const shopPosition = new Vector3(4,1,-4);
+    const shopPosition = new Vector3(4,5,-4);
 
     useEffect(() => {
         

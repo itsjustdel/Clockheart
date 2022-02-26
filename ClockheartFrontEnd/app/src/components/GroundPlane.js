@@ -24,7 +24,8 @@ const GroundPlane = ({updatePlayerTarget, colour}) => {
 
 
                 <planeBufferGeometry args={[50, 50]} />
-                <meshStandardMaterial transparent={true} opacity={0} />
+                {/* <meshStandardMaterial transparent={true} opacity={0} /> */}
+                <meshStandardMaterial color={colour} />
             </mesh>
 
             
