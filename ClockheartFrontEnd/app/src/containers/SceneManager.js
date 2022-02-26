@@ -25,8 +25,8 @@ const SceneManager = () => {
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 1, 4))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 1, 4))
+    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 5, 4))
+    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 5, 4))
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
