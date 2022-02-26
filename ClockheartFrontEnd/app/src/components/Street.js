@@ -6,7 +6,7 @@ import Music from "./Music";
 const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreationOpen, playerMesh}) => {
     
 
-    const doorPosition = new Vector3(0,1,4);
+    const doorPosition = new Vector3(0,5,0);
 
     useFrame( () => {
         if(playerMesh.current == undefined)
