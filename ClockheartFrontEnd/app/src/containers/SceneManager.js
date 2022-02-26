@@ -15,6 +15,8 @@ import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
 import CharacterCreationGUI from '../components/CharacterCreationGUI';
 import { getPlayerItems } from '../components/ItemServices';
+import BookLocation from '../components/BookLocation';
+import BookGUI from '../components/BookGUI';
 
 const SceneManager = () => {
 
@@ -29,8 +31,9 @@ const SceneManager = () => {
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
     const [bossOpen, setBossOpen] = useState(false)
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
+    const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "Street" }
+    const startLevel = { name: "ClockTowerBar" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     
 
@@ -102,7 +105,9 @@ const SceneManager = () => {
                 {currentQuest.name == "ClockTowerBar" ? 
                 <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh}
                     shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen}
-                    setQuestGiverOpen={setQuestGiverOpen} setPlayerStartPosition={setPlayerStartPosition} /> 
+                    setQuestGiverOpen={setQuestGiverOpen} setPlayerStartPosition={setPlayerStartPosition}
+                    bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen}
+                     /> 
                 : null}
 
                 {currentQuest.name == "Rust and Dust" ? 
@@ -130,6 +135,7 @@ const SceneManager = () => {
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 
+            {bookLocationOpen == true ? <BookGUI setBookLocationOpen={setBookLocationOpen} /> : null}
         </>
     )
 }
