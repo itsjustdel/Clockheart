@@ -89,17 +89,19 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems, select
     const healClick= () => {
         //Below will be set to the used item's healing value
         // const healing = 5;
-        console.log("selected item healing: " + selectedItem.healing)
+        // console.log("selected item healing: " + selectedItem.healing)
         let healing = 0
-        if(selectedItem !== null && selectedItem.healing !== undefined){
+        if(selectedItem !== null){
             healing = selectedItem.healing
         }
     
-        if (player.healthPoints + healing < 100){
-            player.healthPoints += healing
-        }
-        else{
-            player.healthPoints = 100
+        if(healing !== undefined){
+            if (player.healthPoints + healing < 100){
+                player.healthPoints += healing
+            }
+            else{
+                player.healthPoints = 100
+            }
         }
         console.log("player health after heal= " + player.healthPoints)
         setCharacters(newCharacters)
