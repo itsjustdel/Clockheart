@@ -3,7 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 
 const BookLocation = ({bookLocationOpen, setBookLocationOpen, playerMesh, updatePlayerTarget}) => {
-    const bookLocationPosition = new Vector3(4,1,4);
+    const bookLocationPosition = new Vector3(4,5,4);
 
     useEffect(() => {
         
