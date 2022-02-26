@@ -100,7 +100,6 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
             <>
                 <button onClick={attackClick}>Attack</button>
                 <button onClick={healClick}>Heal</button>
-
                 
             </>
         )
