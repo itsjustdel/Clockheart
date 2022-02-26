@@ -3,13 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader, Raycaster, DataTexture } from "three";
 
 const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
-
-  console.log("re render")
-  //constant variables  
  
-
-
-  //const raycaster = useThree((state) => state.raycaster)
   const raycaster = new Raycaster();
 
   //use frame fires every time a new frame is drawn to the screen (around 60 times a second)
@@ -22,12 +16,11 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
     const direction = new Vector3();
     direction.subVectors(playerTargetPosition, mesh.current.position).normalize();
     const scaledVector = direction.multiplyScalar(speed, 0, speed);
-    
-
 
     const rayStart = new Vector3(mesh.current.position.x,mesh.current.position.y, mesh.current.position.z);
     rayStart.add(new Vector3(scaledVector.x,0,scaledVector.z))
     raycaster.set(rayStart, new Vector3(0, -1, 0), 20);
+
     const intersects = raycaster.intersectObjects(mesh.current.parent.children)//using all atm, could optimise
     
     //catching re render, only ground plane loads before another re-render. Re-renders twice because of two state sets (fix?)
@@ -35,7 +28,6 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
     //   return
 
     for (let i = 0; i < intersects.length; i++) {
-
 
       //Collision detection ////////-- refactor
       if(intersects[i].object.name == "Collision"){
@@ -45,7 +37,7 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
         playerTargetPosition.z = mesh.current.position.z
         return        
       }
-
+      
       //end of collision detection
 
       //ground plane detections
@@ -63,15 +55,6 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
 
           return;
         }
-    
-
-        //Maths. Subtracting one vector from another gives us a directional vector - we use this to send the player
-        //in a direction      
-        //subtract vectors method and normalise. Normalised vectors are of scale 1          
-        // const direction = new Vector3();
-        // direction.subVectors(playerTargetPosition, position).normalize();
-        //apply speed to the "unit"/normalised vector
-        // const scaledVector = direction.multiplyScalar(speed, speed, speed);
 
         //set the mesh position - has to be done on each axis individually
         mesh.current.position.x += scaledVector.x;
