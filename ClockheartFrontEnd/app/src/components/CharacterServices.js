@@ -1,4 +1,5 @@
 export const updateCharacterInTable = (updatedCharacter) => {
+    
     fetch(`/characters/${updatedCharacter.id}`,{
         method: 'PUT',
         body: JSON.stringify(updatedCharacter),
