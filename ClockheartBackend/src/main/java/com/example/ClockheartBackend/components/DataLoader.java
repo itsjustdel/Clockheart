@@ -94,7 +94,7 @@ public class DataLoader implements ApplicationRunner {
 
         //RUBY ITEMS
 
-        Item rubyGem = new Item("Ruby Gem", 0, rubyBoss);
+        Item rubyGem = new Item("Ruby Gem", 500, rubyBoss);
         itemRepository.save(rubyGem);
 
         Healing rubySagePotion = new Healing("Sage", 3, rubyBoss, 3);
@@ -123,7 +123,7 @@ public class DataLoader implements ApplicationRunner {
 
         //SAPPHIRE ITEMS
 
-        Item sapphireGem = new Item("Sapphire Gem", 0, sapphireBoss);
+        Item sapphireGem = new Item("Sapphire Gem", 500, sapphireBoss);
         itemRepository.save(sapphireGem);
 
         Healing sapphirePotion = new Healing("Basic Health Potion", 6, sapphireBoss, 6);
@@ -153,7 +153,7 @@ public class DataLoader implements ApplicationRunner {
 
         //EMERALD ITEMS
 
-        Item emeraldGem = new Item("Emerald Gem", 0, emeraldBoss);
+        Item emeraldGem = new Item("Emerald Gem", 500, emeraldBoss);
         itemRepository.save(emeraldGem);
 
         Healing emeraldPotion = new Healing("Average Health Potion", 10, emeraldBoss, 10);
@@ -184,7 +184,7 @@ public class DataLoader implements ApplicationRunner {
 
         //DIAMOND ITEMS
 
-        Item diamondGem = new Item("Diamond Gem", 0, diamondBoss);
+        Item diamondGem = new Item("Diamond Gem", 500, diamondBoss);
         itemRepository.save(diamondGem);
 
         Healing diamondPotion = new Healing("Average Health Potion", 10, diamondBoss, 10);

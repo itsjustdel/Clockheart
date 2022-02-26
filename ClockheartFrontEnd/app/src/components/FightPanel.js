@@ -45,8 +45,13 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
 
     const attackClick = () => {
         console.log("enemy id  = " + enemy.id)
+        const player = newCharacters[0]
+        let attackStrength = 20
         //remove health form enemy by attack strength
-        const attackStrength = 20;//to do
+        if(player.strength === 10){
+            attackStrength += 5
+        }
+
 
         if(enemy.healthPoints > attackStrength){
             enemy.healthPoints -= attackStrength
