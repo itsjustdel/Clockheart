@@ -63,26 +63,11 @@ public class DataLoader implements ApplicationRunner {
 
         //SHOP WEAPONS
 
-        Attack woodenSword = new Attack("Wooden Sword", 4, shop, 3);
-        itemRepository.save(woodenSword);
-
-        Attack ironSword = new Attack("Iron Sword", 7, shop, 6);
-        itemRepository.save(ironSword);
-
-        Attack silverSword = new Attack("Silver Sword", 11, shop, 9);
-        itemRepository.save(silverSword);
-
-        Attack diamondSword = new Attack("Diamond Sword", 18, shop, 14);
-        itemRepository.save(diamondSword);
+        Attack sword = new Attack("Sword", 5, shop, 5);
+        itemRepository.save(sword);
 
         Attack knife = new Attack("Knife", 3, shop, 3);
         itemRepository.save(knife);
-
-        Attack silverKnife = new Attack("Silver Knife", 6, shop, 6);
-        itemRepository.save(silverKnife);
-
-        Attack diamondKnife = new Attack("Diamond Knife", 10, shop, 10);
-        itemRepository.save(diamondKnife);
 
         Attack flintlockPistol = new Attack("Flintlock Pistol", 4, shop, 5);
         itemRepository.save(flintlockPistol);
@@ -172,13 +157,13 @@ public class DataLoader implements ApplicationRunner {
         itemRepository.save(emeraldGem);
 
         Healing emeraldPotion = new Healing("Average Health Potion", 10, emeraldBoss, 10);
-        itemRepository.save(sapphirePotion);
+        itemRepository.save(emeraldPotion);
 
         Healing emeraldPotion2 = new Healing("Average Health Potion", 10, emeraldBoss, 10);
         itemRepository.save(emeraldPotion2);
 
         Healing emeraldPotion3 = new Healing("Great Health Potion", 15, emeraldBoss, 15);
-        itemRepository.save(sapphirePotion3);
+        itemRepository.save(emeraldPotion3);
 
         Healing emeraldPotion4 = new Healing("Great Health Potion", 15, emeraldBoss, 15);
         itemRepository.save(emeraldPotion4);
@@ -206,7 +191,7 @@ public class DataLoader implements ApplicationRunner {
         itemRepository.save(diamondPotion);
 
         Healing diamondPotion2 = new Healing("Great Health Potion", 15, diamondBoss, 15);
-        itemRepository.save(sapphirePotion2);
+        itemRepository.save(diamondPotion2);
 
         Healing diamondPotion3 = new Healing("Great Health Potion", 15, diamondBoss, 15);
         itemRepository.save(diamondPotion3);
