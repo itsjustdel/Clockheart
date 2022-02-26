@@ -31,8 +31,8 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
     const intersects = raycaster.intersectObjects(mesh.current.parent.children)//using all atm, could optimise
     
     //catching re render, only ground plane loads before another re-render. Re-renders twice because of two state sets (fix?)
-    if(intersects.length <=1)
-      return
+    // if(intersects.length <=1)
+    //   return
 
     for (let i = 0; i < intersects.length; i++) {
 
