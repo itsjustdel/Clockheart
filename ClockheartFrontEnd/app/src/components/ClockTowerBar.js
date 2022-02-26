@@ -11,8 +11,22 @@ const ClockTowerBar= ({updatePlayerTarget, playerMesh, shopOpen, setShopOpen, qu
 
     }, [])
     
+    const Obstacles = () => {
+        //transparent={true}
+        return(
+        <>
+              <mesh name="Collision" position={[4,3,0]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[3,3]} />
+                <meshStandardMaterial/>
+            </mesh>
+        </>
+        )
+    }
+    
     return(
         <>
+            <Obstacles/>
+            
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"grey"}/>
 
             <Shop shopOpen={shopOpen} setShopOpen={setShopOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>

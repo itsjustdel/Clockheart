@@ -6,7 +6,7 @@ const SceneHelper = () => {
 
     return (<>
         <OrbitControls />
-        <gridHelper />
+        {/* <gridHelper /> */}
         <ambientLight />
     </>)
 

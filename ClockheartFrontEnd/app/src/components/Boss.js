@@ -4,7 +4,7 @@ import { Vector3, TextureLoader } from "three";
 
 const Boss = ({playerMesh, bossOpen, setBossOpen, updatePlayerTarget}) => {
     
-    const bossPosition = new Vector3(0,1,0);
+    const bossPosition = new Vector3(0,5,0);
 
     useFrame( () => {
         if(playerMesh.current == undefined)

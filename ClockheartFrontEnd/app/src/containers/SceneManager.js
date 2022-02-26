@@ -25,8 +25,8 @@ const SceneManager = () => {
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 1, 4))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 1, 4))
+    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 5, 4))
+    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 5, 4))
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
@@ -97,7 +97,7 @@ const SceneManager = () => {
 
     return (
         <>
-            <Canvas orthographic camera={{ zoom: 30, position: [0, 5, 0] }}>
+             <Canvas gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
                 <SceneHelper />
 
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
