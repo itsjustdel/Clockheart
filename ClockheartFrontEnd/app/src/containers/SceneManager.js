@@ -12,7 +12,6 @@ import PlayerItems from '../components/PlayerItems';
 import QuestList from '../components/QuestList';
 import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
-import RaycastTest from '../components/RaycastTest';
 
 const SceneManager = () => {
 
@@ -29,17 +28,13 @@ const SceneManager = () => {
 
     const startLevel = { name: "ClockTowerBar" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
-    const [{ objects, cycle }, setRaycastObjects] = useState({ objects: [], cycle: 0 })
-
     const playerMesh = useRef()
+    
 
     useEffect(() => {
         getCharacters()
         getItems()
-        getQuests()
-
-        if({objects}!=NaN)
-            console.log({objects})
+        getQuests()       
     }, [])
 
     const getCharacters = () => {
@@ -83,10 +78,12 @@ const SceneManager = () => {
         setCharacters(newCharacters)
     }
 
+
     return (
         <>
+        
             <Canvas gl={{ antialias: false }} orthographic camera={{near:-5,far:5, zoom: 60, position: [0, 5, 0] }}>
-                
+                 
                 <SceneHelper />
 
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
@@ -104,7 +101,8 @@ const SceneManager = () => {
                 
 
                 
-                <RaycastTest setRaycastObjects={setRaycastObjects}/>
+                {/* <RaycastTest playerMesh={playerMesh} /> */}
+                
             </Canvas>
 
            
