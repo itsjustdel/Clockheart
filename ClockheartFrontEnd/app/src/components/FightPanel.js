@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import BossTurn from "./BossTurn"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 import Music from "./Music"
@@ -6,6 +6,10 @@ import Music from "./Music"
 const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     const [turn, setTurn] = useState(0)
     const newItems = [...items]
+
+    useEffect(() => {
+        PlayerHealth()
+    }, [turn])
     
     //transfers each of boss's items to player and updates DB
     const transferItemsToPlayer = () => {
@@ -22,10 +26,20 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
         })
     }
 
+    const findEnemy = () => {
+        const newCharacters = [...characters]
+        for(let i = 0; i < newCharacters.length; i++)
+        { 
+            if(characters[i].id == enemyId){
+                //create copy
+                const newCharacter = characters[i]
+                return newCharacter
+    }}}
+
     const attackClick = () => {
         console.log("enemy id  = " + enemyId)
         //remove health form enmy by attack strength
-        const attackStrength = 50;//to do
+        const attackStrength = 20;//to do
 
         //find enemy in character array
         const newCharacters = [...characters]
@@ -37,6 +51,7 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
                 newCharacter.healthPoints -= attackStrength
                 //update characters in state with new character
                 setCharacters(newCharacters)
+                
                 console.log("Player health after attack =" + characters[0].healthPoints)
 
                 if(characters[i].healthPoints <= 0 ){
@@ -81,20 +96,35 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     }
 
     const PlayerHealth = () => {
+        let newCharacters = [...characters]
+        let newCharacter = newCharacters[0]
+
         return(
         <>
-            <h3>PlayerHealth...</h3> 
+            <h3>PlayerHealth...</h3>
+            {newCharacter.healthPoints}
         </>
         )
     }
 
     
     const EnemyHealth = () => {
+
+        if(findEnemy().healthPoints > 0){
         return(
         <>
-            <h3>EnemyHealth...</h3> 
+            <h3>EnemyHealth...</h3>
+            {findEnemy().healthPoints} 
         </>
-        )
+        )}
+        else{
+            return(
+                <>
+                    <h3>EnemyHealth...</h3>
+                    <h4>KO</h4>
+                </>
+            )
+        }
     }
 
     return(
@@ -110,5 +140,5 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     )
 
 }
-
+    
 export default FightPanel

@@ -20,21 +20,25 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
         name: "Bellum",
         intelligence: 5,
         charisma: 5,
-        strength: 10
+        strength: 10,
+        info: "The Bellum is the strongest type of Clockheart. With enhancements to the Cerebellum, these Clockhearts wouldnt even break a sweat in combat, due to their increased strength."
     }
 
     const Cortex = {
         name: "Cortex",
         intelligence: 10,
         charisma: 5,
-        strength: 5
+        strength: 5,
+        info: "Cortex's are incredibly intelligent, and the smartest type of Clockheart. With enhancements to the Neo-Cortex, these Clockhearts have the ability to retain any and all information, making them calculated in certain situations."
+
     }
 
     const Broca = {
         name: "Broca",
         intelligence: 5,
         charisma: 10,
-        strength: 5
+        strength: 5,
+        info: "Broca's have the ability to talk their way in and out of a given situation. With enhancements to the broca area of the brain, these Clockhearts could sell sawdust to a carpenter."
     }
 
     const types = [Bellum, Cortex, Broca]
