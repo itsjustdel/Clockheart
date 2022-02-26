@@ -4,7 +4,7 @@ import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 import Music from "./Music"
 
-const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
+const FightPanel = ({characters ,setCharacters, enemyId, items, setItems, selectedItem}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
@@ -46,19 +46,25 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
 
     const attackClick = () => {
         console.log("enemy id  = " + enemy.id)
-        const player = newCharacters[0]
-        let attackStrength = 20
+        let attackStrength = 1
+        if(selectedItem !== null){
+            attackStrength = selectedItem.damage
+        }
+        
         //remove health form enemy by attack strength
         if(player.strength === 10){
             attackStrength += 5
         }
+        
+        console.log("attack strength: " + attackStrength)
 
-
-        if(enemy.healthPoints > attackStrength){
-            enemy.healthPoints -= attackStrength
-        }
-        else{
-            enemy.healthPoints = 0
+        if(attackStrength !== undefined){
+            if(enemy.healthPoints > attackStrength){
+                enemy.healthPoints -= attackStrength
+            }
+            else{
+                enemy.healthPoints = 0
+            }
         }
         //update characters in state with new character
         setCharacters(newCharacters)
@@ -82,9 +88,13 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
 
     const healClick= () => {
         //Below will be set to the used item's healing value
-        const healing = 5;
-
-        const player = newCharacters[0]
+        // const healing = 5;
+        console.log("selected item healing: " + selectedItem.healing)
+        let healing = 0
+        if(selectedItem !== null && selectedItem.healing !== undefined){
+            healing = selectedItem.healing
+        }
+    
         if (player.healthPoints < 100){
             player.healthPoints += healing
         }

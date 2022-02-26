@@ -3,7 +3,7 @@ import BarterPanel from "./BarterPanel";
 import FightPanel from "./FightPanel";
 import TalkPanel from "./TalkPanel";
 
-const BossGUI = ({characters,setCharacters, currentQuest, items, setItems}) => {
+const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem}) => {
 
     const [fightPanel, setFightPanel] = useState(false)
     const [talkPanel, setTalkPanel] = useState(false)
@@ -48,9 +48,10 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems}) => {
 
             {talkPanel == true ? <TalkPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} /> : null}
 
-            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} /> : null}
+            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem}/> : null}
 
             {barterPanel == true ? <BarterPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} /> : null}
+
 
         </>
     )
