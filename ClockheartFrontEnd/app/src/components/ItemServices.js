@@ -1,7 +1,6 @@
 
    
    export const updateItemInTable = (updatedItem) => {
-       console.log()
         const str = `/items/${updatedItem["id"]}`
         fetch(str, {
             method: 'PUT',
