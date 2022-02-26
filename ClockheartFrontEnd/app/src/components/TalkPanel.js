@@ -1,6 +1,6 @@
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
-const TalkPanel = ({characters, setCharacters, items, setItems, setTalkPanel, setFightPanel}) => {
+const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel}) => {
     const newCharacters = [...characters]
     const player = newCharacters[0]
     const newItems = [...items]
@@ -25,7 +25,7 @@ const TalkPanel = ({characters, setCharacters, items, setItems, setTalkPanel, se
         let chance = 10
         console.log(player.charisma);
 
-        function randomNumber(min, max) { // min and max included
+        const randomNumber = (min, max) => { // min and max included
             return Math.floor(Math.random() * (max - min+1)+min);
           }
 
