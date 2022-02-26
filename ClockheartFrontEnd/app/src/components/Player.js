@@ -43,7 +43,7 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
       //ground plane detections
 
       if (intersects[i].object.name == "GroundPlane") {
-        console.log("gp")
+        // console.log("gp")
         //first of all check if we are close enough to the target- we can use speed because that's
         //how far we travel in one frame
         if (mesh.current.position.distanceTo(playerTargetPosition) < speed) {
