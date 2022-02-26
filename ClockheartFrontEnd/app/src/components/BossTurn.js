@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { updateCharacterInTable } from "./CharacterServices"
 
 const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
@@ -16,17 +17,24 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
         //boss attack strength - player's health
         const newCharacters = [...characters]
+        let newCharacter = null
         for(let i =0; i < newCharacters.length; i++)
         {
             if(newCharacters[i].id == 1)
             {
-                //we found the player                
-                newCharacters[i].healthPoints -= boss[0].strength;
+                //we found the player 
+                newCharacter = newCharacters[i]
+                if(newCharacter.healthPoints > boss[0].strength){
+                    newCharacter.healthPoints -= boss[0].strength;
+                }
+                else{
+                    newCharacter.healthPoints = 0
+                }             
             }
-        }
-        
+        }        
         //resave character array in state
         setCharacters(newCharacters)
+        updateCharacterInTable(newCharacter)
         
         //check for player death?
 
