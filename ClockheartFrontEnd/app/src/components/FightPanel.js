@@ -9,6 +9,7 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
     const newCharacters = [...characters]
+    const player = newCharacters[0]
 
     useEffect(() => {
         PlayerHealth()
@@ -23,7 +24,7 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     const transferItemsToPlayer = () => {
         newItems.map((item) => {
             if(item.character.id === enemyId){
-                item.character.id = 1
+                item.character.id = player.id
             }
         })
         setItems(newItems)
