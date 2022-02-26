@@ -95,8 +95,11 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems, select
             healing = selectedItem.healing
         }
     
-        if (player.healthPoints < 100){
+        if (player.healthPoints + healing < 100){
             player.healthPoints += healing
+        }
+        else{
+            player.healthPoints = 100
         }
         console.log("player health after heal= " + player.healthPoints)
         setCharacters(newCharacters)
