@@ -1,3 +1,4 @@
+import { updateCharacterInTable } from "./CharacterServices"
 import { updateItemInTable } from "./ItemServices"
 
 const ShopList = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
@@ -6,11 +7,11 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
     const zebediah = characters.filter((character) => {
         return character.id === 2
     })[0]
-    console.log("zebidiah character object: ", zebediah)
+    // console.log("zebidiah character object: ", zebediah)
     const player = characters.filter((character) => {
         return character.id === 1
     })[0]
-    console.log("player character object", player)   
+    // console.log("player character object", player)   
 
     const handleBuyItemClick = (event) => {
 
@@ -70,8 +71,18 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
 
     const handleSellItemClick = () => {
         if(selectedItem !== null){
+            player.currency += selectedItem.value
+            const updatedCharacters = characters.map((character) => {
+                if(character.id === player.id){
+                    return player
+                }
+                return character
+            })
+            console.log("characters after sale: ", updatedCharacters)
+            setCharacters(updatedCharacters)
+            updateCharacterInTable(player)
+
             selectedItem.character = zebediah
-        
             const updatedItems = newItems.map((item) => {
                 if(item.id === selectedItem.id){
                     return selectedItem
@@ -87,6 +98,7 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
     return (
         <>
             <h2>Sell items</h2>
+            <p>Player currency = {player.currency}</p>
             <button onClick={handleSellItemClick}>Sell selected item</button>
             <h2> Shop Item List</h2>
             <div className="npcContainer">

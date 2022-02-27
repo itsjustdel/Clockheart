@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react"
 import { getPlayerItems } from "./ItemServices"
 
-const PlayerItems = ({items, setSelectedItem}) => {
+const PlayerItems = ({characters, items, setSelectedItem}) => {
+
+    // const [player, setPlayer] = useState(null)
+
+    // useEffect(() => {
+    //     const newPlayer = characters.filter((character) => {
+    //         return character.id === 1
+    //     })[0]
+    //     setPlayer(newPlayer)
+    // }, [characters])
 
     const handleSelectedItemClick = (event) => {
         const index = event.target.value   
@@ -20,6 +30,7 @@ const PlayerItems = ({items, setSelectedItem}) => {
     return(
         <>
         <h2>Player Item List</h2>
+        {/* <p>Currency: {player.currency} </p> */}
             <ul className='playerItemList'>
                 {playerItems}
             </ul>
