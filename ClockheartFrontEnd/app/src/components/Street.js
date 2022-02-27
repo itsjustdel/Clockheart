@@ -32,9 +32,34 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
         }        
     })
 
+
+    function TexturedPlane({ url , args, position, name }) {
+        const texture = useLoader(TextureLoader, ...url);
+
+        return (
+            <mesh name={name} position={position} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={args} />
+                <meshStandardMaterial map={texture} transparent={true} />
+            </mesh>
+        );
+    };
+
+    const Obstacles = () => {
+        //transparent={true}
+        return(
+        <>
+              <mesh name="Collision" position={[4,3,0]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[3,3]} />
+                <meshStandardMaterial/>
+            </mesh>
+        </>
+        )
+    }
+
     return(
         <>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"aquamarine"} />
+            <TexturedPlane />
             <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
             <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/>
         </>
