@@ -61,6 +61,7 @@ const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, 
     const handleSellItemClick = () => {
         // console.log("Selected item: ", selectedItem)
         console.log(newItems)
+        selectedItem.character = zebediah
         const updatedItems = newItems.map((item) => {
             if(item.id == selectedItem.id){
                 return {
@@ -76,7 +77,7 @@ const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, 
         })
         console.log("updated shop items:", updatedItems)
         setItems(updatedItems)
-        // updateItemInTable(selectedItem)
+        updateItemInTable(selectedItem)
         
     }
 
