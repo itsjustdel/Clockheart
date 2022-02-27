@@ -30,14 +30,7 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
             })
             console.log("characters after purchase: ", updatedCharacters)
             setCharacters(updatedCharacters)
-
-            fetch(`/characters/${player.id}`,{
-                method: 'PUT',
-                body: JSON.stringify(player),
-                headers: { 'Content-Type': 'application/json' }
-            }
-            )
-            .then(res => res.json()) 
+            updateCharacterInTable(player)
 
             const updatedShopItem = {
                 "id": items[index].id,
