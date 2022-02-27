@@ -109,17 +109,17 @@ public class DataLoader implements ApplicationRunner {
         Healing rubyPotion3 = new Healing("Average Health Potion", 10, rubyBoss, 10);
         itemRepository.save(rubyPotion3);
 
-        Item littleMoneyBagRuby = new Item("Little Money Bag", 5, rubyBoss);
-        itemRepository.save(littleMoneyBagRuby);
+        Item rustyScrewBagRuby = new Item("Rusty Screw Bag", 5, rubyBoss);
+        itemRepository.save(rustyScrewBagRuby);
 
-        Item moneyBagRuby = new Item("Basic Money Bag", 10, rubyBoss);
-        itemRepository.save(moneyBagRuby);
+        Item screwBagRuby = new Item("Screw Bag", 10, rubyBoss);
+        itemRepository.save(screwBagRuby);
 
-        Item moneyBagRuby2 = new Item("Basic Money Bag", 10, rubyBoss);
-        itemRepository.save(moneyBagRuby2);
+        Item screwBagRuby2 = new Item("Screw Bag", 10, rubyBoss);
+        itemRepository.save(screwBagRuby2);
 
-        Item moneyBagRuby3 = new Item("Average Money Bag", 15, rubyBoss);
-        itemRepository.save(moneyBagRuby3);
+        Item shinyScrewBagRuby3 = new Item("Shiny Money Bag", 15, rubyBoss);
+        itemRepository.save(shinyScrewBagRuby3);
 
         //SAPPHIRE ITEMS
 
@@ -138,17 +138,17 @@ public class DataLoader implements ApplicationRunner {
         Healing sapphirePotion4 = new Healing("Average Health Potion", 10, sapphireBoss, 10);
         itemRepository.save(sapphirePotion4);
 
-        Item littleMoneyBag = new Item("Little Money Bag", 5, sapphireBoss);
-        itemRepository.save(littleMoneyBag);
+        Item rustyScrewBagSapphire = new Item("Rusty Screw Bag", 5, sapphireBoss);
+        itemRepository.save(rustyScrewBagSapphire);
 
-        Item moneyBagSapphire = new Item("Basic Money Bag", 10, sapphireBoss);
-        itemRepository.save(moneyBagSapphire);
+        Item screwBagSapphire = new Item("Screw Bag", 10, sapphireBoss);
+        itemRepository.save(screwBagSapphire);
 
-        Item moneyBagSapphire2 = new Item("Average Money Bag", 15, sapphireBoss);
-        itemRepository.save(moneyBagSapphire2);
+        Item shinyScrewBagSapphire2 = new Item("Shiny Screw Bag", 15, sapphireBoss);
+        itemRepository.save(shinyScrewBagSapphire2);
 
-        Item moneyBagSapphire3 = new Item("Average Money Bag", 15, sapphireBoss);
-        itemRepository.save(moneyBagSapphire3);
+        Item shinyScrewBagSapphire3 = new Item("Shiny Screw Bag", 15, sapphireBoss);
+        itemRepository.save(shinyScrewBagSapphire3);
 
 
         //EMERALD ITEMS
@@ -168,17 +168,17 @@ public class DataLoader implements ApplicationRunner {
         Healing emeraldPotion4 = new Healing("Great Health Potion", 15, emeraldBoss, 15);
         itemRepository.save(emeraldPotion4);
 
-        Item moneyBagEmerald = new Item("Basic Money Bag", 10, emeraldBoss);
-        itemRepository.save(moneyBagEmerald);
+        Item screwBagEmerald = new Item("Screw Bag", 10, emeraldBoss);
+        itemRepository.save(screwBagEmerald);
 
-        Item moneyBagEmerald2 = new Item("Average Money Bag", 15, emeraldBoss);
-        itemRepository.save(moneyBagEmerald2);
+        Item shinyScrewBagEmerald2 = new Item("Shiny Screw Bag", 15, emeraldBoss);
+        itemRepository.save(shinyScrewBagEmerald2);
 
-        Item moneyBagEmerald3 = new Item("Average Money Bag", 15, emeraldBoss);
-        itemRepository.save(moneyBagEmerald3);
+        Item shinyScrewBagEmerald3 = new Item("Shiny Screw Bag", 15, emeraldBoss);
+        itemRepository.save(shinyScrewBagEmerald3);
 
-        Item moneyBagEmerald4 = new Item("Great Money Bag", 20, emeraldBoss);
-        itemRepository.save(moneyBagEmerald4);
+        Item diamondScrewBagEmerald4 = new Item("Diamond Tipped Screw Bag", 20, emeraldBoss);
+        itemRepository.save(diamondScrewBagEmerald4);
 
 
 
@@ -199,17 +199,17 @@ public class DataLoader implements ApplicationRunner {
         Healing diamondPotion4 = new Healing("Great Health Potion", 15, diamondBoss, 15);
         itemRepository.save(diamondPotion4);
 
-        Item moneyBagDiamond = new Item("Average Money Bag", 15, diamondBoss);
-        itemRepository.save(moneyBagDiamond);
+        Item screwBagDiamond = new Item("Shiny Screw Bag", 15, diamondBoss);
+        itemRepository.save(screwBagDiamond);
 
-        Item moneyBagDiamond2 = new Item("Average Money Bag", 15, diamondBoss);
-        itemRepository.save(moneyBagDiamond2);
+        Item shinyScrewBagDiamond2 = new Item("Shiny Screw Bag", 15, diamondBoss);
+        itemRepository.save(shinyScrewBagDiamond2);
 
-        Item moneyBagDiamond3 = new Item("Average Money Bag", 15, diamondBoss);
-        itemRepository.save(moneyBagDiamond3);
+        Item shinyScrewBagDiamond3 = new Item("Shiny Screw Bag", 15, diamondBoss);
+        itemRepository.save(shinyScrewBagDiamond3);
 
-        Item moneyBagDiamond4 = new Item("Great Money Bag", 20, diamondBoss);
-        itemRepository.save(moneyBagDiamond4);
+        Item diamondScrewBagDiamond4 = new Item("Diamond Tipped Screw Bag", 20, diamondBoss);
+        itemRepository.save(diamondScrewBagDiamond4);
 
     }
 }
