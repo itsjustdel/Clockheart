@@ -1,13 +1,16 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import BarterPanel from "./BarterPanel";
 import FightPanel from "./FightPanel";
 import TalkPanel from "./TalkPanel";
 
-const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem}) => {
+
+const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen}) => {
+
 
     const [fightPanel, setFightPanel] = useState(false)
     const [talkPanel, setTalkPanel] = useState(false)
     const [barterPanel, setBarterPanel] = useState(false)
+
 
 
     const talkClick = () =>{
@@ -46,11 +49,12 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
             <h1>BOSS GUI</h1>
             {fightPanel == false ? <InitialOptions/> : null}
 
-            {talkPanel == true ? <TalkPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} /> : null}
+            {talkPanel == true ? <TalkPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest}/> : null}
 
-            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem}/> : null}
+            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} /> : null}
 
-            {barterPanel == true ? <BarterPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} /> : null}
+
+            {barterPanel == true ? <BarterPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} /> : null}
 
 
         </>
