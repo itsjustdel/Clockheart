@@ -129,7 +129,8 @@ const SceneManager = () => {
                 updateCharacters={updateCharacters}
                 items={items}
                 setItems={setItems}
-                selectedItem={selectedItem}                 
+                selectedItem={selectedItem} 
+                setSelectedItem={setSelectedItem}                
                 /> : null}
 
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}

@@ -1,6 +1,6 @@
 import { updateItemInTable } from "./ItemServices"
 
-const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, selectedItem }) => {
+const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, selectedItem, setSelectedItem }) => {
     console.log("Shop list")
     const newItems = [...items]
     const zebediah = characters.filter((character) => {
@@ -60,26 +60,21 @@ const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, 
 
     const handleSellItemClick = () => {
         // console.log("Selected item: ", selectedItem)
-        console.log(newItems)
-        selectedItem.character = zebediah
-        const updatedItems = newItems.map((item) => {
-            if(item.id == selectedItem.id){
-                return selectedItem
-                // return {
-                //     "id": item.id,
-                //     "name": item.name,
-                //     "value": item.value,
-                //     "damage": item.damage,
-                //     "healing": item.healing,
-                //     "character": zebediah
-                // }
-            }
-            return item
-        })
-        console.log("updated shop items:", updatedItems)
-        setItems(updatedItems)
-        updateItemInTable(selectedItem)
+        // console.log(newItems)
+        if(selectedItem !== null){
+            selectedItem.character = zebediah
         
+            const updatedItems = newItems.map((item) => {
+                if(item.id == selectedItem.id){
+                    return selectedItem
+                }
+                return item
+            })
+            // console.log("updated shop items:", updatedItems)
+            setItems(updatedItems)
+            updateItemInTable(selectedItem)
+            setSelectedItem(null)
+        }                
     }
 
     return (
