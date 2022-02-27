@@ -34,12 +34,35 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
     //transfers each of boss's items to player and updates DB
     const transferItemsToPlayer = () => {
         newItems.map((item) => {
-            if(item.character.id === enemyId){
+            if(item.name.includes("Gem") && item.character.id === enemyId){
+                item.character.id = player.id
+            }
+        })
+        const bossItems = newItems.filter((item) => {
+            return item.character.id === enemyId
+        })
+        .map((item) => {
+            return item
+        })
+
+        for (let i = bossItems.length -1; i > 0; i--) {
+                let j = Math.floor(Math.random() * i)
+                let k = bossItems[i]
+                bossItems[i] = bossItems[j]
+                bossItems[j] = k
+            }
+        // console.log(bossItems)
+
+        const earnedItems = bossItems.slice(0,2)
+        // console.log(earnedItems)
+
+        newItems.map((item) => {
+            if(item.id === earnedItems[0].id || item.id === earnedItems[1].id){
                 item.character.id = player.id
             }
         })
         setItems(newItems)
-        console.log(getPlayerItems(items))
+        // console.log(getPlayerItems(items))
 
         getPlayerItems(newItems).map((item) => {
             return updateItemInTable(item)
