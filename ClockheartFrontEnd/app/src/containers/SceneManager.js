@@ -34,7 +34,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "Street" }
+    const startLevel = { name: "Rust and Dust" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 
@@ -111,7 +111,9 @@ const SceneManager = () => {
                 : null}
 
                 {currentQuest.name == "Rust and Dust" ? 
-                <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} /> 
+                <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} 
+                        setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
+                /> 
                 : null}
 
                 
