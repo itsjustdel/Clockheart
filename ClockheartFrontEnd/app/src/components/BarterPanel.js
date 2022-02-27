@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
-const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel}) => {
+const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel, setBarterComplete}) => {
 
     const [price, setPrice] = useState(0)
     const newCharacters = [...characters]
@@ -37,7 +37,7 @@ const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel
         if(player.intelligence === 10){
             setPrice(randomNumber(50, 250))
         }else{
-            setPrice(500)
+            setPrice(5)
         }
     }
 
@@ -51,6 +51,8 @@ const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel
         if(player.currency >= price){
             player.currency -= price
             transferGemToPlayer()
+            setBarterComplete(true)
+            setBarterPanel(false)
         }
     }
 
