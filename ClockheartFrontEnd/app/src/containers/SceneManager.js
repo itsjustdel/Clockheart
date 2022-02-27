@@ -126,7 +126,7 @@ const SceneManager = () => {
 
             {shopOpen == true ? <ShopList updateItems={updateItems}
                 characters={characters}
-                updateCharacters={updateCharacters}
+                setCharacters={setCharacters}
                 items={items}
                 setItems={setItems}
                 selectedItem={selectedItem} 

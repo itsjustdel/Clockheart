@@ -9,7 +9,7 @@ const PlayerItems = ({items, setSelectedItem}) => {
     }
 
     const playerItems = items.map((item, index) => {  
-        if(item.character.id == 1)
+        if(item.character.id === 1)
             return <li className='playerItem' key={index}>
                         <button onClick={handleSelectedItemClick} value={index}>{item.name}</button>
                         <img className='playerItemImage' src="/newPngs/sword.png"/>

@@ -1,52 +1,62 @@
 import { updateItemInTable } from "./ItemServices"
 
-const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, selectedItem, setSelectedItem }) => {
+const ShopList = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
     console.log("Shop list")
     const newItems = [...items]
     const zebediah = characters.filter((character) => {
         return character.id === 2
     })[0]
     console.log("zebidiah character object: ", zebediah)
-    
+    const player = characters.filter((character) => {
+        return character.id === 1
+    })[0]
+    console.log("player character object", player)   
 
     const handleBuyItemClick = (event) => {
 
-        const playerMoney = characters[0].currency
+        // const playerMoney = characters[0].currency
         const index = event.target.value
-       // if(playerMoney >= items[index].value){
+        if(player.currency >= items[index].value){
 
-            const updatedCharacter = characters[0]
-            updatedCharacter.currency -= items[index].value
+            // const updatedCharacter = player
+            console.log("characters before purchase: ", characters)
+            player.currency -= items[index].value
+            const updatedCharacters = characters.map((character) => {
+                if(character.id === player.id){
+                    return player
+                }
+                return character
+            })
+            console.log("characters after purchase: ", updatedCharacters)
+            setCharacters(updatedCharacters)
 
-            updateCharacters(index, updatedCharacter)
-
-            fetch(`/characters/${updatedCharacter.id}`,{
+            fetch(`/characters/${player.id}`,{
                 method: 'PUT',
-                body: JSON.stringify(updatedCharacter),
+                body: JSON.stringify(player),
                 headers: { 'Content-Type': 'application/json' }
-        }
+            }
             )
             .then(res => res.json()) 
 
-        const updatedShopItem = {
-            "id": items[index].id,
-            "name": items[index].name,
-            "value": items[index].value,
-            "damage": items[index].damage,
-            "healing": items[index].healing,
-            "character": updatedCharacter
-        }
-        updateItems(event.target.value, updatedShopItem)
+            const updatedShopItem = {
+                "id": items[index].id,
+                "name": items[index].name,
+                "value": items[index].value,
+                "damage": items[index].damage,
+                "healing": items[index].healing,
+                "character": player
+            }
+            updateItems(event.target.value, updatedShopItem)
 
-        const str = `/items/${items[index].id}`
-        fetch(str, {
-            method: 'PUT',
-            body: JSON.stringify(updatedShopItem),
-            headers: { 'Content-Type': 'application/json' }
-        })
-            .then(res => res.json()) 
-      //  }
-        //else {console.log("NOT ENOUGH MONEY");}
+            const str = `/items/${items[index].id}`
+            fetch(str, {
+                method: 'PUT',
+                body: JSON.stringify(updatedShopItem),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then(res => res.json()) 
+        }
+        else {console.log("NOT ENOUGH MONEY")}
     }
 
     const itemsForSale = items.map((item, index) => {
@@ -59,18 +69,15 @@ const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, 
     })
 
     const handleSellItemClick = () => {
-        // console.log("Selected item: ", selectedItem)
-        // console.log(newItems)
         if(selectedItem !== null){
             selectedItem.character = zebediah
         
             const updatedItems = newItems.map((item) => {
-                if(item.id == selectedItem.id){
+                if(item.id === selectedItem.id){
                     return selectedItem
                 }
                 return item
             })
-            // console.log("updated shop items:", updatedItems)
             setItems(updatedItems)
             updateItemInTable(selectedItem)
             setSelectedItem(null)
