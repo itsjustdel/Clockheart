@@ -1,7 +1,7 @@
-const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
+const ShopList = ({ updateItems, characters, items, updateCharacters, selectedItem }) => {
     console.log("Shop list")
 
-    const handleItemClick = (event) => {
+    const handleBuyItemClick = (event) => {
 
         const playerMoney = characters[0].currency
         const index = event.target.value
@@ -45,7 +45,7 @@ const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
         if (item.character.name == "Zebediah Flint")
             return    <li className='npcItem'
                           key={index}>
-                        <button onClick={handleItemClick} value={index}>Buy: {item.name}</button>
+                        <button onClick={handleBuyItemClick} value={index}>Buy: {item.name}</button>
                         <img className='playerItemImage' src="/newPngs/sword.png"></img>
                      </li>
     })
