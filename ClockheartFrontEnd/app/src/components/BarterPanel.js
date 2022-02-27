@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
-const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel, setBarterComplete}) => {
+const BarterPanel = ({characters, setCharacters, items, setItems, setBarterPanel, setBarterComplete, setBarterFailed, setBarterCantAfford}) => {
 
     const [price, setPrice] = useState(0)
     const newCharacters = [...characters]
@@ -17,10 +18,17 @@ const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel
             //gem hardcoded for now
             if(item.id === 10){
                 item.character.id = 1
+                player.currency -= price
+                console.log("name: " + player.name);
+                console.log("currency: " + player.currency);
+                console.log("id: " + player.id);
+                console.log(player);
             }
         })
         setItems(newItems)
         console.log(getPlayerItems(items))
+        setCharacters(newCharacters)
+        updateCharacterInTable(player)
 
         getPlayerItems(newItems).map((item) => {
             return updateItemInTable(item)
@@ -42,7 +50,7 @@ const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel
     }
 
     const handleNo = () => {
-        setFightPanel(true)
+        setBarterFailed(true)
         setBarterPanel(false)
     }
 
@@ -53,6 +61,9 @@ const BarterPanel = ({characters, items, setItems, setBarterPanel, setFightPanel
             transferGemToPlayer()
             setBarterComplete(true)
             setBarterPanel(false)
+        }else{
+            setBarterPanel(false)
+            setBarterCantAfford(true)
         }
     }
 
