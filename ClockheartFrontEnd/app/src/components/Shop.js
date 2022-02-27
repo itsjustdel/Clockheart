@@ -16,7 +16,7 @@ const Shop = ({shopOpen, setShopOpen, playerMesh, updatePlayerTarget}) => {
         //check if the player is close to the target (boss/ loot?)
         
         const distance = playerMesh.current.position.distanceTo( shopPosition)
-        if(distance < 1){
+        if(distance < 3){
             //only set if we need to change (causes re-render when setting)
             if(shopOpen != true){
                 updatePlayerTarget(playerMesh.current.position)
