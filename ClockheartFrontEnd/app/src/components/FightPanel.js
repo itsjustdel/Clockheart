@@ -4,7 +4,7 @@ import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
 
-const FightPanel = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen}) => {
+const FightPanel = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
@@ -21,14 +21,6 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
     useEffect(() => {
         setEnemy(findEnemy())
     }, [])
-
-    useEffect(() => {
-        setNextQuest(nextQuests[0])
-    }, [])
-
-    //find the next quest by name
-    const newQuests = [...quests]
-    const nextQuests = newQuests.filter(quest => quest.name == "ClockTowerBar")
     
 
     //transfers each of boss's items to player and updates DB
@@ -88,9 +80,8 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
             console.log("Boss is dead")
             console.log("Boss healthpoints in state boss dead: " + enemy.healthPoints)
             transferItemsToPlayer()
-            setCurrentQuest(nextQuest)
+            setBossDead(true)
             setFightPanel(false)
-            setBossOpen(false)
         }else{
             //boss turn
             console.log("setting turn to 1")

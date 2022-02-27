@@ -1,6 +1,6 @@
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
-const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel}) => {
+const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, setTalkComplete}) => {
     const newCharacters = [...characters]
     const player = newCharacters[0]
     const newItems = [...items]
@@ -39,6 +39,8 @@ const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel}) =
             console.log(chance);
             console.log("YES");
             transferGemToPlayer()
+            setTalkPanel(false)
+            setTalkComplete(true)
         }else{
             console.log(chance);
             console.log("NO");
