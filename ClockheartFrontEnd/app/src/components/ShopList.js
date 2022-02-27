@@ -50,8 +50,14 @@ const ShopList = ({ updateItems, characters, items, updateCharacters, selectedIt
                      </li>
     })
 
+    const handleSellItemClick = () => {
+        console.log("Selected item: ", selectedItem)
+    }
+
     return (
         <>
+            <h2>Sell items</h2>
+            <button onClick={handleSellItemClick}>Sell selected item</button>
             <h2> Shop Item List</h2>
             <div className="npcContainer">
                 <div className="npcItems">
