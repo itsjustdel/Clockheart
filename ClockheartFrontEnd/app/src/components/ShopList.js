@@ -1,5 +1,13 @@
-const ShopList = ({ updateItems, characters, items, updateCharacters, selectedItem }) => {
+import { updateItemInTable } from "./ItemServices"
+
+const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, selectedItem }) => {
     console.log("Shop list")
+    const newItems = [...items]
+    const zebediah = characters.filter((character) => {
+        return character.id === 2
+    })[0]
+    console.log("zebidiah character object: ", zebediah)
+    
 
     const handleBuyItemClick = (event) => {
 
@@ -51,7 +59,25 @@ const ShopList = ({ updateItems, characters, items, updateCharacters, selectedIt
     })
 
     const handleSellItemClick = () => {
-        console.log("Selected item: ", selectedItem)
+        // console.log("Selected item: ", selectedItem)
+        console.log(newItems)
+        const updatedItems = newItems.map((item) => {
+            if(item.id == selectedItem.id){
+                return {
+                    "id": item.id,
+                    "name": item.name,
+                    "value": item.value,
+                    "damage": item.damage,
+                    "healing": item.healing,
+                    "character": zebediah
+                }
+            }
+            return item
+        })
+        console.log("updated shop items:", updatedItems)
+        setItems(updatedItems)
+        // updateItemInTable(selectedItem)
+        
     }
 
     return (
