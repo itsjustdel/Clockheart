@@ -64,14 +64,15 @@ const ShopList = ({ updateItems, characters, items, setItems, updateCharacters, 
         selectedItem.character = zebediah
         const updatedItems = newItems.map((item) => {
             if(item.id == selectedItem.id){
-                return {
-                    "id": item.id,
-                    "name": item.name,
-                    "value": item.value,
-                    "damage": item.damage,
-                    "healing": item.healing,
-                    "character": zebediah
-                }
+                return selectedItem
+                // return {
+                //     "id": item.id,
+                //     "name": item.name,
+                //     "value": item.value,
+                //     "damage": item.damage,
+                //     "healing": item.healing,
+                //     "character": zebediah
+                // }
             }
             return item
         })
