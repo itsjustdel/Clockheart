@@ -39,10 +39,62 @@ const ClockTowerBar= ({updatePlayerTarget,setPlayerStartPosition, setPlayerTarge
     const Obstacles = () => {
         return(
         <>
-              <mesh name="Collision" position={[4,3,0]} rotation={[-Math.PI / 2, 0, 0]} >
-                <planeBufferGeometry attach="geometry" args={[3,3]} />
-                <meshStandardMaterial/>
+              <mesh name="Collision" position={[-8.4,3,-2.25]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[5,3]} />
+                <meshStandardMaterial transparent={true} opacity={0} />
             </mesh>
+            <mesh name="Collision" position={[6, 3,-2.25]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[21.5,3]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[-5.9, 3,8]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[10,14]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+
+            <mesh name="Collision" position={[-12, 3,0]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[2,10]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[-11, 3,-9]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[2,10]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[-11, 3,-9]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[2,10]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[-5, 3,-14.5]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[10,2]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[.5, 3,-10]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[2,10]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[14, 3, 8]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[10,14]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[1.6, 3, 6]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[2,2]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[1.6, 3, 9]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[2,2]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+            <mesh name="Collision" position={[1.6, 3, 12]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[2,2]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+
+            <mesh name="Collision" position={[7, 3, 1]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[6,5]} />
+                <meshStandardMaterial transparent={true} opacity={0}/>
+            </mesh>
+
+
         </>
         )
     }
@@ -55,7 +107,7 @@ const ClockTowerBar= ({updatePlayerTarget,setPlayerStartPosition, setPlayerTarge
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"grey"} size={[sizeX, sizeY]}/>
 
             <TexturedPlane url={["/levels/barMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
-            <TexturedPlane url={["/levels/barBar.png"]}position={[0,6,0]} args={[sizeX,sizeY]}/>
+            <TexturedPlane url={["/levels/barBar.png"]}position={[0,3,0]} args={[sizeX,sizeY]}/>
             <TexturedPlane url={["/levels/barOverlap.png"]}position={[0,6,0]} args={[sizeX,sizeY]}/>
 
             <Shop shopOpen={shopOpen} setShopOpen={setShopOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
