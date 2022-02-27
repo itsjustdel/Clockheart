@@ -1,4 +1,5 @@
 import { useFrame, useLoader } from "@react-three/fiber"
+import { Suspense } from "react";
 import { Vector3, TextureLoader } from "three";
 import GroundPlane from "./GroundPlane"
 import Music from "./Music";
@@ -58,10 +59,12 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
 
     return(
         <>
+             <Suspense fallback={null}>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"aquamarine"} />
-            <TexturedPlane url={["/textures/bar/png/0001-Level_1--10-Walls_Roofs.png"]}position={[0,2,0]} args={[40, 40]}/>
+            <TexturedPlane url={["/newPngs/0001-Level_1--10-Walls_Roofs.png"]}position={[0,2,0]} args={[40, 40]}/>
             <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
             <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/>
+            </Suspense>
         </>
     )
 }
