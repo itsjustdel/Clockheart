@@ -59,7 +59,7 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
     return(
         <>
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"aquamarine"} />
-            <TexturedPlane />
+            <TexturedPlane url={["/textures/bar/png/0001-Level_1--10-Walls_Roofs.png"]}position={[0,2,0]} args={[40, 40]}/>
             <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
             <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/>
         </>

@@ -34,7 +34,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "ClockTowerBar" }
+    const startLevel = { name: "Street" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     
 
