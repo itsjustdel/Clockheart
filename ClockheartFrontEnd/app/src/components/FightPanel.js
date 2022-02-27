@@ -2,14 +2,16 @@ import { useEffect, useState } from "react"
 import BossTurn from "./BossTurn"
 import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
-import Music from "./Music"
 
-const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
+
+const FightPanel = ({characters, setCharacters, enemyId, items, setItems, setCurrentQuest, quests, setFightPanel, setBossOpen}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
     const newCharacters = [...characters]
+    const [nextQuest, setNextQuest] = useState({name: "ClockTowerBar"})
     const player = newCharacters[0]
+
 
     useEffect(() => {
         PlayerHealth()
@@ -19,7 +21,16 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
     useEffect(() => {
         setEnemy(findEnemy())
     }, [])
+
+    useEffect(() => {
+        setNextQuest(nextQuests[0])
+    }, [])
+
+    //find the next quest by name
+    const newQuests = [...quests]
+    const nextQuests = newQuests.filter(quest => quest.name == "ClockTowerBar")
     
+
     //transfers each of boss's items to player and updates DB
     const transferItemsToPlayer = () => {
         newItems.map((item) => {
@@ -71,6 +82,9 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
             console.log("Boss is dead")
             console.log("Boss healthpoints in state boss dead: " + enemy.healthPoints)
             transferItemsToPlayer()
+            setCurrentQuest(nextQuest)
+            setFightPanel(false)
+            setBossOpen(false)
         }else{
             //boss turn
             console.log("setting turn to 1")
@@ -105,6 +119,8 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
         )
     }
 
+
+    //displays the players health as attacks happen
     const PlayerHealth = () => {
         const newCharacter = newCharacters[0]
 
@@ -116,7 +132,7 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
         )
     }
 
-    
+    //displays the enemies health as attacks happen
     const EnemyHealth = () => {
         if(findEnemy().healthPoints > 0){
         return(
@@ -141,9 +157,7 @@ const FightPanel = ({characters ,setCharacters, enemyId, items, setItems}) => {
             {turn == 0 ? <FightButtons/>:<BossTurn characters={characters} setCharacters={setCharacters} enemyId={enemyId} setTurn={setTurn}/>}
 
             <PlayerHealth/>
-            <EnemyHealth/>
-            <Music url={"/BattleMusic.mp3"} soundLevel={0.05}/>
-        
+            <EnemyHealth/>        
         </>
     )
 
