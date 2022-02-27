@@ -107,7 +107,7 @@ const ClockTowerBar= ({updatePlayerTarget,setPlayerStartPosition, setPlayerTarge
             <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"grey"} size={[sizeX, sizeY]}/>
 
             <TexturedPlane url={["/levels/barMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
-            <TexturedPlane url={["/levels/barBar.png"]}position={[0,3,0]} args={[sizeX,sizeY]}/>
+            <TexturedPlane url={["/levels/barBar.png"]}position={[0,4,0]} args={[sizeX,sizeY]}/>
             <TexturedPlane url={["/levels/barOverlap.png"]}position={[0,6,0]} args={[sizeX,sizeY]}/>
 
             <Shop shopOpen={shopOpen} setShopOpen={setShopOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>

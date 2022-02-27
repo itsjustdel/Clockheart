@@ -25,8 +25,8 @@ const SceneManager = () => {
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(28, 5, 15))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(28, 5, 15))
+    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
+    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
@@ -34,7 +34,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "Street" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 
