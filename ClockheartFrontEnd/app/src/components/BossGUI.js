@@ -3,7 +3,9 @@ import BarterPanel from "./BarterPanel";
 import FightPanel from "./FightPanel";
 import TalkPanel from "./TalkPanel";
 
-const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, setCurrentQuest, quests, setBossOpen}) => {
+
+const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen}) => {
+
 
     const [fightPanel, setFightPanel] = useState(false)
     const [talkPanel, setTalkPanel] = useState(false)
@@ -49,9 +51,11 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, setCu
 
             {talkPanel == true ? <TalkPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest}/> : null}
 
-            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} /> : null}
+            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} /> : null}
+
 
             {barterPanel == true ? <BarterPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} /> : null}
+
 
         </>
     )

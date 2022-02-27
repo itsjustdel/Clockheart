@@ -34,7 +34,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "ClockTowerBar" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     
 
@@ -132,7 +132,8 @@ const SceneManager = () => {
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
 
-            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen}/> : null}
+            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen}/> : null}
+
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 

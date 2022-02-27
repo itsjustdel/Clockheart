@@ -4,7 +4,7 @@ import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
 
-const FightPanel = ({characters, setCharacters, enemyId, items, setItems, setCurrentQuest, quests, setFightPanel, setBossOpen}) => {
+const FightPanel = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
@@ -57,19 +57,25 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, setCur
 
     const attackClick = () => {
         console.log("enemy id  = " + enemy.id)
-        const player = newCharacters[0]
-        let attackStrength = 20
+        let attackStrength = 1
+        if(selectedItem !== null){
+            attackStrength = selectedItem.damage
+        }
+        
         //remove health form enemy by attack strength
         if(player.strength === 10){
             attackStrength += 5
         }
+        
+        console.log("attack strength: " + attackStrength)
 
-
-        if(enemy.healthPoints > attackStrength){
-            enemy.healthPoints -= attackStrength
-        }
-        else{
-            enemy.healthPoints = 0
+        if(attackStrength !== undefined){
+            if(enemy.healthPoints > attackStrength){
+                enemy.healthPoints -= attackStrength
+            }
+            else{
+                enemy.healthPoints = 0
+            }
         }
         //update characters in state with new character
         setCharacters(newCharacters)
@@ -96,11 +102,20 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, setCur
 
     const healClick= () => {
         //Below will be set to the used item's healing value
-        const healing = 5;
-
-        const player = newCharacters[0]
-        if (player.healthPoints < 100){
-            player.healthPoints += healing
+        // const healing = 5;
+        // console.log("selected item healing: " + selectedItem.healing)
+        let healing = 0
+        if(selectedItem !== null){
+            healing = selectedItem.healing
+        }
+    
+        if(healing !== undefined){
+            if (player.healthPoints + healing < 100){
+                player.healthPoints += healing
+            }
+            else{
+                player.healthPoints = 100
+            }
         }
         console.log("player health after heal= " + player.healthPoints)
         setCharacters(newCharacters)
