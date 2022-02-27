@@ -25,8 +25,8 @@ const SceneManager = () => {
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(-4, 5, 4))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(-4, 5, 4))
+    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(28, 5, 15))
+    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(28, 5, 15))
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
@@ -34,10 +34,8 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "Street" }
+    const startLevel = { name: "ClockTowerBar" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
-    
-
     const playerMesh = useRef()
 
     useEffect(() => {
@@ -98,7 +96,7 @@ const SceneManager = () => {
     return (
         <>
              <Canvas gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
-                <SceneHelper />
+             <SceneHelper playerMesh={playerMesh}/>
 
                 <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
 
@@ -106,7 +104,8 @@ const SceneManager = () => {
                 {currentQuest.name == "ClockTowerBar" ? 
                 <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh}
                     shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen}
-                    setQuestGiverOpen={setQuestGiverOpen} setPlayerStartPosition={setPlayerStartPosition}
+                    setQuestGiverOpen={setQuestGiverOpen} 
+                    setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
                     bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen}
                      /> 
                 : null}

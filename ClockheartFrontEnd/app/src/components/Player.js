@@ -9,6 +9,7 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
   //use frame fires every time a new frame is drawn to the screen (around 60 times a second)
   //think of it almost like a while loop for (isGameRunning?)
   useFrame((state,delta) => {
+
     //loading textures can take time, the mesh will not be defined until the textues is loaded
     if (mesh.current == undefined)
       return;
