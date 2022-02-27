@@ -44,7 +44,8 @@ const ShopList = ({ updateItems, characters, items, updateCharacters }) => {
     const itemsForSale = items.map((item, index) => {
         if (item.character.name == "Zebediah Flint")
             return    <li className='npcItem'
-                         onClick={handleItemClick} value={index} key={index}>{item.name}
+                          key={index}>
+                        <button onClick={handleItemClick} value={index}>Buy: {item.name}</button>
                         <img className='playerItemImage' src="/newPngs/sword.png"></img>
                      </li>
     })
