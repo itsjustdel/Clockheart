@@ -8,6 +8,9 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
     
 
     const doorPosition = new Vector3(0,5,0);
+    const size = 30;
+    const sizeX = 1712/size
+    const sizeY = 1310/size
 
     useFrame( () => {
         if(playerMesh.current == undefined)
@@ -46,24 +49,54 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
     };
 
     const Obstacles = () => {
-        //transparent={true}
+                
         return(
         <>
-              <mesh name="Collision" position={[4,3,0]} rotation={[-Math.PI / 2, 0, 0]} >
-                <planeBufferGeometry attach="geometry" args={[3,3]} />
+              <mesh name="Collision" position={[21, 3, 9]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[14,10]} />
+                <meshStandardMaterial/>
+            </mesh>
+            <mesh name="Collision" position={[8.9, 3, 8]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[14,10]} />
+                <meshStandardMaterial/>
+            </mesh>
+            <mesh name="Collision" position={[10, 3, 13]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[7,4]} />
+                <meshStandardMaterial/>
+            </mesh>
+            <mesh name="Collision" position={[0, 3, 9]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[4,4]} />
+                <meshStandardMaterial/>
+            </mesh>
+            <mesh name="Collision" position={[-5, 3, 0]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[12,26]} />
+                <meshStandardMaterial/>
+            </mesh>
+            <mesh name="Collision" position={[-24, 3, 8]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[10,28]} />
+                <meshStandardMaterial/>
+            </mesh>
+            <mesh name="Collision" position={[-26, 3, -7]} rotation={[-Math.PI / 2, 0, 0]} >
+                <planeBufferGeometry attach="geometry" args={[4,4]} />
                 <meshStandardMaterial/>
             </mesh>
         </>
         )
     }
 
+    
     return(
         <>
              <Suspense fallback={null}>
-            <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"aquamarine"} />
-            <TexturedPlane url={["/newPngs/0001-Level_1--10-Walls_Roofs.png"]}position={[0,2,0]} args={[40, 40]}/>
-            <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
-            <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/>
+                <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"aquamarine"} size={[sizeX, sizeY]} />
+                <TexturedPlane url={["/levels/streetMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
+                <TexturedPlane url={["/levels/streetOverlap.png"]}position={[0,7,0]} args={[sizeX, sizeY]}/>
+
+                <Obstacles/>
+
+
+            {/* <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
+            <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/> */}
             </Suspense>
         </>
     )
