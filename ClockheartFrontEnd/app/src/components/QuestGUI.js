@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react"
 import Blimp from "./Blimp"
 import EndingScreen from "./EndingScreen"
-import { getPlayerItems } from "./ItemServices"
+import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
-const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen, items}) => {
+const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen, items, defaultItems, resetCharacters, setItems}) => {
 
     const [gemCollected, setGemCollected] = useState(false)
     const [endScreenOpen, setEndScreenOpen] = useState(false)
+    const [nextQuest, setNextQuest] = useState({name: "ClockTowerBar"})
 
     useEffect(() => {
         allGemsCollected()
@@ -58,6 +59,20 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         setGemCollected(true)
     }
 
+    const handlePlayAgain = () => {
+        let newNextQuest = nextQuest
+        newNextQuest.name = "Street" 
+        setCurrentQuest(newNextQuest)
+        const itemsToReset = [...defaultItems]
+        setItems(itemsToReset)
+        itemsToReset.forEach((item) => {
+            updateItemInTable(item)
+        })
+        console.log(itemsToReset);
+        resetCharacters()
+        setQuestGiverOpen(false)
+    }
+
     if(gemCollected == false && endScreenOpen == false){
     return(
         <>
@@ -70,7 +85,7 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         return(
         <>
             {endScreenOpen == true ? <EndingScreen handleTicketClick={handleTicketClick}/> : null}
-            {gemCollected == true ? <Blimp/> : null}
+            {gemCollected == true ? <Blimp handlePlayAgain={handlePlayAgain} /> : null}
         </>
         )
     }
