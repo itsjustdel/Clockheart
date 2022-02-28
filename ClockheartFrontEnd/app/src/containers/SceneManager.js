@@ -34,7 +34,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "ClockTowerBar" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 
@@ -124,12 +124,16 @@ const SceneManager = () => {
 
            
 
-            <PlayerItems items={items} setSelectedItem={setSelectedItem}/>
+            <PlayerItems characters={characters} items={items} setSelectedItem={setSelectedItem}/>
 
             {shopOpen == true ? <ShopList updateItems={updateItems}
                 characters={characters}
-                updateCharacters={updateCharacters}
-                items={items} /> : null}
+                setCharacters={setCharacters}
+                items={items}
+                setItems={setItems}
+                selectedItem={selectedItem} 
+                setSelectedItem={setSelectedItem}                
+                /> : null}
 
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
