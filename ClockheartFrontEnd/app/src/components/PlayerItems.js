@@ -19,10 +19,11 @@ const PlayerItems = ({characters, items, setSelectedItem}) => {
     }
 
     const playerItems = items.map((item, index) => {  
+        const filename = item.name.replace(/ /g, "_");
         if(item.character.id === 1)
             return <li className='playerItem' key={index}>
                         <button onClick={handleSelectedItemClick} value={index}>{item.name}</button>
-                        <img className='playerItemImage' src="/newPngs/sword.png"/>
+                        <img className='playerItemImage' src={`/newPngs/${filename}.png`}/>
                         
                     </li>
     })
