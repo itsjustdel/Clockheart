@@ -3,6 +3,7 @@ import { Suspense, useState } from "react";
 import { Vector3, TextureLoader } from "three";
 import GroundPlane from "./GroundPlane"
 import Music from "./Music";
+import StreetPeople from "./StreetPeople";
 import TexturedPlane from "./TexturedPlane";
 
 
@@ -103,7 +104,8 @@ const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setChar
                 <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"aquamarine"} size={[sizeX, sizeY]} />
                 <TexturedPlane url={["/levels/streetMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
                 <TexturedPlane url={["/levels/streetOverlap.png"]}position={[0,7,0]} args={[sizeX, sizeY]}/>
-
+                
+                <StreetPeople />
                 <Obstacles/>
 
 
