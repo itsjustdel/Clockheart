@@ -32,7 +32,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "ClockTowerBar" }
+    const startLevel = { name: "Cave" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 

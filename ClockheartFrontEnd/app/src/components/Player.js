@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
-import { Vector3, TextureLoader, Raycaster } from "three";
+import { Vector3, TextureLoader, Raycaster, DoubleSide } from "three";
 
 const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
  
@@ -64,15 +64,19 @@ const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
         break
       }     
    }
+
+   //flip texture if travelling left
+   if(direction.x < 0)
+     mesh.current.rotation.y = Math.PI
   });
 
   function TexturedPlane({ url }) {
     const texture = useLoader(TextureLoader, ...url);
 
     return (
-      <mesh name='playerMesh' ref={mesh} position={playerTargets[0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <mesh name='playerMesh' ref={mesh}  position={playerTargets[0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeBufferGeometry attach="geometry" args={[1, 2]} />
-        <meshStandardMaterial map={texture} transparent={true} />
+        <meshStandardMaterial map={texture} transparent={true} side={DoubleSide}/>
       </mesh>
     );
   };

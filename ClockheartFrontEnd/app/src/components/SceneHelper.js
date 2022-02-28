@@ -16,7 +16,7 @@ const SceneHelper = ({playerMesh}) => {
         const newPos = new Vector3( playerMesh.current.position.x,playerMesh.current.position.y, playerMesh.current.position.z)
         newPos.add(new Vector3(0,5,0))
         // console.log(newPos)
-         state.camera.position.set( newPos.x, newPos.y, newPos.z)
+        state.camera.position.set( newPos.x, newPos.y, newPos.z)
 
         
     })
