@@ -87,7 +87,9 @@ const SceneManager = () => {
         newItems[index] = newItem
         setItems(newItems)
         //we are re-rendering because we are setting state, so we need to update player position in state
-        setPlayerStartPosition(playerMesh.current.position)
+        // setPlayerStartPosition(playerMesh.current.position)
+        //only update start position, target will be the same
+        setPlayerTargets([playerMesh.current.position,playerTargets[1]])
     }
 
     const updateCharacters = (index, newCharacter) => {
@@ -101,27 +103,27 @@ const SceneManager = () => {
              <Canvas gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
              <SceneHelper playerMesh={playerMesh}/>
 
-                <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
+                <Player playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} mesh={playerMesh} items={items} />
 
 
                 {currentQuest.name == "ClockTowerBar" ? 
-                <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh}
+                <ClockTowerBar  playerMesh={playerMesh}
                     shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen}
                     setQuestGiverOpen={setQuestGiverOpen} 
-                    setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
+                   playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                     bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen}
                      /> 
                 : null}
 
                 {currentQuest.name == "Rust and Dust" ? 
                 <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} 
-                        setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
+                    playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
 
                 
                 {currentQuest.name == "Street" ? 
-                <Street playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
+                <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
                 : null}
             </Canvas>
 
