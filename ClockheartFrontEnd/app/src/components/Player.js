@@ -1,10 +1,18 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
-import { Vector3, TextureLoader, Raycaster, DoubleSide } from "three";
+import { Vector3, TextureLoader, Raycaster, DoubleSide, MeshBasicMaterial } from "three";
 
-const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
+
+
+const Player = ({ playerTargets, setPlayerTargets, mesh }) => {
  
   const raycaster = new Raycaster();
+  const [textureFront, textureBack, textureLeft, textureRight] = useLoader(TextureLoader, ["/characters/mainFront.png","/characters/mainBack.png","/characters/mainLeft.png","/characters/mainRight.png"]);
+  
+
+  useEffect(()=>{
+
+  })
 
   useFrame(() => {
 
@@ -45,7 +53,6 @@ const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
         if (!mesh.current.position.equals( playerTargets[1] )&& mesh.current.position.distanceTo(amendedTarget) < speed) {
           //set the target position to the position we got to          
           setPlayerTargets([mesh.current.position,mesh.current.position])
-
           return;
         }
 
@@ -60,24 +67,37 @@ const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
         mesh.current.position.y = 5; //player layer is always 5
         mesh.current.position.z += direction.z;
 
+
+        //set walk direction        
+        let faceDirection = new Vector3()
+        faceDirection.subVectors(mesh.current.position, amendedTarget)
+        const angle = Math.atan2(faceDirection.z,faceDirection.x)
+        const degrees = 180*angle/Math.PI      
+        console.log(degrees)
+  
+        if(degrees > -45 && degrees < 45)                  
+          mesh.current.material.map = textureLeft              
+        else if(degrees < -45  && degrees > -135)
+          mesh.current.material.map = textureFront
+        else if(degrees > 45 && degrees < 135)
+          mesh.current.material.map = textureBack
+        else
+          mesh.current.material.map = textureRight
         //don't look for other collision, jump out of for loop
         break
-      }     
-   }
-
-   //flip texture if travelling left
-   if(direction.x < 0)
-     mesh.current.rotation.y = Math.PI
+      }
+   }   
   });
 
-  function TexturedPlane({ url }) {
-    const texture = useLoader(TextureLoader, ...url);
-
+  function TexturedPlane() {   
     return (
+      <>
       <mesh name='playerMesh' ref={mesh}  position={playerTargets[0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeBufferGeometry attach="geometry" args={[1, 2]} />
-        <meshStandardMaterial map={texture} transparent={true} side={DoubleSide}/>
+        <planeBufferGeometry  attach="geometry" args={[3, 3]} />
+        <meshStandardMaterial map={textureFront} transparent={true} />
       </mesh>
+      
+      </>
     );
   };
 
@@ -85,7 +105,7 @@ const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
   return (
     <>
       <Suspense fallback={null}>
-        <TexturedPlane url={["/redguy.png"]} />
+        <TexturedPlane />
       </Suspense>
     </>
   )

@@ -1,6 +1,6 @@
 //libraries, frameworks
 import { Vector3 } from 'three';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { Canvas } from "@react-three/fiber"
 //project defined
 import Player from "../components/Player";
@@ -131,11 +131,12 @@ const SceneManager = () => {
 
     return (
         <>
-             <Canvas gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
+             <Canvas  linear flat gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
              <SceneHelper playerMesh={playerMesh}/>
 
+            <Suspense fallback={null}>
                 <Player playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} mesh={playerMesh} items={items} />
-
+              </Suspense>
 
                 {currentQuest.name == "ClockTowerBar" ? 
                 <ClockTowerBar  playerMesh={playerMesh}
