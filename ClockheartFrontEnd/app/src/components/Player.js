@@ -2,7 +2,7 @@ import React, { Suspense, useState } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader, Raycaster, DataTexture } from "three";
 
-const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
+const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
  
   const raycaster = new Raycaster();
 
@@ -13,9 +13,10 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
     //loading textures can take time, the mesh will not be defined until the textues is loaded
     if (mesh.current == undefined)
       return;
-      const speed = 5 * delta
+
+    const speed = 5 * delta
     const direction = new Vector3();
-    direction.subVectors(playerTargetPosition, mesh.current.position).normalize();
+    direction.subVectors(playerTargets[1], mesh.current.position).normalize();
     const scaledVector = direction.multiplyScalar(speed, 0, speed);
 
     const rayStart = new Vector3(mesh.current.position.x,mesh.current.position.y, mesh.current.position.z);
@@ -33,9 +34,16 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
       //Collision detection ////////-- refactor
       if(intersects[i].object.name == "Collision"){
        // console.log("collision")
-        playerTargetPosition.x = mesh.current.position.x
-        //y is always 5
-        playerTargetPosition.z = mesh.current.position.z
+        let newPlayerTargets = playerTargets
+        newPlayerTargets[1].x
+        newPlayerTargets[1].y
+        newPlayerTargets[1].z
+
+        setPlayerTargets(newPlayerTargets)
+        // playerTargetPosition.x = mesh.current.position.x
+        // //y is always 5
+        // playerTargetPosition.z = mesh.current.position.z
+
         return        
       }
       
@@ -74,7 +82,7 @@ const Player = ({ playerStartPosition, playerTargetPosition, mesh }) => {
     const texture = useLoader(TextureLoader, ...url);
 
     return (
-      <mesh name='playerMesh' ref={mesh} position={playerStartPosition} rotation={[-Math.PI / 2, 0, 0]}>
+      <mesh name='playerMesh' ref={mesh} position={playerTargets[0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeBufferGeometry attach="geometry" args={[1, 2]} />
         <meshStandardMaterial map={texture} transparent={true} />
       </mesh>

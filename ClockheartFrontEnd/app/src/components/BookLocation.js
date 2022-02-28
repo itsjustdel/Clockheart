@@ -2,7 +2,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 
-const BookLocation = ({bookLocationOpen, setBookLocationOpen, playerMesh, updatePlayerTarget}) => {
+const BookLocation = ({bookLocationOpen, setBookLocationOpen, playerMesh, setPlayerTargets}) => {
     const bookLocationPosition = new Vector3(4,5,4);
 
     useEffect(() => {
@@ -18,14 +18,16 @@ const BookLocation = ({bookLocationOpen, setBookLocationOpen, playerMesh, update
         if(distance < 1){
             //only set if we need to change (causes re-render when setting)
             if(bookLocationOpen != true){
-                updatePlayerTarget(playerMesh.current.position)
+                // updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setBookLocationOpen(true)                
             }
         }
         
         else {        
             if(bookLocationOpen!= false){
-                updatePlayerTarget(playerMesh.current.position)
+                // updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setBookLocationOpen(false)                
             }
         }        

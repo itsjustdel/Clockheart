@@ -8,7 +8,7 @@ import BookLocation from './BookLocation'
 import TexturedPlane from './TexturedPlane'
 import { Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber'
-const ClockTowerBar= ({updatePlayerTarget,setPlayerStartPosition, setPlayerTargetPosition, playerMesh, shopOpen, setShopOpen, questGiverOpen, setQuestGiverOpen, bookLocationOpen, setBookLocationOpen}) => {
+const ClockTowerBar= ({updatePlayerTarget, playerTargets, setPlayerTargets, playerMesh, shopOpen, setShopOpen, questGiverOpen, setQuestGiverOpen, bookLocationOpen, setBookLocationOpen}) => {
 
 
     const [playerPositionOnLoad, setPlayerPositionOnLoad] = useState(false)
@@ -26,8 +26,10 @@ const ClockTowerBar= ({updatePlayerTarget,setPlayerStartPosition, setPlayerTarge
         if(!playerPositionOnLoad){
             const startPos = new Vector3(7,5,13)
             
-            setPlayerStartPosition(startPos)
-            setPlayerTargetPosition(startPos)
+            // setPlayerStartPosition(startPos)
+            // setPlayerTargetPosition(startPos)
+
+            setPlayerTargets([startPos,startPos])
 
             //only do once
             setPlayerPositionOnLoad(true);            
@@ -104,17 +106,17 @@ const ClockTowerBar= ({updatePlayerTarget,setPlayerStartPosition, setPlayerTarge
         <Suspense fallback={null}>
             <Obstacles/>
             
-            <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"grey"} size={[sizeX, sizeY]}/>
+            <GroundPlane setPlayerTargets={setPlayerTargets} colour={"grey"} size={[sizeX, sizeY]}/>
 
             <TexturedPlane url={["/levels/barMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
             <TexturedPlane url={["/levels/barBar.png"]}position={[0,4,0]} args={[sizeX,sizeY]}/>
             <TexturedPlane url={["/levels/barOverlap.png"]}position={[0,6,0]} args={[sizeX,sizeY]}/>
 
-            <Shop shopOpen={shopOpen} setShopOpen={setShopOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
+            <Shop shopOpen={shopOpen} setShopOpen={setShopOpen} playerMesh={playerMesh}  setPlayerTargets={setPlayerTargets}/>
 
-            <QuestGiver questGiverOpen={questGiverOpen} setQuestGiverOpen={setQuestGiverOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
+            <QuestGiver questGiverOpen={questGiverOpen} setQuestGiverOpen={setQuestGiverOpen} playerMesh={playerMesh}  setPlayerTargets={setPlayerTargets}/>
 
-            <BookLocation bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen} playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget}/>
+            <BookLocation bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen} playerMesh={playerMesh}  setPlayerTargets={setPlayerTargets}/>
 
             <Music url={"/SteampunkAmbience.mp3"} soundLevel={0.03}/>
 

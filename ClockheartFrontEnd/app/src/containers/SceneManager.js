@@ -25,8 +25,9 @@ const SceneManager = () => {
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
+    // const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
+    // const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
+    const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 15)])
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
@@ -72,8 +73,10 @@ const SceneManager = () => {
 
     const updatePlayerTarget = (newPlayerTargetPosition) => {
 
-        setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
-        setPlayerTargetPosition(newPlayerTargetPosition)
+        // setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
+        // setPlayerTargetPosition(newPlayerTargetPosition)
+        setPlayerTargets([playerMesh.current.position,newPlayerTargetPosition])
+
     }
     const updateItems = (index, newItem) => {
 
