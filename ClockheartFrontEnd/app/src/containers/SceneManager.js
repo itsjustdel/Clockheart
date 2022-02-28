@@ -11,16 +11,12 @@ import ShopList from '../components/ShopList'
 import PlayerItems from '../components/PlayerItems';
 import QuestGUI from '../components/QuestGUI';
 import Street from '../components/Street';
-import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
 import CharacterCreationGUI from '../components/CharacterCreationGUI';
-import { getPlayerItems } from '../components/ItemServices';
-import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
 
 const SceneManager = () => {
-    console.log("sm")
-
+    
     const [characters, setCharacters] = useState([])
     const [items, setItems] = useState([]);
     const [quests, setQuests] = useState([]);

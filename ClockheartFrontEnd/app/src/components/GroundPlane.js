@@ -13,7 +13,7 @@ const GroundPlane = ({size, playerMesh, setPlayerTargets, colour}) => {
         //always define 3d positions as "Vector3", it will allow us to compare, subtract etc easily
          const _playerTarget = new Vector3(x,y,z); //doesn't cause re-render
         //  updatePlayerTarget(_playerTarget);
-        console.log("setting targets")
+        
          setPlayerTargets([playerMesh.current.position, _playerTarget])
 
     }

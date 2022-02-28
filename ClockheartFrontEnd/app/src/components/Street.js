@@ -26,8 +26,9 @@ const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setChar
         if(!playerPositionOnLoad){
             const startPos = new Vector3(12, 5, 15)
             
-            setPlayerStartPosition(startPos)
-            setPlayerTargetPosition(startPos)
+            // setPlayerStartPosition(startPos)            
+            // setPlayerTargetPosition(startPos)
+            setPlayerTargets([startPos,startPos])
 
             //only do once
             setPlayerPositionOnLoad(true);            
