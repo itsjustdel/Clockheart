@@ -19,7 +19,7 @@ import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
 
 const SceneManager = () => {
-    console.log("s m")
+    console.log("sm")
 
     const [characters, setCharacters] = useState([])
     const [items, setItems] = useState([]);
@@ -44,6 +44,8 @@ const SceneManager = () => {
         getCharacters()
         getItems()
         getQuests()
+
+       
     }, [])
 
     // The below will return an up-to-date array of player items every time an item is bought. DB still updating fine. This isn't stored anywhere though!
@@ -72,13 +74,13 @@ const SceneManager = () => {
             .then(quests => setQuests(quests))
     }
 
-    const updatePlayerTarget = (newPlayerTargetPosition) => {
+//     const updatePlayerTarget = (newPlayerTargetPosition) => {
+// console.log("UPDDATEETE!!!!")
+//         // setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
+//         // setPlayerTargetPosition(newPlayerTargetPosition)
+//         setPlayerTargets([playerMesh.current.position,newPlayerTargetPosition])
 
-        // setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
-        // setPlayerTargetPosition(newPlayerTargetPosition)
-        setPlayerTargets([playerMesh.current.position,newPlayerTargetPosition])
-
-    }
+//     }
     const updateItems = (index, newItem) => {
 
         // console.log("update player items - Scene Manager")
@@ -117,7 +119,7 @@ const SceneManager = () => {
                 : null}
 
                 {currentQuest.name == "Rust and Dust" ? 
-                <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen}
+                <Cave playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen}
                     playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
