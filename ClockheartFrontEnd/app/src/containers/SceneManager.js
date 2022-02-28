@@ -13,12 +13,17 @@ import QuestGUI from '../components/QuestGUI';
 import Street from '../components/Street';
 import BossGUI from '../components/BossGUI';
 import CharacterCreationGUI from '../components/CharacterCreationGUI';
+import { getPlayerItems } from '../components/ItemServices';
+import { updateCharacterInTable } from '../components/CharacterServices';
+import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
 
 const SceneManager = () => {
     
     const [characters, setCharacters] = useState([])
+    const [defaultCharacters, setDefaultCharacters] = useState([])
     const [items, setItems] = useState([]);
+    const [defaultItems, setDefaultItems] = useState([])
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
@@ -40,9 +45,15 @@ const SceneManager = () => {
         getCharacters()
         getItems()
         getQuests()
-
-       
     }, [])
+
+    useEffect(() => {
+        setUsableItems()
+    }, [defaultItems])
+
+    useEffect(() => {
+        setUsableCharacters()
+    }, [defaultCharacters])
 
     // The below will return an up-to-date array of player items every time an item is bought. DB still updating fine. This isn't stored anywhere though!
     //The getPlayerItems() function can be imported and used anywhere you are passing in items and need to get a list of current player items.
@@ -55,13 +66,24 @@ const SceneManager = () => {
     const getCharacters = () => {
         fetch('/characters')
             .then(res => res.json())
-            .then(characters => setCharacters(characters))
+            .then(characterData => setDefaultCharacters(characterData))
+            // .then(characters => setCharacters(characters))
+    }
+
+    const setUsableCharacters = () => {
+        const usableCharacters = [...defaultCharacters]
+        setCharacters(usableCharacters)
     }
 
     const getItems = () => {
         fetch('/items')
             .then(res => res.json())
-            .then(items => setItems(items))
+            .then(items => setDefaultItems(items))
+    }
+
+    const setUsableItems = () => {
+        const usableItems = [...defaultItems]
+        setItems(usableItems)
     }
 
     const getQuests = () => {
@@ -95,6 +117,16 @@ const SceneManager = () => {
         const newCharacters = [...characters]
         newCharacters[index] = newCharacter
         setCharacters(newCharacters)
+    }
+
+    const resetCharacters = () => {
+        const charactersToReset = [...characters]
+        charactersToReset.forEach((character) => {
+                character.currency = 50
+                character.healthPoints = 100
+                updateCharacterInTable(character)
+        })
+        setCharacters(charactersToReset)
     }
 
     return (
@@ -144,7 +176,7 @@ const SceneManager = () => {
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items}/> : null}                           
 
-            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen}/> : null}
+            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} /> : null}
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 
