@@ -63,7 +63,7 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
     })
 
     const handleSellItemClick = () => {
-        if(selectedItem !== null){
+        if(selectedItem !== null && !selectedItem.name.includes("Gem")){
             player.currency += selectedItem.value
             const updatedCharacters = characters.map((character) => {
                 if(character.id === player.id){
