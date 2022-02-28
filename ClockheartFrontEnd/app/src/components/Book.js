@@ -46,6 +46,18 @@ const Book = () => {
                     <li>Tony Fletcher</li>
                 </ul>
             </div>
+            <div id="page">
+              <h3>With special thanks to...</h3>
+              <ul id="no-bullets">
+                <li>Ally McGilloway</li>
+                <li>Anna Henderson</li>
+                <li>Craig Gough</li>
+                <li>Peter Sullivan</li>
+                <li>Sky Su</li>
+                <li>Stan Tarnev</li>
+              </ul>
+            </div>
+            <div id="back-cover"></div>
           </HTMLFlipBook>
         );
       
