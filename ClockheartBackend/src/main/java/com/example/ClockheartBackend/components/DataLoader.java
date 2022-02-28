@@ -118,7 +118,7 @@ public class DataLoader implements ApplicationRunner {
         Item screwBagRuby2 = new Item("Screw Bag", 10, rubyBoss);
         itemRepository.save(screwBagRuby2);
 
-        Item shinyScrewBagRuby3 = new Item("Shiny Money Bag", 15, rubyBoss);
+        Item shinyScrewBagRuby3 = new Item("Shiny Screw Bag", 15, rubyBoss);
         itemRepository.save(shinyScrewBagRuby3);
 
         //SAPPHIRE ITEMS
