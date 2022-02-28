@@ -35,9 +35,9 @@ const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
       if(intersects[i].object.name == "Collision"){
        // console.log("collision")
         let newPlayerTargets = playerTargets
-        newPlayerTargets[1].x
-        newPlayerTargets[1].y
-        newPlayerTargets[1].z
+        newPlayerTargets[1].x = mesh.current.position.x
+        newPlayerTargets[1].y = mesh.current.position.y
+        newPlayerTargets[1].z = mesh.current.position.z
 
         setPlayerTargets(newPlayerTargets)
         // playerTargetPosition.x = mesh.current.position.x
@@ -55,12 +55,12 @@ const Player = ({ playerTargets,setPlayerTargets, mesh }) => {
         // console.log("gp")
         //first of all check if we are close enough to the target- we can use speed because that's
         //how far we travel in one frame
-        if (mesh.current.position.distanceTo(playerTargetPosition) < speed) {
+        if (mesh.current.position.distanceTo(playerTargets[1]) < speed) {
           //set the target position to the position we got to
           
-          mesh.current.position.x = playerTargetPosition.x;
+          mesh.current.position.x = playerTargets[1].x;
           mesh.current.position.y = 5//playerTargetPosition.y;
-          mesh.current.position.z = playerTargetPosition.z;
+          mesh.current.position.z = playerTargets[1].z;
 
           return;
         }
