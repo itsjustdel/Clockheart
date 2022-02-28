@@ -109,8 +109,8 @@ const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setChar
                 <Obstacles/>
 
 
-            {/* <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
-            <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/> */}
+            <Music url={"/ClockworkTheme.mp3"} soundLevel={0.05}/>
+            <Music url={"/CrowdAmbience.mp3"} soundLevel={0.03}/>
             </Suspense>
         </>
     )
