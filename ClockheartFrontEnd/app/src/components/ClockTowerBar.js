@@ -1,5 +1,6 @@
 import GroundPlane from './GroundPlane'
 import React, { useEffect, useState, Suspense } from 'react'
+import BarPeople from './BarPeople'
 
 import Music from './Music'
 import Shop from './Shop'
@@ -105,6 +106,7 @@ const ClockTowerBar= ({setPlayerTargets, playerMesh, shopOpen, setShopOpen, ques
         <>
         <Suspense fallback={null}>
             <Obstacles/>
+            <BarPeople />
             
             <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"grey"} size={[sizeX, sizeY]}/>
 
