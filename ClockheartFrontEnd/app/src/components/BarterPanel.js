@@ -45,7 +45,7 @@ const BarterPanel = ({characters, setCharacters, items, setItems, setBarterPanel
         if(player.intelligence === 10){
             setPrice(randomNumber(50, 250))
         }else{
-            setPrice(5)
+            setPrice(500)
         }
     }
 
