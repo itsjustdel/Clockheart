@@ -1,23 +1,37 @@
 import { useFrame, useLoader } from "@react-three/fiber"
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Vector3, TextureLoader } from "three";
 import GroundPlane from "./GroundPlane"
 import Music from "./Music";
 import TexturedPlane from "./TexturedPlane";
 
+
 const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setCharacterCreationOpen, playerMesh}) => {
+
     
+    const [playerPositionOnLoad, setPlayerPositionOnLoad] = useState(false)
+
 
     const doorPosition = new Vector3(-17, 5, -13);
     const size = 30;
     const sizeX = 1712/size
     const sizeY = 1310/size
 
+
+
     useFrame( () => {
         if(playerMesh.current == undefined)
             return
         //check if the player is close to the target (boss/ loot?)
-        
+        if(!playerPositionOnLoad){
+            const startPos = new Vector3(12, 5, 15)
+            
+            setPlayerStartPosition(startPos)
+            setPlayerTargetPosition(startPos)
+
+            //only do once
+            setPlayerPositionOnLoad(true);            
+        }
         const distance = playerMesh.current.position.distanceTo( doorPosition)
         
         if(distance < 2){

@@ -36,7 +36,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "Street" }
+    const startLevel = { name: "ClockTowerBar" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 
@@ -126,21 +126,27 @@ const SceneManager = () => {
 
                 
                 {currentQuest.name == "Street" ? 
+
                 <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
+
                 : null}
             </Canvas>
 
            
 
-            <PlayerItems items={items} setSelectedItem={setSelectedItem}/>
+            <PlayerItems characters={characters} items={items} setSelectedItem={setSelectedItem}/>
 
             {shopOpen == true ? <ShopList updateItems={updateItems}
                 characters={characters}
-                updateCharacters={updateCharacters}
-                items={items} /> : null}
+                setCharacters={setCharacters}
+                items={items}
+                setItems={setItems}
+                selectedItem={selectedItem} 
+                setSelectedItem={setSelectedItem}                
+                /> : null}
 
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
-                setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
+                setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items}/> : null}                           
 
             {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen}/> : null}
 

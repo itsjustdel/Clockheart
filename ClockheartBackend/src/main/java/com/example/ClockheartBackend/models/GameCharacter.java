@@ -42,7 +42,7 @@ public class GameCharacter {
         this.intelligence = intelligence;
         this.strength = strength;
         this.charisma = charisma;
-        this.currency = 10;
+        this.currency = 50;
         this.type = type;
         this.quests = new ArrayList<Quest>();
         this.items = new ArrayList<Item>();
