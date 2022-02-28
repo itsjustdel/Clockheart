@@ -16,8 +16,9 @@ const Book = () => {
             <div id="front-cover">
             
             </div>
-            <div id="inside-cover">
-            
+            <div id="page">
+              <h1 id="title">History of The Machines</h1>
+              <h5 id="title">Published by 'Red Guy'</h5>
             </div>
             <div id="page">
             <p id="paragraphs">During the days before man and machine lived side by side, there was a group of individuals who set out to learn and discover more about how to interact with machines. </p>
@@ -45,6 +46,21 @@ const Book = () => {
                     <li>Tamer Amer</li>
                     <li>Tony Fletcher</li>
                 </ul>
+            </div>
+           
+            <div id="page">
+                <h3 id="paragraphs">With special thanks to...</h3>
+                <ul id="no-bullets">
+                    <li>Ally McGilloway</li>
+                    <li>Anna Henderson</li>
+                    <li>Craig Gough</li>
+                    <li id="aqua">Peter Sullivan</li>
+                    <li>Sky Su</li>
+                    <li>Stan Tarnev</li>
+                </ul>
+            </div> 
+            <div id="page">
+                <h2 id="end-quote">"Things end, but memories last forever" </h2>
             </div>
           </HTMLFlipBook>
         );

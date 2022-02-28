@@ -54,16 +54,17 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
     }
 
     const itemsForSale = items.map((item, index) => {
+        const filename = item.name.replace(/ /g, "_");
         if (item.character.name == "Zebediah Flint")
             return    <li className='npcItem'
                           key={index}>
                         <button onClick={handleBuyItemClick} value={index}>Buy: {item.name}</button>
-                        <img className='playerItemImage' src="/newPngs/sword.png"></img>
+                        <img className='playerItemImage' src={`/newPngs/${filename}.png`}></img>
                      </li>
     })
 
     const handleSellItemClick = () => {
-        if(selectedItem !== null){
+        if(selectedItem !== null && !selectedItem.name.includes("Gem")){
             player.currency += selectedItem.value
             const updatedCharacters = characters.map((character) => {
                 if(character.id === player.id){

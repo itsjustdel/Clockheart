@@ -6,7 +6,7 @@ import TexturedPlane from './TexturedPlane'
 import { Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber'
 
-const Cave = ({ playerMesh, updatePlayerTarget, bossOpen, setBossOpen, setPlayerStartPosition, setPlayerTargetPosition }) => {
+const Cave = ({ playerMesh, bossOpen, setBossOpen, setPlayerTargets }) => {
     
     const [playerPositionOnLoad, setPlayerPositionOnLoad] = useState(false)
 
@@ -27,23 +27,23 @@ const Cave = ({ playerMesh, updatePlayerTarget, bossOpen, setBossOpen, setPlayer
         if(!playerPositionOnLoad){
             const startPos = new Vector3(0,5,-6)
             
-            setPlayerStartPosition(startPos)
-            setPlayerTargetPosition(startPos)
+            // setPlayerStartPosition(startPos)
+            // setPlayerTargetPosition(startPos)
+            setPlayerTargets([startPos,startPos])
 
             //only do once
             setPlayerPositionOnLoad(true);            
         }
-
 
     }, [])
 
     return (
         <>
             <Suspense fallback={null}>
-                <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"brown"} size={[sizeX, sizeY]}/>
+                <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"brown"} size={[sizeX, sizeY]}/>
                 <TexturedPlane url={["/levels/caveLevel.png"]} position={[0, 2, 0]} args={[sizeX, sizeY]} />
 
-                <Boss playerMesh={playerMesh} bossOpen={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} />
+                <Boss playerMesh={playerMesh} bossOpen={bossOpen} setBossOpen={setBossOpen} setPlayerTargets={setPlayerTargets} />
 
                 {/* <Music url={"/CaveAmbience.mp3"} soundLevel={0.1} /> */}
             </Suspense>

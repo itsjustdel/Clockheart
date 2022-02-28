@@ -11,7 +11,6 @@ import ShopList from '../components/ShopList'
 import PlayerItems from '../components/PlayerItems';
 import QuestGUI from '../components/QuestGUI';
 import Street from '../components/Street';
-import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
 import CharacterCreationGUI from '../components/CharacterCreationGUI';
 import { getPlayerItems } from '../components/ItemServices';
@@ -20,7 +19,7 @@ import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
 
 const SceneManager = () => {
-
+    
     const [characters, setCharacters] = useState([])
     const [defaultCharacters, setDefaultCharacters] = useState([])
     const [items, setItems] = useState([]);
@@ -28,8 +27,9 @@ const SceneManager = () => {
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
+    // const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
+    // const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
+    const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 15)])
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
@@ -37,7 +37,7 @@ const SceneManager = () => {
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
 
-    const startLevel = { name: "ClockTowerBar" }
+    const startLevel = { name: "Street" }
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 
@@ -45,7 +45,6 @@ const SceneManager = () => {
         getCharacters()
         getItems()
         getQuests()
-        console.log("THE WORLD SUCKS");
     }, [])
 
     useEffect(() => {
@@ -93,11 +92,13 @@ const SceneManager = () => {
             .then(quests => setQuests(quests))
     }
 
-    const updatePlayerTarget = (newPlayerTargetPosition) => {
+//     const updatePlayerTarget = (newPlayerTargetPosition) => {
+// console.log("UPDDATEETE!!!!")
+//         // setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
+//         // setPlayerTargetPosition(newPlayerTargetPosition)
+//         setPlayerTargets([playerMesh.current.position,newPlayerTargetPosition])
 
-        setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
-        setPlayerTargetPosition(newPlayerTargetPosition)
-    }
+//     }
     const updateItems = (index, newItem) => {
 
         // console.log("update player items - Scene Manager")
@@ -107,7 +108,9 @@ const SceneManager = () => {
         newItems[index] = newItem
         setItems(newItems)
         //we are re-rendering because we are setting state, so we need to update player position in state
-        setPlayerStartPosition(playerMesh.current.position)
+        // setPlayerStartPosition(playerMesh.current.position)
+        //only update start position, target will be the same
+        setPlayerTargets([playerMesh.current.position,playerTargets[1]])
     }
 
     const updateCharacters = (index, newCharacter) => {
@@ -131,27 +134,29 @@ const SceneManager = () => {
              <Canvas gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
              <SceneHelper playerMesh={playerMesh}/>
 
-                <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
+                <Player playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} mesh={playerMesh} items={items} />
 
 
                 {currentQuest.name == "ClockTowerBar" ? 
-                <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh}
+                <ClockTowerBar  playerMesh={playerMesh}
                     shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen}
                     setQuestGiverOpen={setQuestGiverOpen} 
-                    setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
+                   playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                     bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen}
                      /> 
                 : null}
 
                 {currentQuest.name == "Rust and Dust" ? 
-                <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} 
-                        setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
+                <Cave playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen}
+                    playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
 
                 
                 {currentQuest.name == "Street" ? 
-                <Street playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition} /> 
+
+                <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
+
                 : null}
             </Canvas>
 
@@ -169,7 +174,7 @@ const SceneManager = () => {
                 /> : null}
 
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
-                setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
+                setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items}/> : null}                           
 
             {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} /> : null}
 

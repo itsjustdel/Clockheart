@@ -2,7 +2,7 @@ import React, { Suspense, useState } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 
-const Boss = ({playerMesh, bossOpen, setBossOpen, updatePlayerTarget}) => {
+const Boss = ({playerMesh, bossOpen, setBossOpen, setPlayerTargets}) => {
     
     const bossPosition = new Vector3(0,5,0);
 
@@ -15,7 +15,8 @@ const Boss = ({playerMesh, bossOpen, setBossOpen, updatePlayerTarget}) => {
         
         if(distance < 1){
             if(!bossOpen){
-                updatePlayerTarget(playerMesh.current.position)
+                // updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setBossOpen(true)
             }
                 
@@ -23,7 +24,8 @@ const Boss = ({playerMesh, bossOpen, setBossOpen, updatePlayerTarget}) => {
         else {        
             if(bossOpen)
             {
-                updatePlayerTarget(playerMesh.current.position)
+                // updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setBossOpen(false)
             }
            
@@ -46,8 +48,6 @@ const Boss = ({playerMesh, bossOpen, setBossOpen, updatePlayerTarget}) => {
              <Suspense fallback={null}>
                 <TexturedPlane url={["/redguy.png"]} />       
             </Suspense>
-
-
         </>
     )
 }

@@ -10,6 +10,7 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
     const newItems = [...items]
     const newCharacters = [...characters]
     const player = newCharacters[0]
+    const zebediah = newCharacters[1]
 
 
     useEffect(() => {
@@ -120,9 +121,6 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
     }
 
     const healClick= () => {
-        //Below will be set to the used item's healing value
-        // const healing = 5;
-        // console.log("selected item healing: " + selectedItem.healing)
         let healing = 0
         if(selectedItem !== null){
             healing = selectedItem.healing
@@ -131,12 +129,19 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
         if(healing !== undefined){
             if (player.healthPoints + healing < 100){
                 player.healthPoints += healing
+                console.log("selected item owner: ", selectedItem.character)
+                selectedItem.character = zebediah
+                console.log("selected item owner", selectedItem.character)
             }
             else{
                 player.healthPoints = 100
+                console.log("selected item owner: ", selectedItem.character)
+                selectedItem.character = zebediah
+                console.log("selected item owner", selectedItem.character)
             }
         }
-        console.log("player health after heal= " + player.healthPoints)
+        console.log("items after using healing", items)
+        updateItemInTable(selectedItem)
         setCharacters(newCharacters)
         updateCharacterInTable(player)
 
