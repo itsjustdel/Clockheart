@@ -50,7 +50,7 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
 
         newItems.map((item) => {
             if(item.id === earnedItems[0].id || item.id === earnedItems[1].id){
-                item.character.id = player.id
+                item.character = player
             }
         })
         setItems(newItems)

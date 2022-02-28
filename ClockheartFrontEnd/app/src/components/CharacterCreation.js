@@ -71,7 +71,7 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
         newCharacter.intelligence = infoToShow.intelligence
         newCharacter.strength = infoToShow.strength
         
-        updateCharacters(1, newCharacter)
+        updateCharacters(0, newCharacter)
 
         const str = `/characters/${1}`
         fetch(str, {
