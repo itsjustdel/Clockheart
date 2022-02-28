@@ -1,5 +1,17 @@
-const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen, setPlayerStartPosition, setPlayerTargetPosition}) => {
-  
+import { useEffect, useState } from "react"
+import Blimp from "./Blimp"
+import EndingScreen from "./EndingScreen"
+import { getPlayerItems } from "./ItemServices"
+
+const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen, setPlayerStartPosition, setPlayerTargetPosition, items}) => {
+
+    const [gemCollected, setGemCollected] = useState(false)
+    const [endScreenOpen, setEndScreenOpen] = useState(false)
+
+    useEffect(() => {
+        allGemsCollected()
+    }, [])
+
     const handleQuestClick = (event) => {
         const questToSet = quests[event.target.value]
 
@@ -14,6 +26,8 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
 
         //reset gui panel in state
         setQuestGiverOpen(false)
+
+        
 
         switch(questToSet.name) {
             case "Street":
@@ -39,10 +53,28 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         .then (res => res.json())
     }
 
+    const allGemsCollected = () => {
+        const gemsList = getPlayerItems(items).filter((item) => {
+            return item.name.includes('Gem')
+        })
+        console.log(gemsList)
+        if(gemsList.length == 1){
+            setEndScreenOpen(true)
+        }
+        return gemsList.length === 1
+    }
+   
+
     const questsMap = quests.map((quest, index) => {          
         return <li onClick={handleQuestClick} value={index} key={index}>{quest.name}</li>
     })
 
+    const handleTicketClick = () => {
+        setEndScreenOpen(false)
+        setGemCollected(true)
+    }
+
+    if(gemCollected == false && endScreenOpen == false){
     return(
         <>
         <h2>Quest List</h2>
@@ -50,7 +82,14 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
                 {questsMap}
             </ul>
         </>
-    )
+    )} else {
+        return(
+        <>
+            {endScreenOpen == true ? <EndingScreen handleTicketClick={handleTicketClick}/> : null}
+            {gemCollected == true ? <Blimp/> : null}
+        </>
+        )
+    }
 }
 
 export default QuestGUI
