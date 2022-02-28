@@ -72,8 +72,7 @@ const Player = ({ playerTargets, setPlayerTargets, mesh }) => {
         let faceDirection = new Vector3()
         faceDirection.subVectors(mesh.current.position, amendedTarget)
         const angle = Math.atan2(faceDirection.z,faceDirection.x)
-        const degrees = 180*angle/Math.PI      
-        console.log(degrees)
+        const degrees = 180*angle/Math.PI  
   
         if(degrees > -45 && degrees < 45)                  
           mesh.current.material.map = textureLeft              
