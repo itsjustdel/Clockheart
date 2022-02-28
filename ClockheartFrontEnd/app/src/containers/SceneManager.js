@@ -15,6 +15,7 @@ import Music from '../components/Music';
 import BossGUI from '../components/BossGUI';
 import CharacterCreationGUI from '../components/CharacterCreationGUI';
 import { getPlayerItems } from '../components/ItemServices';
+import { updateCharacterInTable } from '../components/CharacterServices';
 import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
 
@@ -51,9 +52,9 @@ const SceneManager = () => {
         setUsableItems()
     }, [defaultItems])
 
-    // useEffect(() => {
-    //     setUsableCharacters()
-    // }, [defaultCharacters])
+    useEffect(() => {
+        setUsableCharacters()
+    }, [defaultCharacters])
 
     // The below will return an up-to-date array of player items every time an item is bought. DB still updating fine. This isn't stored anywhere though!
     //The getPlayerItems() function can be imported and used anywhere you are passing in items and need to get a list of current player items.
@@ -66,8 +67,8 @@ const SceneManager = () => {
     const getCharacters = () => {
         fetch('/characters')
             .then(res => res.json())
-            .then(characters => setDefaultCharacters(characters))
-            .then(characters => setCharacters(characters))
+            .then(characterData => setDefaultCharacters(characterData))
+            // .then(characters => setCharacters(characters))
     }
 
     const setUsableCharacters = () => {
@@ -115,6 +116,16 @@ const SceneManager = () => {
         setCharacters(newCharacters)
     }
 
+    const resetCharacters = () => {
+        const charactersToReset = [...characters]
+        charactersToReset.forEach((character) => {
+                character.currency = 50
+                character.healthPoints = 100
+                updateCharacterInTable(character)
+        })
+        setCharacters(charactersToReset)
+    }
+
     return (
         <>
              <Canvas gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
@@ -160,7 +171,7 @@ const SceneManager = () => {
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
 
-            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} /> : null}
+            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} /> : null}
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 

@@ -9,10 +9,11 @@ import TalkFailedScreen from "./TalkFailedScreen";
 import BarterCantAffordScreen from "./BarterCantAffordScreen";
 import BarterFailedScreen from "./BarterFailedScreen";
 import GameOverScreen from "./GameOverScreen";
+import { updateItemInTable } from "./ItemServices";
 import {updateCharacterInTable} from "./CharacterServices"
 
 
-const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters}) => {
+const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters, resetCharacters}) => {
 
 
     const [fightPanel, setFightPanel] = useState(false)
@@ -57,9 +58,10 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
         setBossOpen(false)
         const itemsToReset = [...defaultItems]
         setItems(itemsToReset)
-        const charactersToReset = [...defaultCharacters]
-        setCharacters(charactersToReset)
-        console.log(defaultCharacters);
+        itemsToReset.forEach((item) => {
+            updateItemInTable(item)
+        })
+        resetCharacters()
     }
 
     const talkClick = () =>{
