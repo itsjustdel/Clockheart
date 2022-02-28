@@ -4,12 +4,11 @@ import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
 
-const FightPanel = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead}) => {
+const FightPanel = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
     const newCharacters = [...characters]
-    const [nextQuest, setNextQuest] = useState({name: "ClockTowerBar"})
     const player = newCharacters[0]
 
 
@@ -109,6 +108,12 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
             //boss turn
             console.log("setting turn to 1")
             setTurn(1)
+        }
+
+        if(player.healthPoints <= 0){
+            setPlayerDead(true)
+            setFightPanel(false)
+            setBossDead(false)
         }
 
         return
