@@ -1,4 +1,4 @@
-const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen, setPlayerStartPosition, setPlayerTargetPosition}) => {
+const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen}) => {
   
     const handleQuestClick = (event) => {
         const questToSet = quests[event.target.value]
@@ -15,21 +15,6 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         //reset gui panel in state
         setQuestGiverOpen(false)
 
-        switch(questToSet.name) {
-            case "Street":
-                setPlayerStartPosition([20,5,25])
-                setPlayerTargetPosition([20,5,25])
-              break;
-
-            case "Rust and Dust":                              
-                setPlayerStartPosition([0,5,-5])
-                setPlayerTargetPosition([0,5,-5])
-              break;
-
-              case "ClockTowerBar":                              
-                setPlayerStartPosition([0,5,-5])
-                setPlayerTargetPosition([0,5,-5])            
-          }
         //back end put        
         fetch(`/quests/${questToSet.id}`,{
             method: 'PUT',

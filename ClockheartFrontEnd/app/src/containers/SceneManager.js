@@ -19,6 +19,7 @@ import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
 
 const SceneManager = () => {
+    console.log("s m")
 
     const [characters, setCharacters] = useState([])
     const [items, setItems] = useState([]);
@@ -116,7 +117,7 @@ const SceneManager = () => {
                 : null}
 
                 {currentQuest.name == "Rust and Dust" ? 
-                <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} 
+                <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen}
                     playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
@@ -140,7 +141,6 @@ const SceneManager = () => {
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} /> : null}                           
 
             {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen}/> : null}
-
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 

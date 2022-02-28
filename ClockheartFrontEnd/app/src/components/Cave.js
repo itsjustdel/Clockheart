@@ -40,7 +40,7 @@ const Cave = ({ playerMesh, bossOpen, setBossOpen, setPlayerTargets }) => {
     return (
         <>
             <Suspense fallback={null}>
-                <GroundPlane setPlayerTargets={setPlayerTargets} colour={"brown"} size={[sizeX, sizeY]}/>
+                <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"brown"} size={[sizeX, sizeY]}/>
                 <TexturedPlane url={["/levels/caveLevel.png"]} position={[0, 2, 0]} args={[sizeX, sizeY]} />
 
                 <Boss playerMesh={playerMesh} bossOpen={bossOpen} setBossOpen={setBossOpen} setPlayerTargets={setPlayerTargets} />

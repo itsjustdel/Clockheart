@@ -5,7 +5,7 @@ import GroundPlane from "./GroundPlane"
 import Music from "./Music";
 import TexturedPlane from "./TexturedPlane";
 
-const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreationOpen, playerMesh}) => {
+const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setCharacterCreationOpen, playerMesh}) => {
     
 
     const doorPosition = new Vector3(-17, 5, -13);
@@ -22,7 +22,8 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
         
         if(distance < 2){
             if(!characterCreationOpen){
-                updatePlayerTarget(playerMesh.current.position)
+                // updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setCharacterCreationOpen(true)
             }
                 
@@ -30,7 +31,8 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
         else {        
             if(characterCreationOpen)
             {
-                updatePlayerTarget(playerMesh.current.position)
+                // updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setCharacterCreationOpen(false)
             }
            
@@ -83,7 +85,7 @@ const Street = ({updatePlayerTarget, characterCreationOpen, setCharacterCreation
     return(
         <>
              <Suspense fallback={null}>
-                <GroundPlane updatePlayerTarget={updatePlayerTarget} colour={"aquamarine"} size={[sizeX, sizeY]} />
+                <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"aquamarine"} size={[sizeX, sizeY]} />
                 <TexturedPlane url={["/levels/streetMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
                 <TexturedPlane url={["/levels/streetOverlap.png"]}position={[0,7,0]} args={[sizeX, sizeY]}/>
 

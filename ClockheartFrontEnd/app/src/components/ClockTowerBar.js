@@ -8,7 +8,7 @@ import BookLocation from './BookLocation'
 import TexturedPlane from './TexturedPlane'
 import { Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber'
-const ClockTowerBar= ({updatePlayerTarget, playerTargets, setPlayerTargets, playerMesh, shopOpen, setShopOpen, questGiverOpen, setQuestGiverOpen, bookLocationOpen, setBookLocationOpen}) => {
+const ClockTowerBar= ({setPlayerTargets, playerMesh, shopOpen, setShopOpen, questGiverOpen, setQuestGiverOpen, bookLocationOpen, setBookLocationOpen}) => {
 
 
     const [playerPositionOnLoad, setPlayerPositionOnLoad] = useState(false)
@@ -106,7 +106,7 @@ const ClockTowerBar= ({updatePlayerTarget, playerTargets, setPlayerTargets, play
         <Suspense fallback={null}>
             <Obstacles/>
             
-            <GroundPlane setPlayerTargets={setPlayerTargets} colour={"grey"} size={[sizeX, sizeY]}/>
+            <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"grey"} size={[sizeX, sizeY]}/>
 
             <TexturedPlane url={["/levels/barMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
             <TexturedPlane url={["/levels/barBar.png"]}position={[0,4,0]} args={[sizeX,sizeY]}/>
