@@ -2,7 +2,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 
-const QuestGiver = ({questGiverOpen, setQuestGiverOpen, playerMesh, updatePlayerTarget}) => {
+const QuestGiver = ({questGiverOpen, setQuestGiverOpen, playerMesh, setPlayerTargets}) => {
     const questGiverPosition = new Vector3(-2,5,-9);
 
     useEffect(() => {
@@ -18,14 +18,19 @@ const QuestGiver = ({questGiverOpen, setQuestGiverOpen, playerMesh, updatePlayer
         if(distance < 1){
             //only set if we need to change (causes re-render when setting)
             if(questGiverOpen != true){
-                updatePlayerTarget(playerMesh.current.position)
+                //updatePlayerTarget(playerMesh.current.position)
+                
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setQuestGiverOpen(true)                
             }
         }
         
         else {        
             if(questGiverOpen!= false){
-                updatePlayerTarget(playerMesh.current.position)
+                
+                //updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])//hiccup?
+                
                 setQuestGiverOpen(false)                
             }
         }        

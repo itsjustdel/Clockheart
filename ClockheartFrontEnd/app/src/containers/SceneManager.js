@@ -19,14 +19,16 @@ import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
 
 const SceneManager = () => {
+    console.log("sm")
 
     const [characters, setCharacters] = useState([])
     const [items, setItems] = useState([]);
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
 
-    const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
-    const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
+    // const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
+    // const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
+    const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 15)])
 
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
@@ -42,6 +44,8 @@ const SceneManager = () => {
         getCharacters()
         getItems()
         getQuests()
+
+       
     }, [])
 
     // The below will return an up-to-date array of player items every time an item is bought. DB still updating fine. This isn't stored anywhere though!
@@ -70,11 +74,13 @@ const SceneManager = () => {
             .then(quests => setQuests(quests))
     }
 
-    const updatePlayerTarget = (newPlayerTargetPosition) => {
+//     const updatePlayerTarget = (newPlayerTargetPosition) => {
+// console.log("UPDDATEETE!!!!")
+//         // setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
+//         // setPlayerTargetPosition(newPlayerTargetPosition)
+//         setPlayerTargets([playerMesh.current.position,newPlayerTargetPosition])
 
-        setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
-        setPlayerTargetPosition(newPlayerTargetPosition)
-    }
+//     }
     const updateItems = (index, newItem) => {
 
         // console.log("update player items - Scene Manager")
@@ -84,7 +90,9 @@ const SceneManager = () => {
         newItems[index] = newItem
         setItems(newItems)
         //we are re-rendering because we are setting state, so we need to update player position in state
-        setPlayerStartPosition(playerMesh.current.position)
+        // setPlayerStartPosition(playerMesh.current.position)
+        //only update start position, target will be the same
+        setPlayerTargets([playerMesh.current.position,playerTargets[1]])
     }
 
     const updateCharacters = (index, newCharacter) => {
@@ -98,27 +106,29 @@ const SceneManager = () => {
              <Canvas gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
              <SceneHelper playerMesh={playerMesh}/>
 
-                <Player playerStartPosition={playerStartPosition} playerTargetPosition={playerTargetPosition} mesh={playerMesh} items={items} />
+                <Player playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} mesh={playerMesh} items={items} />
 
 
                 {currentQuest.name == "ClockTowerBar" ? 
-                <ClockTowerBar updatePlayerTarget={updatePlayerTarget} playerMesh={playerMesh}
+                <ClockTowerBar  playerMesh={playerMesh}
                     shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen}
                     setQuestGiverOpen={setQuestGiverOpen} 
-                    setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
+                   playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                     bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen}
                      /> 
                 : null}
 
                 {currentQuest.name == "Rust and Dust" ? 
-                <Cave playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} bossOpen ={bossOpen} setBossOpen={setBossOpen} updatePlayerTarget={updatePlayerTarget} 
-                        setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition}
+                <Cave playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen}
+                    playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
 
                 
                 {currentQuest.name == "Street" ? 
-                <Street playerMesh={playerMesh} updatePlayerTarget={updatePlayerTarget} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} setPlayerStartPosition={setPlayerStartPosition} setPlayerTargetPosition={setPlayerTargetPosition} /> 
+
+                <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
+
                 : null}
             </Canvas>
 
@@ -139,7 +149,6 @@ const SceneManager = () => {
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items}/> : null}                           
 
             {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen}/> : null}
-
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 

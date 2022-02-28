@@ -2,7 +2,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 
-const Shop = ({shopOpen, setShopOpen, playerMesh, updatePlayerTarget}) => {
+const Shop = ({shopOpen, setShopOpen, playerMesh, setPlayerTargets}) => {
 
     const shopPosition = new Vector3(9.5,3.5,1.5);
 
@@ -19,14 +19,15 @@ const Shop = ({shopOpen, setShopOpen, playerMesh, updatePlayerTarget}) => {
         if(distance < 4){
             //only set if we need to change (causes re-render when setting)
             if(shopOpen != true){
-                updatePlayerTarget(playerMesh.current.position)
+                // updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
                 setShopOpen(true)                
             }
         }
         
         else {        
             if(shopOpen!= false){
-                updatePlayerTarget(playerMesh.current.position)
+                setPlayerTargets([playerMesh.current.position, playerMesh.current.position])//change here for hiccup?
                 setShopOpen(false)                
             }
         }        
