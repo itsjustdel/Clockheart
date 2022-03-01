@@ -1,6 +1,7 @@
 import { updateCharacterInTable } from "../Services/CharacterServices"
 import { updateItemInTable } from "../Services/ItemServices"
 
+
 const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
     console.log("Shop list")
     const newItems = [...items]
@@ -15,7 +16,8 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
 
     const handleBuyItemClick = (event) => {
 
-        // const playerMoney = characters[0].currency
+
+        console.log("item clcik")
         const index = event.target.value
         if(player.currency >= items[index].value){
 
@@ -57,10 +59,16 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
     const itemsForSale = items.map((item, index) => {
         const filename = item.name.replace(/ /g, "_");
         if (item.character.name == "Zebediah Flint")
-            return    <li className='npcItem'
-                          key={index}>
-                        <button onClick={handleBuyItemClick} value={index}>Buy: {item.name}</button>
-                        <img className='playerItemImage' src={`/newPngs/${filename}.png`}></img>
+            return    <li className='npcItem' key={index}>                          
+                        <div>
+                            <h1 className ="shopItemName">{item.name}</h1>
+                        </div>
+                        <div>
+                            <h1  className ="shopItemPrice" > $ {item.value}</h1>
+                        </div>
+                        <div className ="shopItemImage">                            
+                            <input onClick={handleBuyItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
+                        </div>
                      </li>
     })
 
@@ -92,20 +100,32 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
 
     return (
         <>
-            <h2>Sell items</h2>
-            <p>Player currency = {player.currency}</p>
-            <button onClick={handleSellItemClick}>Sell selected item</button>
-            <h2> Shop Item List</h2>
+           
+
+                
             <div className="npcContainer">
+                <div className="npcPortrait" ></div>               
                 <div className="npcItems">
                     <ul className="npcItemList" >
+                        <li className='npcItem'>                            
+                        </li>
                         {itemsForSale}
+                        <li className='npcItem'>                            
+                        </li>
+                        <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>       
                     </ul>
                 </div>
+            <div className="npcTextBox">
+                <h1>
+                    Howdy, Everything is for sale, some may call this junk...me? I call them treasures
+                </h1>
+
+                </div>
+              
             </div>
 
         </>
     )
 }
 
-export default ShopListGUI
+export default ShopListGUI;

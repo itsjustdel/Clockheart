@@ -39,7 +39,7 @@ const SceneManager = () => {
     const [dungeonComplete, setDungeonComplete] = useState(false)
 
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "ClockTowerBar" }
 
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()

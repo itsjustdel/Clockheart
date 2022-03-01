@@ -1,6 +1,6 @@
 import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
-const TalkPanelGUI = ({characters, items, setItems, setTalkPanel, setFightPanel, setTalkComplete, setTalkFailed}) => {
+const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, setTalkComplete, setTalkFailed, setText}) => {
     const newCharacters = [...characters]
     const player = newCharacters[0]
     const newItems = [...items]
@@ -45,6 +45,7 @@ const TalkPanelGUI = ({characters, items, setItems, setTalkPanel, setFightPanel,
             console.log(chance);
             console.log("NO");
             setTalkFailed(true)
+            setText("You have failed to convince me..")
             setTalkPanel(false)
         }
 
@@ -55,10 +56,18 @@ const TalkPanelGUI = ({characters, items, setItems, setTalkPanel, setFightPanel,
 
     return(
         <>
-            <h3>Talk Panel</h3>
+             <div className="npcItems">
+                <ul className="npcItemList">
+                    <li className='questItem'>                    
+                    <button onClick={handleSpeech}>Please Give Me The Gem!</button>
+                        {/* <button  onClick={talkClick}>TALK</button>                     */}
+                    </li>
+                </ul>
+            </div>
+
             <button onClick={handleSpeech}>Please Give Me The Gem!</button>
         </>
     )
 }
 
-export default TalkPanelGUI
+export default TalkPanel

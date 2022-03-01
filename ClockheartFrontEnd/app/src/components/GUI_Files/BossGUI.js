@@ -13,7 +13,8 @@ import { updateItemInTable } from "../Services/ItemServices";
 import {updateCharacterInTable} from "../Services/CharacterServices"
 
 
-const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters, resetCharacters, setDungeonComplete, dungeonComplete}) => {
+
+const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters, resetCharacters}) => {
 
 
     const [fightPanel, setFightPanel] = useState(false)
@@ -29,7 +30,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
 
     const [nextQuest, setNextQuest] = useState({name: "ClockTowerBar"})
     
-
+    const [text, setText] = useState("Welcome, I'm the boss!")
 
     //find the next quest by name
     const newQuests = [...quests]
@@ -48,6 +49,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
         setBarterFailed(false)
         setBarterCantAfford(false)
         setFightPanel(true)
+        setText("Choose your strongest weapon and ATTACK!!")
     }
 
     const handleDeath = () => {
@@ -66,11 +68,13 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
 
     const talkClick = () =>{
         setTalkPanel(true)
+        setText("Let's have a chat...")
     }
 
     const fightClick = () =>{
         //opens fightpanel
         setFightPanel(true)
+        setText("Choose your strongest weapon and ATTACK!!")
     }
     
     const banterClick = () => {
@@ -78,18 +82,24 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     }
 
     const InitialOptions = () => {
-        return (<>
-            <button onClick={talkClick}>TALK</button>
-            <button onClick={banterClick}>BARTER</button>
-            <button onClick={fightClick}>FIGHT</button>
-            <button onClick={handleClick}>LEAVE</button>
-            </>)
-    }
-
-    const BossDeadOptions = () => {
-        return (<>
-            <button onClick={handleClick}>LEAVE</button>
-            </>)
+        return (
+             <div className="bossItems">
+                <ul >
+                    <li className='questItem'>                    
+                        <button  onClick={talkClick}>TALK</button>                    
+                    </li>
+                    <li className='questItem'>
+                        <button onClick={banterClick}>BARTER</button>
+                    </li>
+                    <li className='questItem'>
+                        <button onClick={fightClick}>FIGHT</button>
+                    </li>
+                    <li className='questItem'>
+                        <button onClick={handleClick}>LEAVE</button>
+                    </li>                    
+                </ul>
+            </div>
+            )
     }
 
     const getBossIdFromQuest = () => {
@@ -98,17 +108,31 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     }
 
     return(
-        <>
-            <h1>BOSS GUI</h1>
-            {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false && dungeonComplete == false ? <InitialOptions/> : null}
+       
+        <div className="bossContainer">
+            <div className="npcPortraitQuest"></div>
+            <div className="portraitPlayer"></div>
 
-            {dungeonComplete == true ? <BossDeadOptions /> : null }
+            <div className="healthContainerBoss">
+                <progress className="healthBar" id="healthBoss" value="100" max="100"></progress>
+            </div>
+            <div className="healthContainerPlayer">
+                <progress className="healthBar" id="healthPlayer" value="100" max="100"></progress>
+            </div>
+            
+            {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false ? <InitialOptions/> : null}
 
-            {talkPanel == true ? <TalkPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} /> : null}
+            {talkPanel == true ? <TalkPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} setText={setText}/> : null}
 
-            {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} setDungeonComplete={setDungeonComplete} /> : null}
+            {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} /> : null}
 
             {barterPanel == true ? <BarterPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
+
+
+            <div className="bossText">                
+                <h1>{text}</h1>
+            </div>
+
 
             {bossDead == true ? <BossDeathScreenGUI handleClick={handleClick} /> : null}
 
@@ -123,7 +147,11 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
             {barterCantAfford == true ? <BarterCantAffordScreenGUI handleFight={handleFight} /> : null}
 
             {playerDead == true ? <GameOverScreenGUI handleDeath={handleDeath}/> : null}
-        </>
+        
+
+        </div>
+
+
     )
 }
 
