@@ -1,7 +1,7 @@
 import GroundPlane from './GroundPlane'
 import React, { useEffect, useState, Suspense } from 'react'
-import Boss from './Boss'
-import Music from './Music'
+import Boss from '../Boss/Boss'
+import Music from '../Music'
 import TexturedPlane from './TexturedPlane'
 import { Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber'

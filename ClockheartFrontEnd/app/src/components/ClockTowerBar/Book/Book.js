@@ -1,5 +1,5 @@
 import HTMLFlipBook from "react-pageflip"
-import './/Book.css'
+import '../../../Css/Book.css'
 
 
 const Book = () => {

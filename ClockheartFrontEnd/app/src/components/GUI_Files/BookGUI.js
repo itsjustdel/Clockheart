@@ -1,4 +1,4 @@
-import Book from "../Book"
+import Book from "../ClockTowerBar/Book/Book"
 
 const BookGUI = ({setBookLocationOpen}) => {
   
