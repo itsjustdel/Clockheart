@@ -1,10 +1,10 @@
 import { useFrame, useLoader } from "@react-three/fiber"
 import { Suspense, useState } from "react";
 import { Vector3, TextureLoader } from "three";
-import GroundPlane from "./GroundPlane"
-import Music from "./Music";
+import GroundPlane from "../Scenes/GroundPlane"
+import Music from "../Music";
 import StreetPeople from "./StreetPeople";
-import TexturedPlane from "./TexturedPlane";
+import TexturedPlane from "../Scenes/TexturedPlane";
 
 
 const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setCharacterCreationOpen, playerMesh}) => {

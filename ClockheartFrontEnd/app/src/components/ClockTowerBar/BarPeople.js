@@ -1,4 +1,4 @@
-import TexturedPlane from "./TexturedPlane";
+import TexturedPlane from "../Scenes/TexturedPlane";
 
 
 const BarPeople = ({playerMesh}) => {

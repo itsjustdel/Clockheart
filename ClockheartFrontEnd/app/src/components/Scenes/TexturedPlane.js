@@ -2,7 +2,7 @@ import { useFrame, useLoader} from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 import { Html } from "@react-three/drei"
 import { useState } from "react";
-import './/TexturedPlane.css'
+import '../../Css/TexturedPlane.css'
 
 
 

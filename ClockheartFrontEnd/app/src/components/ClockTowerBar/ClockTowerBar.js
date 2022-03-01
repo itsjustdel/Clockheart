@@ -1,12 +1,12 @@
-import GroundPlane from './GroundPlane'
+import GroundPlane from '../Scenes/GroundPlane'
 import React, { useEffect, useState, Suspense } from 'react'
 import BarPeople from './BarPeople'
 
-import Music from './Music'
+import Music from '../Music'
 import Shop from './Shop'
 import QuestGiver from './QuestGiver'
-import BookLocation from './BookLocation'
-import TexturedPlane from './TexturedPlane'
+import BookLocation from './Book/BookLocation'
+import TexturedPlane from '../Scenes/TexturedPlane'
 import { Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber'
 const ClockTowerBar= ({setPlayerTargets, playerMesh, shopOpen, setShopOpen, questGiverOpen, setQuestGiverOpen, bookLocationOpen, setBookLocationOpen}) => {

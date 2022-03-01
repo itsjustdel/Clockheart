@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import BossTurn from "../BossTurn"
+import BossTurn from "../Boss/BossTurn"
 import { updateCharacterInTable } from "../Services/CharacterServices"
 import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 

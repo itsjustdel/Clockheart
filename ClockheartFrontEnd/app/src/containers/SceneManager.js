@@ -4,18 +4,18 @@ import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { Canvas } from "@react-three/fiber"
 //project defined
 import Player from "../components/Player";
-import SceneHelper from '../components/SceneHelper';
-import ClockTowerBar from '../components/ClockTowerBar';
-import Cave from '../components/Cave'
+import SceneHelper from '../components/Scenes/SceneHelper';
+import ClockTowerBar from '../components/ClockTowerBar/ClockTowerBar';
+import Cave from '../components/Scenes/Cave'
 import ShopListGUI from '../components/GUI_Files/ShopListGUI'
 import PlayerItemsGUI from '../components/GUI_Files/PlayerItemsGUI';
 import QuestGUI from '../components/GUI_Files/QuestGUI';
-import Street from '../components/Street';
+import Street from '../components/Street/Street';
 import BossGUI from '../components/GUI_Files/BossGUI';
 import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
 import { getPlayerItems } from '../components/Services/ItemServices';
 import { updateCharacterInTable } from '../components/Services/CharacterServices';
-import BookLocation from '../components/BookLocation';
+import BookLocation from '../components/ClockTowerBar/Book/BookLocation';
 import BookGUI from '../components/GUI_Files/BookGUI';
 
 const SceneManager = () => {

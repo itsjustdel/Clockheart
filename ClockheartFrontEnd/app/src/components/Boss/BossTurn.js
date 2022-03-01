@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { updateCharacterInTable } from "./Services/CharacterServices"
+import { updateCharacterInTable } from "../Services/CharacterServices"
 
 const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
