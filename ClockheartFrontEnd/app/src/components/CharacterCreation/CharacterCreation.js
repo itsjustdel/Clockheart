@@ -94,17 +94,23 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
 
     return(
         <>
+            <div className="npcItems">
             <form onSubmit={handleSubmit}>
+                <div className="create-name">
                 <label htmlFor="name">Enter your name: </label>
-                <input type="text" id="name" name="name"/>
+                <input type="text" className="name-box" id="create-name" name="name"/>
+                </div>
                 <Carousel itemsToShow={1} enableMouseSwipe={true} enableAutoPlay={false} autoPlaySpeed={10000} onChange={handleChange}>
                     {listOfTypes}
                 </Carousel>
                 <input type="submit" value="Submit" />
             </form>    
-
+            <div className='npcItem'>
+                <div id="infotoShow" >
             {infoToShow == null ? null : <ClassTypeInformation type={infoToShow} />}
-                
+            </div>
+            </div>
+            </div>
         </>
     )
 }

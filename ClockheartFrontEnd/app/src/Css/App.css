@@ -277,3 +277,39 @@ progress::-webkit-progress-value { background: green; }
   display: flex;
   justify-content: center;
 }
+
+
+.create-name{
+  margin-top: 5vh;
+  margin-bottom: 1.5vh;
+  margin-left: 7%;
+}
+
+.name-box{
+  border-radius: 5px;
+  background-color: rgb(140, 115, 165);
+
+}
+
+#infoToShow{
+  margin-top: 10%;
+}
+
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+
+
+.rec.rec-arrow {
+  border-radius: 50%;
+  background-color: rgb(60, 33, 87, 0.8)}
+
+.rec.rec-arrow:hover {
+  border-radius: 50%;
+  background-color: rgba(60, 33, 87, 0.425)
+}
+.rec.rec-slider-container {
+  overflow: visible;
+  background-color: rgb(60, 33, 87, 0.8);
+  overflow: hidden;
+}
