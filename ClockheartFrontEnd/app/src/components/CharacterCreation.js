@@ -56,9 +56,13 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
     let newCharacter = newCharacters[0]
 
     const getQuest = () => {
-        fetch('/quests?questName=ClockTowerBar')
-            .then(res => res.json())
-            .then(nextQuest => setNextQuest(nextQuest))
+        // fetch('http://localhost:8080/quests?questName=ClockTowerBar')
+        //     .then(res => res.json())
+        //     .then(nextQuest => setNextQuest(nextQuest))
+
+        setNextQuest( {
+            name: "ClockTowerBar"
+        })
     }
    
     const handleSubmit = (event) => {
@@ -73,7 +77,7 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
         
         updateCharacters(0, newCharacter)
 
-        const str = `/characters/${1}`
+        const str = `http://localhost:8080/characters/1`
         fetch(str, {
             method: 'PUT',
             body: JSON.stringify(newCharacter),

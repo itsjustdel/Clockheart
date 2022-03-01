@@ -30,7 +30,7 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         setQuestGiverOpen(false)
 
         //back end put        
-        fetch(`/quests/${questToSet.id}`,{
+        fetch(`http://localhost:8080/quests/${questToSet.id}`,{
             method: 'PUT',
             body: JSON.stringify(questToSet),
             headers: { 'Content-Type': 'application/json' }
