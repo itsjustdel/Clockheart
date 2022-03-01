@@ -60,12 +60,12 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
         if (item.character.name == "Zebediah Flint")
             return    <li className='npcItem' key={index}>                          
                         <div>
-                            <h2>{item.name}</h2>
+                            <h2 className ="shopItemName">{item.name}</h2>
                         </div>
                         <div>
-                            <h2> {item.value}</h2>
+                            <h2  className ="shopItemPrice" > {item.value}</h2>
                         </div>
-                        <div className='playerItemImage'>
+                        <div className ="shopItemName">
                             {/* <button onClick={handleBuyItemClick} value={index} src={`/newPngs/${filename}.png`}></button> */}
                             <input onClick={handleBuyItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
                         </div>
