@@ -164,3 +164,9 @@ ul{
   background-color: #272727;
   border: red solid 10px;
 }
+
+.questItem{
+  border: #272727 solid 5px;
+  background-color: #2196F3;
+  text-align: center;
+}

@@ -15,6 +15,10 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
     }, [])
 
     const handleQuestClick = (event) => {
+
+
+        console.log("hi")
+
         const questToSet = quests[event.target.value]
 
         //test for quest complete
@@ -51,7 +55,11 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
    
 
     const questsMap = quests.map((quest, index) => {          
-        return <li onClick={handleQuestClick} value={index} key={index}>{quest.name}</li>
+        return <li className='questItem' key={index}>
+                <div >
+                    <h1 onClick={handleQuestClick} value={index} className="questItemName">{quest.name}</h1>
+                </div>
+                </li>
     })
 
     const handleTicketClick = () => {
@@ -76,10 +84,23 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
     if(gemCollected == false && endScreenOpen == false){
     return(
         <>
-        <h2>Quest List</h2>
-            <ul>
-                {questsMap}
-            </ul>
+         <div className="npcContainer">
+            <div className="npcPortrait"></div>    
+                <ul className="npcItemList">
+                    <li className='questItem'></li>
+                    {questsMap}
+                    <li className='questItem'></li>
+                            {/* <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>        */}                        
+                </ul>
+                <div className="npcTextBox">
+                <h1>
+                   Questing is my liiiife, questing is my gaaaame, come get me some gemmmssssss, come get you some ticket to another land... 
+                </h1>
+
+                </div>
+                
+        </div>
+            
         </>
     )} else {
         return(
