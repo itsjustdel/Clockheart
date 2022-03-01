@@ -105,7 +105,7 @@ const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setChar
                 <TexturedPlane url={["/levels/streetMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
                 <TexturedPlane url={["/levels/streetOverlap.png"]}position={[0,7,0]} args={[sizeX, sizeY]}/>
                 
-                <StreetPeople />
+                <StreetPeople playerMesh={playerMesh} />
                 <Obstacles/>
 
 

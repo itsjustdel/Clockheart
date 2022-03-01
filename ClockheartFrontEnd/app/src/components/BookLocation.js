@@ -4,7 +4,7 @@ import { Vector3, TextureLoader } from "three";
 
 
 const BookLocation = ({bookLocationOpen, setBookLocationOpen, playerMesh, setPlayerTargets}) => {
-    const bookLocationPosition = new Vector3(1.5,5,9);
+    const bookLocationPosition = new Vector3(-6.3, 4.8, -8.2);
 
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const BookLocation = ({bookLocationOpen, setBookLocationOpen, playerMesh, setPla
        
        return (
          <mesh position={bookLocationPosition} rotation ={[-Math.PI/2,0,0]}>
-           <planeBufferGeometry attach="geometry" args={[1, 2]} />
+           <planeBufferGeometry attach="geometry" args={[1, 1]} />
            <meshStandardMaterial map={texture} transparent={true}/>
          </mesh>
        );

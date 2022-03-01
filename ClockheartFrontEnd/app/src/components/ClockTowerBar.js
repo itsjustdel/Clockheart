@@ -106,7 +106,7 @@ const ClockTowerBar= ({setPlayerTargets, playerMesh, shopOpen, setShopOpen, ques
         <>
         <Suspense fallback={null}>
             <Obstacles/>
-            <BarPeople />
+            <BarPeople playerMesh={playerMesh}/>
             
             <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"grey"} size={[sizeX, sizeY]}/>
 
