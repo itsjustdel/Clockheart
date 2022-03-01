@@ -1,8 +1,8 @@
-const EndingScreen = ({handleTicketClick}) => {
+const EndingScreenGUI = ({handleTicketClick}) => {
     
     return(
         <button onClick={handleTicketClick}>TICKET?</button>
     )
 }
 
-export default EndingScreen
+export default EndingScreenGUI

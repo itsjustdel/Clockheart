@@ -1,7 +1,7 @@
 import { updateCharacterInTable } from "./CharacterServices"
 import { updateItemInTable } from "./ItemServices"
 
-const ShopList = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
+const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
     console.log("Shop list")
     const newItems = [...items]
     const zebediah = characters.filter((character) => {
@@ -108,4 +108,4 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
     )
 }
 
-export default ShopList;
+export default ShopListGUI

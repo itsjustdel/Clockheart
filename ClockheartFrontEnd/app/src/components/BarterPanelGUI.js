@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
-const BarterPanel = ({characters, setCharacters, items, setItems, setBarterPanel, setBarterComplete, setBarterFailed, setBarterCantAfford}) => {
+const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPanel, setBarterComplete, setBarterFailed, setBarterCantAfford}) => {
 
     const [price, setPrice] = useState(0)
     const newCharacters = [...characters]
@@ -93,4 +93,4 @@ const BarterPanel = ({characters, setCharacters, items, setItems, setBarterPanel
     
 }
 
-export default BarterPanel
+export default BarterPanelGUI

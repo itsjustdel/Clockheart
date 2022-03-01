@@ -1,4 +1,4 @@
-const BarterFailedScreen = ({handleFight}) => {
+const BarterFailedScreenGUI = ({handleFight}) => {
 
 
     return(
@@ -9,4 +9,4 @@ const BarterFailedScreen = ({handleFight}) => {
     )
 }
 
-export default BarterFailedScreen
+export default BarterFailedScreenGUI
