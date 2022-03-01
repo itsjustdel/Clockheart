@@ -1,4 +1,4 @@
-const GameOverScreen = ({handleDeath}) => {
+const GameOverScreenGUI = ({handleDeath}) => {
     
 
     return(
@@ -9,4 +9,4 @@ const GameOverScreen = ({handleDeath}) => {
     )
 }
 
-export default GameOverScreen
+export default GameOverScreenGUI
