@@ -7,7 +7,7 @@ import TalkCompleteScreenGUI from "./TalkCompleteScreenGUI";
 import TalkPanelGUI from "./TalkPanelGUI";
 import TalkFailedScreenGUI from "./TalkFailedScreenGUI";
 import BarterCantAffordScreen from "./BarterCantAffordScreen";
-import BarterFailedScreen from "./BarterFailedScreen";
+import BarterFailedScreenGUI from "./BarterFailedScreenGUI";
 import GameOverScreen from "./GameOverScreen";
 import { updateItemInTable } from "./ItemServices";
 import {updateCharacterInTable} from "./CharacterServices"
@@ -110,7 +110,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
 
             {talkFailed == true ? <TalkFailedScreenGUI handleFight={handleFight} /> : null}
 
-            {barterFailed == true? <BarterFailedScreen handleFight={handleFight} /> : null }
+            {barterFailed == true? <BarterFailedScreenGUI handleFight={handleFight} /> : null }
 
             {barterCantAfford == true ? <BarterCantAffordScreen handleFight={handleFight} /> : null}
 
