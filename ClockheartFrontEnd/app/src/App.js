@@ -1,4 +1,5 @@
 import './App.css';
+import './mosaic.css';
 import SceneManager from './containers/SceneManager';
 
 function App() {

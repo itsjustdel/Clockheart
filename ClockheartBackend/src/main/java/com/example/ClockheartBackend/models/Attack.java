@@ -10,8 +10,8 @@ public class Attack extends Item{
     private int damage;
 
 
-    public Attack(String name, int value, Shop shop, int damage) {
-        super(name, value, shop);
+    public Attack(String name, int value, GameCharacter gameCharacter, int damage) {
+        super(name, value, gameCharacter);
         this.damage = damage;
     }
 

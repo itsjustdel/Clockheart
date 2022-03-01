@@ -9,8 +9,8 @@ public class Healing extends Item{
     @Column(name = "healing")
     private int healing;
 
-    public Healing(String name, int value, Shop shop, int healing) {
-        super(name, value, shop);
+    public Healing(String name, int value, GameCharacter gameCharacter, int healing) {
+        super(name, value, gameCharacter);
         this.healing = healing;
     }
 

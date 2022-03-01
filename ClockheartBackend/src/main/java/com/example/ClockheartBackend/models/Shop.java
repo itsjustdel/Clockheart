@@ -6,8 +6,8 @@ import javax.persistence.*;
 public class Shop extends GameCharacter {
 
 
-    public Shop(String name) {
-        super(name);
+    public Shop(String name, int intelligence, int strength, int charisma, String type) {
+        super(name, intelligence, strength, charisma, type);
     }
 
     public Shop() {

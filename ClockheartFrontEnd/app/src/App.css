@@ -28,31 +28,7 @@ Canvas{
   touch-action: none; 
 } 
 
-.label{
-  background-color: #272727;
-  color: gainsboro;
-}
-
-.listContainer {
-  background-color: bisque;
-  position: initial;
-  
-  width: 40vw;
-  border: 5px solid black;
-}
-
-.playerItemList{
-  position: absolute;
-  top: 20vh;
+li{
   list-style: none;
-  display: flex;
-  
-}
-
-.playerItem{
-  background-color: burlywood;
-  border: black 5px solid;
-  width: 10vw;
-  height: 10vw;
 }
 
