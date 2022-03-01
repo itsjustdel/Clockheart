@@ -1,4 +1,4 @@
-const TalkFailedScreen = ({handleFight}) => {
+const TalkFailedScreenGUI = ({handleFight}) => {
 
 
     return(
@@ -9,4 +9,4 @@ const TalkFailedScreen = ({handleFight}) => {
     )
 }
 
-export default TalkFailedScreen
+export default TalkFailedScreenGUI
