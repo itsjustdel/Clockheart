@@ -1,4 +1,4 @@
-import { getPlayerItems, updateItemInTable } from "./GUI_Files/ItemServices"
+import { getPlayerItems, updateItemInTable } from "./Services/ItemServices"
 
 const TalkPanelGUI = ({characters, items, setItems, setTalkPanel, setFightPanel, setTalkComplete, setTalkFailed}) => {
     const newCharacters = [...characters]

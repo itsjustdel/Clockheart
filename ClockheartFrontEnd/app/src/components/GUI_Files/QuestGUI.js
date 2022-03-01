@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from "react"
-import Blimp from "./Blimp"
+import BlimpGUI from "./BlimpGUI"
 import EndingScreenGUI from "./EndingScreenGUI"
-import { getPlayerItems, updateItemInTable } from "./GUI_Files/ItemServices"
+import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
 const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen, items, defaultItems, resetCharacters, setItems}) => {
 
@@ -85,7 +85,7 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         return(
         <>
             {endScreenOpen == true ? <EndingScreenGUI handleTicketClick={handleTicketClick}/> : null}
-            {gemCollected == true ? <Blimp handlePlayAgain={handlePlayAgain} /> : null}
+            {gemCollected == true ? <BlimpGUI handlePlayAgain={handlePlayAgain} /> : null}
         </>
         )
     }
