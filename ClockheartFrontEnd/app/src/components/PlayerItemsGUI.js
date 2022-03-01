@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPlayerItems } from "./ItemServices"
 
-const PlayerItems = ({characters, items, setSelectedItem}) => {
+const PlayerItemsGUI = ({characters, items, setSelectedItem}) => {
 
     // const [player, setPlayer] = useState(null)
 
@@ -39,4 +39,4 @@ const PlayerItems = ({characters, items, setSelectedItem}) => {
     )
 }
 
-export default PlayerItems
+export default PlayerItemsGUI

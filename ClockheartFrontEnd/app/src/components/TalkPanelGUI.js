@@ -1,6 +1,6 @@
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
-const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, setTalkComplete, setTalkFailed}) => {
+const TalkPanelGUI = ({characters, items, setItems, setTalkPanel, setFightPanel, setTalkComplete, setTalkFailed}) => {
     const newCharacters = [...characters]
     const player = newCharacters[0]
     const newItems = [...items]
@@ -61,4 +61,4 @@ const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, se
     )
 }
 
-export default TalkPanel
+export default TalkPanelGUI

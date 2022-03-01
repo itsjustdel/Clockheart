@@ -4,7 +4,7 @@ import { updateCharacterInTable } from "./CharacterServices"
 import { getPlayerItems, updateItemInTable } from "./ItemServices"
 
 
-const FightPanel = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead}) => {
+const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
@@ -202,4 +202,4 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
 
 }
     
-export default FightPanel
+export default FightPanelGUI

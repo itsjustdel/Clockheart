@@ -1,14 +1,14 @@
-const BossDeathScreen = ({handleClick}) => {
+const BarterCompleteScreenGUI = ({handleClick}) => {
     
     
     
     return(
         <>
-            <h1>THE BOSS DIED</h1>
+            <h1>You Wore Me Down!</h1>
 
             <button onClick={handleClick} >Head Back to Tavern</button>
         </>
     )
 }
 
-export default BossDeathScreen
+export default BarterCompleteScreenGUI

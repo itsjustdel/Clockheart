@@ -1,4 +1,4 @@
-const TalkCompleteScreen = ({handleClick}) => {
+const TalkCompleteScreenGUI = ({handleClick}) => {
     
     
     
@@ -11,4 +11,4 @@ const TalkCompleteScreen = ({handleClick}) => {
     )
 }
 
-export default TalkCompleteScreen
+export default TalkCompleteScreenGUI
