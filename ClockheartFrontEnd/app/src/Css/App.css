@@ -184,9 +184,13 @@ ul{
   background-color: blanchedalmond;  
 }
 
-.playerItem::selection{
+/* .playerItem::selection{
   background-color: #272727;
   border: red solid 10px;
+} */
+
+.selected-item {
+  border: goldenrod dashed 5px;
 }
 
 .questItem{
