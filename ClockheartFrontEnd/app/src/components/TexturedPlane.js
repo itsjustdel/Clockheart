@@ -2,6 +2,9 @@ import { useFrame, useLoader} from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 import { Html } from "@react-three/drei"
 import { useState } from "react";
+import './/TexturedPlane.css'
+
+
 
 const TexturedPlane =({name, url, position, args, speech, playerMesh})=>{
 
@@ -42,8 +45,8 @@ const TexturedPlane =({name, url, position, args, speech, playerMesh})=>{
                 <planeBufferGeometry attach="geometry" args={args} />
                 <meshStandardMaterial map={texture} transparent={true} />
                 {close? 
-                <Html>
-                    <div className="label"><p>{speech}</p></div>
+                <Html className="people" >
+                    <div className="label">{speech}</div>
                 </Html> 
                 : null }
     

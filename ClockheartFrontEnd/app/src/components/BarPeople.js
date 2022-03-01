@@ -20,7 +20,7 @@ const BarPeople = ({playerMesh}) => {
             <TexturedPlane url={["/people/greenHairDuffleRight.png"]}position={[0.3, 4.5, 6.2]} args={[3, 3]}/>
             <TexturedPlane url={["/people/redHairPrincessBack.png"]}position={[6, 4.5, 2.4]} args={[3, 3]}/>
 
-            <TexturedPlane url={["/people/whiteBeardBluePriestRight.png"]}position={[-9.8, 4.7, -0.6]} args={[3, 3]} speech="Proceed With Care" playerMesh={playerMesh}/>
+            <TexturedPlane url={["/people/whiteBeardBluePriestRight.png"]}position={[-9.8, 4.7, -0.6]} args={[3, 3]} speech="Careful... you don't understand what you're entering" playerMesh={playerMesh}/>
 
 
 
