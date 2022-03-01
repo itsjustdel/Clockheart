@@ -7,14 +7,27 @@ import { Vector3, TextureLoader, Raycaster, DoubleSide, MeshBasicMaterial } from
 const Player = ({ playerTargets, setPlayerTargets, mesh }) => {
  
   const raycaster = new Raycaster();
-  const [textureFront, textureBack, textureLeft, textureRight] = useLoader(TextureLoader, ["/characters/mainFront.png","/characters/mainBack.png","/characters/mainLeft.png","/characters/mainRight.png"]);
+
+  const [frontStand, backStand, leftStand, rightStand] = useLoader(TextureLoader, ["/characters/mainFront.png","/characters/mainBack.png","/characters/mainLeft.png","/characters/mainRight.png"]);
+  const [leftWalk0,leftWalk1] = useLoader(TextureLoader, ["/characters/walkLeft0.png","/characters/walkLeft1.png"]);
+  const [rightWalk0,rightWalk1] = useLoader(TextureLoader, ["/characters/walkRight0.png","/characters/walkRight1.png"]);
+  const [frontWalk0,frontWalk1] = useLoader(TextureLoader, ["/characters/walkFront0.png","/characters/walkFront1.png"]);
+  const [backWalk0,backWalk1] = useLoader(TextureLoader, ["/characters/walkBack0.png","/characters/walkBack1.png"]);
   
 
-  useEffect(()=>{
+  const frame = useRef()
+  const animationIndex = useRef()
+  const lefts = [leftStand, leftWalk0, leftWalk1]
+  const rights = [rightStand, rightWalk0, rightWalk1]
+  const fronts = [frontStand, frontWalk0, frontWalk1]
+  const backs = [backStand, backWalk0, backWalk1]
 
+  useEffect(()=>{
+    frame.current = 0
+    animationIndex.current = 0
   })
 
-  useFrame(() => {
+  useFrame((state, delta) => {
 
     //loading textures can take time, the mesh will not be defined until the textues is loaded
     if (mesh.current == undefined)
@@ -44,13 +57,14 @@ const Player = ({ playerTargets, setPlayerTargets, mesh }) => {
         setPlayerTargets(newPlayerTargets)
         return        
       }      
-   
+      const amendedTarget = new Vector3(playerTargets[1].x, mesh.current.position.y, playerTargets[1].z)
+      const distanceToTarget =  mesh.current.position.distanceTo(amendedTarget)
       if (intersects[i].object.name == "GroundPlane") {
          
         //amended target flattens y levels
-          const amendedTarget = new Vector3(playerTargets[1].x, mesh.current.position.y, playerTargets[1].z)
+          
           //snap the plyer to its final position, but only do this if it doesn't already equal it - stops re renders
-        if (!mesh.current.position.equals( playerTargets[1] )&& mesh.current.position.distanceTo(amendedTarget) < speed) {
+        if (!mesh.current.position.equals( playerTargets[1] )&& distanceToTarget < speed) {
           //set the target position to the position we got to          
           setPlayerTargets([mesh.current.position,mesh.current.position])
           return;
@@ -67,21 +81,41 @@ const Player = ({ playerTargets, setPlayerTargets, mesh }) => {
         mesh.current.position.y = 5; //player layer is always 5
         mesh.current.position.z += direction.z;
 
-
         //set walk direction        
         let faceDirection = new Vector3()
         faceDirection.subVectors(mesh.current.position, amendedTarget)
         const angle = Math.atan2(faceDirection.z,faceDirection.x)
         const degrees = 180*angle/Math.PI  
   
+        let increase = (distanceToTarget /2)
+        if(increase > 2)
+          increase = 2
+
+          if(increase < .5)
+          increase =.5
+
+        frame.current += increase        
+
+        if(frame.current > 10){
+          frame.current = 0
+          animationIndex.current += 1
+          if(animationIndex.current > 2)
+            animationIndex.current = 1
+        }
+        
+        if(distanceToTarget < .1 )
+        {
+          animationIndex.current = 0;
+        }
+
         if(degrees > -45 && degrees < 45)                  
-          mesh.current.material.map = textureLeft              
+          mesh.current.material.map = lefts[animationIndex.current]           
         else if(degrees < -45  && degrees > -135)
-          mesh.current.material.map = textureFront
+          mesh.current.material.map = fronts[animationIndex.current]  
         else if(degrees > 45 && degrees < 135)
-          mesh.current.material.map = textureBack
+          mesh.current.material.map = backs[animationIndex.current]  
         else
-          mesh.current.material.map = textureRight
+          mesh.current.material.map = rights[animationIndex.current]  
         //don't look for other collision, jump out of for loop
         break
       }
@@ -93,7 +127,7 @@ const Player = ({ playerTargets, setPlayerTargets, mesh }) => {
       <>
       <mesh name='playerMesh' ref={mesh}  position={playerTargets[0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeBufferGeometry  attach="geometry" args={[3, 3]} />
-        <meshStandardMaterial map={textureFront} transparent={true} />
+        <meshStandardMaterial map={frontStand} transparent={true} />
       </mesh>
       
       </>
