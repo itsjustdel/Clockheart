@@ -4,7 +4,7 @@ import { Vector3, TextureLoader } from "three";
 
 const Boss = ({playerMesh, bossOpen, setBossOpen, setPlayerTargets}) => {
     
-    const bossPosition = new Vector3(0,5,0);
+    const bossPosition = new Vector3(3.8,5.2,2.4);
 
     useFrame( () => {
         if(playerMesh.current == undefined)
@@ -13,7 +13,7 @@ const Boss = ({playerMesh, bossOpen, setBossOpen, setPlayerTargets}) => {
         
         const distance = playerMesh.current.position.distanceTo( bossPosition)
         
-        if(distance < 1){
+        if(distance < 5){
             if(!bossOpen){
                 // updatePlayerTarget(playerMesh.current.position)
                 setPlayerTargets([playerMesh.current.position, playerMesh.current.position])
@@ -37,7 +37,7 @@ const Boss = ({playerMesh, bossOpen, setBossOpen, setPlayerTargets}) => {
 
        return (
          <mesh position={bossPosition} rotation ={[-Math.PI/2,0,0]}>
-           <planeBufferGeometry attach="geometry" args={[1, 2]} />
+           <planeBufferGeometry attach="geometry" args={[10, 6]} />
            <meshStandardMaterial map={texture} transparent={true}/>
          </mesh>
        );
@@ -46,7 +46,7 @@ const Boss = ({playerMesh, bossOpen, setBossOpen, setPlayerTargets}) => {
      return (
         <>
              <Suspense fallback={null}>
-                <TexturedPlane url={["/redguy.png"]} />       
+                <TexturedPlane url={["/people/bosspic.png"]} />       
             </Suspense>
         </>
     )
