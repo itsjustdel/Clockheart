@@ -96,6 +96,9 @@ const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setChar
         )
     }
 
+
+   const [personPos, setPersonPos] = useState()
+  
     
     return(
         <>
@@ -103,6 +106,11 @@ const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setChar
                 <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"aquamarine"} size={[sizeX, sizeY]} />
                 <TexturedPlane url={["/levels/streetMain.png"]}position={[0,2,0]} args={[sizeX,sizeY]}/>
                 <TexturedPlane url={["/levels/streetOverlap.png"]}position={[0,7,0]} args={[sizeX, sizeY]}/>
+
+
+                <TexturedPlane url={["/characters/mainRight.png"]}position={[0,4.5,15]} args={[3, 3]} 
+                                avoid={true} playerMesh={playerMesh} setPersonPos={setPersonPos} personPos={personPos}
+                                />
 
                 <Obstacles/>
 
