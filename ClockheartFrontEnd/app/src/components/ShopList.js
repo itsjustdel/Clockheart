@@ -51,6 +51,7 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
                 .then(res => res.json()) 
         }
         else {console.log("NOT ENOUGH MONEY")}
+
     }
 
     const itemsForSale = items.map((item, index) => {
