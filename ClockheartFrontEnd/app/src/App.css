@@ -71,6 +71,30 @@ ul{
   background-position: center;;
 }
 
+.npcPortraitQuest{
+  background-image: url("/public/characters/HoodWalker.gif");
+  margin: 40px;
+  border: black solid 10px;
+  background-color: #2196F3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-position: center;;
+}
+
+.portraitPlayer{
+  background-image: url("/public/characters/HoodWalker.gif");
+  margin: 40px;
+  border: black solid 10px;
+  background-color: #2196F3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-position: center;;
+}
+
 .npcTextBox{
   color: black;
   background-color: yellowgreen;
@@ -169,4 +193,50 @@ ul{
   border: #272727 solid 5px;
   background-color: #2196F3;
   text-align: center;
+  font-size:xx-large;
+  margin-right: 5%;
+}
+
+.questButton{
+  /* all: unset;
+  cursor: hand; */
+}
+
+button {
+  all: unset;
+  
+}
+
+button:focus {
+  outline: orange 5px auto;
+}
+
+.bossContainer{
+    position:absolute;
+    border: black solid 10px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    background-color: #2196F3;
+    padding: 10px;
+    top:50%;
+    left:50%;  
+    transform:translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    color: white; 
+    background-color: #666666;
+    padding-inline-start: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;    
+}
+
+.bossItems{
+  /* position: relative; */
+  background-color: rebeccapurple;
+  margin: 40px;
+  border: 10px black solid;
+  grid-column-start: 2;  
+  grid-row-start: 1;
+  grid-row-end: 3;
 }

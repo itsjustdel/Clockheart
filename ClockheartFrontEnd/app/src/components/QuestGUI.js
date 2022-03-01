@@ -55,10 +55,9 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
    
 
     const questsMap = quests.map((quest, index) => {          
+        //  return <li onClick={handleQuestClick} value={index} key={index}>{quest.name}</li>
         return <li className='questItem' key={index}>
-                <div >
-                    <h1 onClick={handleQuestClick} value={index} className="questItemName">{quest.name}</h1>
-                </div>
+                    <button className="questButton" onClick={handleQuestClick} value={index} >{quest.name}</button>
                 </li>
     })
 
@@ -85,19 +84,20 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
     return(
         <>
          <div className="npcContainer">
-            <div className="npcPortrait"></div>    
-                <ul className="npcItemList">
-                    <li className='questItem'></li>
-                    {questsMap}
-                    <li className='questItem'></li>
-                            {/* <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>        */}                        
-                </ul>
-                <div className="npcTextBox">
-                <h1>
-                   Questing is my liiiife, questing is my gaaaame, come get me some gemmmssssss, come get you some ticket to another land... 
-                </h1>
+            <div className="npcPortraitQuest"></div>    
+            <div className="npcItems">
+            <ul className="npcItemList">
+                <li className='npcItem'></li>
+                {questsMap}
+                <li className='npcItem'></li>
+            </ul>
+            </div>
+            <div className="npcTextBox">
+            <h1>
+                Questing is my liiiife, questing is my gaaaame, come get me some gemmmssssss, come get you some ticket to another land... 
+            </h1>
 
-                </div>
+            </div>
                 
         </div>
             
@@ -106,10 +106,11 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         return(
         <>
             {endScreenOpen == true ? <EndingScreen handleTicketClick={handleTicketClick}/> : null}
-            {gemCollected == true ? <Blimp handlePlayAgain={handlePlayAgain} /> : null}
+            {gemCollected == true ? <Blimp handlePlayAgain={handlePlayAgain} /> : null}                        
         </>
         )
     }
 }
 
 export default QuestGUI
+

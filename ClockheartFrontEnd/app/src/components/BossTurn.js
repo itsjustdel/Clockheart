@@ -25,7 +25,11 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
                 //we found the player 
                 newCharacter = newCharacters[i]
                 if(newCharacter.healthPoints > boss[0].strength){
+
                     newCharacter.healthPoints -= boss[0].strength;
+
+                    let health = document.getElementById("healthPlayer")
+                    health.value = newCharacter.healthPoints
                 }
                 else{
                     newCharacter.healthPoints = 0

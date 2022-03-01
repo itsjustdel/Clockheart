@@ -71,7 +71,7 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
     }}}
 
     const attackClick = () => {
-        console.log("enemy id  = " + enemy.id)
+    
         let attackStrength = 1
         if(selectedItem !== null){
             attackStrength = selectedItem.damage
@@ -81,12 +81,12 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
         if(player.strength === 10){
             attackStrength += 5
         }
-        
-        console.log("attack strength: " + attackStrength)
 
         if(attackStrength !== undefined){
             if(enemy.healthPoints > attackStrength){
                 enemy.healthPoints -= attackStrength
+                let health = document.getElementById("healthBoss")
+                health.value = enemy.healthPoints
             }
             else{
                 enemy.healthPoints = 0
@@ -99,15 +99,12 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
         console.log("Player health after attack =" + characters[0].healthPoints)
 
         if(enemy.healthPoints <= 0 ){
-            //boss is dead
-            console.log("Boss is dead")
-            console.log("Boss healthpoints in state boss dead: " + enemy.healthPoints)
+            //boss is dead            
             transferItemsToPlayer()
             setBossDead(true)
             setFightPanel(false)
         }else{
-            //boss turn
-            console.log("setting turn to 1")
+            //boss turn         
             setTurn(1)
         }
 
@@ -129,9 +126,12 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
         if(healing !== undefined){
             if (player.healthPoints + healing < 100){
                 player.healthPoints += healing
-                console.log("selected item owner: ", selectedItem.character)
+              
+                let health = document.getElementById("healthPlayer")
+                health.value = player.healthPoints
+
                 selectedItem.character = zebediah
-                console.log("selected item owner", selectedItem.character)
+                
             }
             else{
                 player.healthPoints = 100
@@ -150,11 +150,23 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
 
     const FightButtons = () => {
         return(
-            <>
-                <button onClick={attackClick}>Attack</button>
-                <button onClick={healClick}>Heal</button>
-                
+            <> 
+
+                <div className="npcItems">
+                    <ul className="npcItemList">
+                        <li className='questItem'>                    
+                            <button onClick={attackClick}>Attack</button>        
+                        </li>
+                        <li className='questItem'>
+                            <button onClick={healClick}>Heal</button>
+                        </li>
+                      
+                    </ul>
+                    </div>
+
             </>
+
+
         )
     }
 
@@ -192,7 +204,6 @@ const FightPanel = ({characters, setCharacters, enemyId, items, setItems, select
 
     return(
         <>
-            <h1>FIGHT PANEL</h1>
             {turn == 0 ? <FightButtons/>:<BossTurn characters={characters} setCharacters={setCharacters} enemyId={enemyId} setTurn={setTurn}/>}
 
             <PlayerHealth/>
