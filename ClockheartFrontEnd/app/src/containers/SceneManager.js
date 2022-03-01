@@ -7,7 +7,7 @@ import Player from "../components/Player";
 import SceneHelper from '../components/SceneHelper';
 import ClockTowerBar from '../components/ClockTowerBar';
 import Cave from '../components/Cave'
-import ShopList from '../components/ShopList'
+import ShopListGUI from '../components/ShopListGUI'
 import PlayerItemsGUI from '../components/PlayerItemsGUI';
 import QuestGUI from '../components/QuestGUI';
 import Street from '../components/Street';
@@ -165,7 +165,7 @@ const SceneManager = () => {
 
             <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem}/>
 
-            {shopOpen == true ? <ShopList updateItems={updateItems}
+            {shopOpen == true ? <ShopListGUI updateItems={updateItems}
                 characters={characters}
                 setCharacters={setCharacters}
                 items={items}
