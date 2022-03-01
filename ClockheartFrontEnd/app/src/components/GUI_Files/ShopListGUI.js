@@ -1,5 +1,5 @@
-import { updateCharacterInTable } from "./CharacterServices"
-import { updateItemInTable } from "./ItemServices"
+import { updateCharacterInTable } from "../Services/CharacterServices"
+import { updateItemInTable } from "../Services/ItemServices"
 
 const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
     console.log("Shop list")

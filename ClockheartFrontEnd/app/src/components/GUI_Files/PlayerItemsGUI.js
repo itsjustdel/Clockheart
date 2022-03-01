@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getPlayerItems } from "./ItemServices"
+import { getPlayerItems } from "../Services/ItemServices"
 
 const PlayerItemsGUI = ({characters, items, setSelectedItem}) => {
 

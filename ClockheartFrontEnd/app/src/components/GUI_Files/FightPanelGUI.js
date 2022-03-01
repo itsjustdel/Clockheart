@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import BossTurn from "./BossTurn"
-import { updateCharacterInTable } from "./CharacterServices"
-import { getPlayerItems, updateItemInTable } from "./ItemServices"
+import BossTurn from "../BossTurn"
+import { updateCharacterInTable } from "../Services/CharacterServices"
+import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
 
 const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead}) => {
