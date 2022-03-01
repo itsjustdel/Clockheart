@@ -60,13 +60,12 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
         if (item.character.name == "Zebediah Flint")
             return    <li className='npcItem' key={index}>                          
                         <div>
-                            <h2 className ="shopItemName">{item.name}</h2>
+                            <h1 className ="shopItemName">{item.name}</h1>
                         </div>
                         <div>
-                            <h2  className ="shopItemPrice" > {item.value}</h2>
+                            <h1  className ="shopItemPrice" > $ {item.value}</h1>
                         </div>
-                        <div className ="shopItemName">
-                            {/* <button onClick={handleBuyItemClick} value={index} src={`/newPngs/${filename}.png`}></button> */}
+                        <div className ="shopItemImage">                            
                             <input onClick={handleBuyItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
                         </div>
                      </li>
@@ -100,19 +99,28 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
 
     return (
         <>
-            <h2>Sell items</h2>
-            <p>Player currency = {player.currency}</p>
-            <button onClick={handleSellItemClick}>Sell selected item</button>
-            <h2> Shop Item List</h2>
+           
+
+                
             <div className="npcContainer">
                 <div className="npcPortrait" ></div>               
                 <div className="npcItems">
                     <ul className="npcItemList" >
+                        <li className='npcItem'>                            
+                        </li>
                         {itemsForSale}
+                        <li className='npcItem'>                            
+                        </li>
+                        <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>       
                     </ul>
                 </div>
-            <div className="npcTextBox" ></div>
-                {/* <div className="npcButtons" ></div> */}
+            <div className="npcTextBox">
+                <h1>
+                    Howdy, Everything is for sale, some may call this junk...me? I call them treasures
+                </h1>
+
+                </div>
+              
             </div>
 
         </>

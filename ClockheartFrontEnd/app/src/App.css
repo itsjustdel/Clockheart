@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+ 
 }
 
 html,
@@ -17,12 +18,18 @@ body,
   user-select: none;
   /* overflow: hidden; */
   background: #272727;
+
+
+  
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
-    segoe ui, arial, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
+    segoe ui, arial, sans-serif; */
+
+    font-family: 'VT323', monospace;
 }
+
 
 Canvas{
   touch-action: none; 
@@ -34,62 +41,63 @@ ul{
 
 .npcContainer{
   position:absolute;
-  
-  display:grid;   
-
+  border: black solid 10px;
+  display:grid;
   grid-template-columns: .5fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-
   background-color: #2196F3;
   padding: 10px;
-   
   top:50%;
   left:50%;  
   transform:translate(-50%, -50%);
   width: 80%;
   height: 80%;
-  color: white; background: #666666; opacity: .8;
-  z-index: 10; 
-
+  color: white; 
+  background-color: #666666;
   padding-inline-start: 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;  
 }
 
 .npcPortrait{
-  background-color: coral;
-  margin: 10px;
-  
+  background-image: url("/public/characters/miniShopKeeper.gif");
+  margin: 40px;
+  border: black solid 10px;
+  background-color: #2196F3;
   grid-row-start: 1;
-  grid-row-end: 3
+  grid-row-end: 3;
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-position: center;;
 }
 
 .npcTextBox{
+  color: black;
   background-color: yellowgreen;
-  margin: 10px;
-
+  margin: 40px;
+  border: black solid 10px;
   grid-column-start: 1;  
   grid-row-start: 3;
-  grid-row-end: 5
+  grid-row-end: 5;
+  font-size: x-large;
+  
+  
 }
 
 .npcItems{
   /* position: relative; */
   background-color: rebeccapurple;
-  margin: 10px;
-
-
+  margin: 40px;
   border: 10px black solid;
   grid-column-start: 2;  
   grid-row-start: 1;
-  grid-row-end: 5
+  grid-row-end: 5;
 }
-
 
 .npcItem{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  grid-template-columns: 1fr .5fr 1fr;
+  /* justify-content: center; */
   /* position: relative; */
   margin: 1%;
   margin-left: 5%;
@@ -98,26 +106,61 @@ ul{
 
   border: #272727 solid 5px;
   background-color: #2196F3;
-  display: flex;
-}
-
-.shopItemName{
-
-}
-
-.shopItemPrice{
-
-}
-
-.shopItemImage{
   
 }
 
+.shopItemName{
+  /* grid-column-start: 0;   */
+  /* background-color: green; */
+  
+}
 
+.shopItemPrice{
+  /* grid-column-start: 0;   */
+}
 
+.shopItemImage{
+  /* grid-column-start: 0;   */
+  
+}
+/* 
+.shopItemImageHover:hover {
+  background-color: rgb(199, 218, 218);
+  color: black;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='100' height='100' viewport='0 0 100 100' style='fill:black;font-size:48px;'><text y='50%'>💰</text></svg>") 16 0,auto; !emojicursor.app 
+} */
 
+.sellButton{  
+  background-color: #2196F3;
+  border: 5px solid #272727;
+  text-align: center;
+  /* height: 4em; */
+  width: 50%;
+  margin: auto;
+  font-size: xx-large;
+}
 
+.playerItemList{
+  position: absolute;
+  top:90%;
+  left:10%;  
+  
+  border: black solid 5px;
+  display: flex;  
+  background-color: #2196F3;
 
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
+}
 
+.playerItem{
+  border: black solid 5px;
+  background-color: blanchedalmond;  
+}
 
-
+.playerItem::selection{
+  background-color: #272727;
+  border: red solid 10px;
+}
