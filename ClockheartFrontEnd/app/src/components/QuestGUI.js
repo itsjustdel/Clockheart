@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import Blimp from "./Blimp"
 import EndingScreenGUI from "./EndingScreenGUI"
-import { getPlayerItems, updateItemInTable } from "./ItemServices"
+import { getPlayerItems, updateItemInTable } from "./GUI_Files/ItemServices"
 
 const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiverOpen, items, defaultItems, resetCharacters, setItems}) => {
 

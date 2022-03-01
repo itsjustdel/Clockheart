@@ -9,7 +9,7 @@ import TalkFailedScreenGUI from "./TalkFailedScreenGUI";
 import BarterCantAffordScreenGUI from "./BarterCantAffordScreenGUI";
 import BarterFailedScreenGUI from "./BarterFailedScreenGUI";
 import GameOverScreenGUI from "./GameOverScreenGUI";
-import { updateItemInTable } from "./ItemServices";
+import { updateItemInTable } from "./GUI_Files/ItemServices";
 import {updateCharacterInTable} from "./CharacterServices"
 
 

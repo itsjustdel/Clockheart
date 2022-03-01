@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { updateCharacterInTable } from "./CharacterServices"
-import { getPlayerItems, updateItemInTable } from "./ItemServices"
+import { getPlayerItems, updateItemInTable } from "./GUI_Files/ItemServices"
 
 const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPanel, setBarterComplete, setBarterFailed, setBarterCantAfford}) => {
 

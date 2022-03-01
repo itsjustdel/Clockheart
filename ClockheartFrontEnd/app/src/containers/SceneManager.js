@@ -8,12 +8,12 @@ import SceneHelper from '../components/SceneHelper';
 import ClockTowerBar from '../components/ClockTowerBar';
 import Cave from '../components/Cave'
 import ShopListGUI from '../components/ShopListGUI'
-import PlayerItemsGUI from '../components/PlayerItemsGUI';
+import PlayerItemsGUI from '../components/GUI_Files/PlayerItemsGUI';
 import QuestGUI from '../components/QuestGUI';
 import Street from '../components/Street';
 import BossGUI from '../components/BossGUI';
 import CharacterCreationGUI from '../components/CharacterCreationGUI';
-import { getPlayerItems } from '../components/ItemServices';
+import { getPlayerItems } from '../components/GUI_Files/ItemServices';
 import { updateCharacterInTable } from '../components/CharacterServices';
 import BookLocation from '../components/BookLocation';
 import BookGUI from '../components/BookGUI';
