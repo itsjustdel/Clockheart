@@ -1,24 +1,36 @@
 import { useFrame, useLoader} from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 import { Html } from "@react-three/drei"
+import { useState } from "react";
 
 const TexturedPlane =({name, url, position, args, speech, playerMesh})=>{
 
+    const [close, setClose] = useState(false)
 
     useFrame( () => {
 
-        console.log(playerMesh);
-        if(playerMesh == undefined && playerMesh.current == undefined)
-            return
-        //check if the player is close to the target (boss/ loot?)
         
-        const distance = playerMesh.current.position.distanceTo(position)
-        if(distance < 2){
-           console.log(speech);
+        if(playerMesh == undefined)
+            return
+
+        if(playerMesh.current == undefined)
+            return
+
+        
+        //check if the player is close to the target (boss/ loot?)
+        //needs to be cast to a vector3 so the vector class can do its magic    
+        //do not compare y level/ layer - make same as player mesh level    
+        const positionV3 = new Vector3(position[0], 0, position[2])
+        const posPlayer = new Vector3(playerMesh.current.position.x, 0 , playerMesh.current.position.z)
+        const distance = positionV3.distanceTo(posPlayer)
+        
+        if(distance < 5){
+        
+           setClose(true)
         }
         
         else {        
-            
+            setClose(false)
         }        
     })
 
@@ -29,9 +41,12 @@ const TexturedPlane =({name, url, position, args, speech, playerMesh})=>{
             <mesh name={name} position={position} rotation={[-Math.PI / 2, 0, 0]} >
                 <planeBufferGeometry attach="geometry" args={args} />
                 <meshStandardMaterial map={texture} transparent={true} />
+                {close? 
                 <Html>
                     <div className="label"><p>{speech}</p></div>
-                </Html>
+                </Html> 
+                : null }
+    
             </mesh>
         );
     };
