@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import BarterCompleteScreen from "./BarterCompleteScreen";
 import BarterPanelGUI from "./BarterPanelGUI";
-import BossDeathScreen from "./BossDeathScreen";
+import BossDeathScreenGUI from "./BossDeathScreen";
 import FightPanelGUI from "./FightPanelGUI";
 import TalkCompleteScreen from "./TalkCompleteScreen";
 import TalkPanelGUI from "./TalkPanelGUI";
@@ -102,7 +102,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
 
             {barterPanel == true ? <BarterPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
 
-            {bossDead == true ? <BossDeathScreen handleClick={handleClick} /> : null}
+            {bossDead == true ? <BossDeathScreenGUI handleClick={handleClick} /> : null}
 
             {talkComplete == true ? <TalkCompleteScreen handleClick={handleClick} /> : null}
 

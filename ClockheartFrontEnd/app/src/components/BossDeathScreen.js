@@ -1,4 +1,4 @@
-const BossDeathScreen = ({handleClick}) => {
+const BossDeathScreenGUI = ({handleClick}) => {
     
     
     
@@ -11,4 +11,4 @@ const BossDeathScreen = ({handleClick}) => {
     )
 }
 
-export default BossDeathScreen
+export default BossDeathScreenGUI
