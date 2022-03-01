@@ -38,7 +38,7 @@ const Shop = ({shopOpen, setShopOpen, playerMesh, setPlayerTargets}) => {
        
        return (
          <mesh position={shopPosition} rotation ={[-Math.PI/2,0,0]}>
-           <planeBufferGeometry attach="geometry" args={[1, 2]} />
+           <planeBufferGeometry attach="geometry" args={[3, 3]} />
            <meshStandardMaterial map={texture} transparent={true}/>
          </mesh>
        );
@@ -47,7 +47,7 @@ const Shop = ({shopOpen, setShopOpen, playerMesh, setPlayerTargets}) => {
     return(
         <>
             <Suspense fallback={null}>
-                <TexturedPlane url={["/redguy.png"]} />       
+                <TexturedPlane url={["/people/zebFront.png"]} />       
             </Suspense>
         </>
     )
