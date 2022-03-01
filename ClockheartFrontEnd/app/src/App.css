@@ -240,3 +240,40 @@ button:focus {
   grid-row-start: 1;
   grid-row-end: 3;
 }
+
+.bossText{
+  color: black;
+  background-color: yellowgreen;
+  margin: 40px;
+  border: black solid 10px;
+  grid-column-start: 2;  
+  grid-row-start: 3;
+  grid-row-end: 5;
+  font-size: x-large;  
+}
+
+.healthBar{
+  
+  height:100px;
+  width:90%; 
+  border-radius: 0;
+  color: red;
+}
+
+progress::-webkit-progress-bar {background-color: red; width: 100%;}
+progress::-webkit-progress-value { background: green; }
+
+.healthContainerBoss{
+  grid-column-start: 1;  
+  grid-row-start: 3;
+  grid-row-end: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.healthContainerPlayer{
+  grid-column-start: 3;  
+  grid-row-start: 3;  
+  display: flex;
+  justify-content: center;
+}
