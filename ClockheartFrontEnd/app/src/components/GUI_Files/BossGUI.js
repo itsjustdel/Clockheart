@@ -13,7 +13,7 @@ import { updateItemInTable } from "../Services/ItemServices";
 import {updateCharacterInTable} from "../Services/CharacterServices"
 
 
-const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters, resetCharacters}) => {
+const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters, resetCharacters, setDungeonComplete, dungeonComplete}) => {
 
 
     const [fightPanel, setFightPanel] = useState(false)
@@ -86,6 +86,12 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
             </>)
     }
 
+    const BossDeadOptions = () => {
+        return (<>
+            <button onClick={handleClick}>LEAVE</button>
+            </>)
+    }
+
     const getBossIdFromQuest = () => {
         if(currentQuest.name == "Rust and Dust")
             return 4
@@ -94,11 +100,13 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     return(
         <>
             <h1>BOSS GUI</h1>
-            {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false ? <InitialOptions/> : null}
+            {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false && dungeonComplete == false ? <InitialOptions/> : null}
+
+            {dungeonComplete == true ? <BossDeadOptions /> : null }
 
             {talkPanel == true ? <TalkPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} /> : null}
 
-            {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} /> : null}
+            {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} setDungeonComplete={setDungeonComplete} /> : null}
 
             {barterPanel == true ? <BarterPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
 

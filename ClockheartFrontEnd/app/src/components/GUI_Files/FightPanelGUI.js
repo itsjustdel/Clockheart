@@ -4,7 +4,7 @@ import { updateCharacterInTable } from "../Services/CharacterServices"
 import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
 
-const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead}) => {
+const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead, setDungeonComplete}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
@@ -103,6 +103,7 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
             console.log("Boss is dead")
             console.log("Boss healthpoints in state boss dead: " + enemy.healthPoints)
             transferItemsToPlayer()
+            setDungeonComplete(true)
             setBossDead(true)
             setFightPanel(false)
         }else{

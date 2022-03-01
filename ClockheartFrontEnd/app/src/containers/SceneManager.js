@@ -36,6 +36,8 @@ const SceneManager = () => {
     const [bossOpen, setBossOpen] = useState(false)
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
+    const [dungeonComplete, setDungeonComplete] = useState(false)
+
 
     const startLevel = { name: "Street" }
 
@@ -178,7 +180,7 @@ const SceneManager = () => {
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items} resetCharacters={resetCharacters} setItems={setItems} defaultItems={defaultItems} /> : null}                           
 
-            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} /> : null}
+            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} setDungeonComplete={setDungeonComplete} dungeonComplete={dungeonComplete} /> : null}
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 
