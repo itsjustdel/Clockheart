@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import BarterCompleteScreen from "./BarterCompleteScreen";
 import BarterPanelGUI from "./BarterPanelGUI";
-import BossDeathScreenGUI from "./BossDeathScreen";
+import BossDeathScreenGUI from "./BossDeathScreenGUI";
 import FightPanelGUI from "./FightPanelGUI";
 import TalkCompleteScreen from "./TalkCompleteScreen";
 import TalkPanelGUI from "./TalkPanelGUI";
