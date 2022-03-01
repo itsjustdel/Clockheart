@@ -15,6 +15,10 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
     }, [])
 
     const handleQuestClick = (event) => {
+
+
+        console.log("hi")
+
         const questToSet = quests[event.target.value]
 
         //test for quest complete
@@ -51,7 +55,10 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
    
 
     const questsMap = quests.map((quest, index) => {          
-        return <li onClick={handleQuestClick} value={index} key={index}>{quest.name}</li>
+        //  return <li onClick={handleQuestClick} value={index} key={index}>{quest.name}</li>
+        return <li className='questItem' key={index}>
+                    <button className="questButton" onClick={handleQuestClick} value={index} >{quest.name}</button>
+                </li>
     })
 
     const handleTicketClick = () => {
@@ -76,16 +83,30 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
     if(gemCollected == false && endScreenOpen == false){
     return(
         <>
-        <h2>Quest List</h2>
-            <ul>
+         <div className="npcContainer">
+            <div className="npcPortraitQuest"></div>    
+            <div className="npcItems">
+            <ul className="npcItemList">
+                <li className='npcItem'></li>
                 {questsMap}
+                <li className='npcItem'></li>
             </ul>
+            </div>
+            <div className="npcTextBox">
+            <h1>
+                Questing is my liiiife, questing is my gaaaame, come get me some gemmmssssss, come get you some ticket to another land... 
+            </h1>
+
+            </div>
+                
+        </div>
+            
         </>
     )} else {
         return(
         <>
-            {endScreenOpen == true ? <EndingScreenGUI handleTicketClick={handleTicketClick}/> : null}
-            {gemCollected == true ? <BlimpGUI handlePlayAgain={handlePlayAgain} /> : null}
+            {endScreenOpen == true ? <EndingScreen handleTicketClick={handleTicketClick}/> : null}
+            {gemCollected == true ? <Blimp handlePlayAgain={handlePlayAgain} /> : null}                        
         </>
         )
     }
