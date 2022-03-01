@@ -120,7 +120,7 @@ const ClockTowerBar= ({setPlayerTargets, playerMesh, shopOpen, setShopOpen, ques
 
             <BookLocation bookLocationOpen={bookLocationOpen} setBookLocationOpen={setBookLocationOpen} playerMesh={playerMesh}  setPlayerTargets={setPlayerTargets}/>
 
-            <Music url={"/SteampunkAmbience.mp3"} soundLevel={0.03}/>
+            {/* <Music url={"/SteampunkAmbience.mp3"} soundLevel={0.03}/> */}
 
         </Suspense>
             

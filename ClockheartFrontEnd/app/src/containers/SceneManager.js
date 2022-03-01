@@ -64,7 +64,7 @@ const SceneManager = () => {
     
 
     const getCharacters = () => {
-        fetch('/characters')
+        fetch('http://localhost:8080/characters')
             .then(res => res.json())
             .then(characterData => setDefaultCharacters(characterData))
             // .then(characters => setCharacters(characters))
@@ -76,7 +76,7 @@ const SceneManager = () => {
     }
 
     const getItems = () => {
-        fetch('/items')
+        fetch('http://localhost:8080/items')
             .then(res => res.json())
             .then(items => setDefaultItems(items))
     }
@@ -87,7 +87,7 @@ const SceneManager = () => {
     }
 
     const getQuests = () => {
-        fetch('/quests')
+        fetch('http://localhost:8080/quests')
             .then(res => res.json())
             .then(quests => setQuests(quests))
     }

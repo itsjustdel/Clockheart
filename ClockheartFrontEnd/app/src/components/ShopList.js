@@ -42,7 +42,7 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
             }
             updateItems(event.target.value, updatedShopItem)
 
-            const str = `/items/${items[index].id}`
+            const str = `http://localhost:8080/items/${items[index].id}`
             fetch(str, {
                 method: 'PUT',
                 body: JSON.stringify(updatedShopItem),
