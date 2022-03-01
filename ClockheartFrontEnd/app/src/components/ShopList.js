@@ -15,7 +15,8 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
 
     const handleBuyItemClick = (event) => {
 
-        // const playerMoney = characters[0].currency
+
+        console.log("item clcik")
         const index = event.target.value
         if(player.currency >= items[index].value){
 
@@ -57,10 +58,17 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
     const itemsForSale = items.map((item, index) => {
         const filename = item.name.replace(/ /g, "_");
         if (item.character.name == "Zebediah Flint")
-            return    <li className='npcItem'
-                          key={index}>
-                        <button onClick={handleBuyItemClick} value={index}>Buy: {item.name}</button>
-                        <img className='playerItemImage' src={`/newPngs/${filename}.png`}></img>
+            return    <li className='npcItem' key={index}>                          
+                        <div>
+                            <h2>{item.name}</h2>
+                        </div>
+                        <div>
+                            <h2> {item.value}</h2>
+                        </div>
+                        <div className='playerItemImage'>
+                            {/* <button onClick={handleBuyItemClick} value={index} src={`/newPngs/${filename}.png`}></button> */}
+                            <input onClick={handleBuyItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
+                        </div>
                      </li>
     })
 
@@ -97,11 +105,14 @@ const ShopList = ({ updateItems, characters, setCharacters, items, setItems, sel
             <button onClick={handleSellItemClick}>Sell selected item</button>
             <h2> Shop Item List</h2>
             <div className="npcContainer">
+                <div className="npcPortrait" ></div>               
                 <div className="npcItems">
                     <ul className="npcItemList" >
                         {itemsForSale}
                     </ul>
                 </div>
+            <div className="npcTextBox" ></div>
+                {/* <div className="npcButtons" ></div> */}
             </div>
 
         </>

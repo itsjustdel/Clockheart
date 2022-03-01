@@ -28,7 +28,83 @@ Canvas{
   touch-action: none; 
 } 
 
-li{
+ul{
   list-style: none;
 }
+
+.npcContainer{
+  position:absolute;
+  
+  display:grid;   
+
+  grid-template-columns: .5fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+
+  background-color: #2196F3;
+  padding: 10px;
+   
+  top:50%;
+  left:50%;  
+  transform:translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  color: white; background: #666666; opacity: .8;
+  z-index: 10; 
+
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
+}
+
+.npcPortrait{
+  background-color: coral;
+  margin: 10px;
+  
+  grid-row-start: 1;
+  grid-row-end: 3
+}
+
+.npcTextBox{
+  background-color: yellowgreen;
+  margin: 10px;
+
+  grid-column-start: 1;  
+  grid-row-start: 3;
+  grid-row-end: 5
+}
+
+.npcItems{
+  /* position: relative; */
+  background-color: rebeccapurple;
+  margin: 10px;
+
+
+  border: 10px black solid;
+  grid-column-start: 2;  
+  grid-row-start: 1;
+  grid-row-end: 5
+}
+
+
+.npcItem{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  /* position: relative; */
+  margin: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+
+  border: #272727 solid 5px;
+  background-color: #2196F3;
+  display: flex;
+}
+
+
+
+
+
+
+
 
