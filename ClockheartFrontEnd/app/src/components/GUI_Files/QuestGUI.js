@@ -105,8 +105,8 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
     )} else {
         return(
         <>
-            {endScreenOpen == true ? <EndingScreen handleTicketClick={handleTicketClick}/> : null}
-            {gemCollected == true ? <Blimp handlePlayAgain={handlePlayAgain} /> : null}                        
+            {endScreenOpen == true ? <EndingScreenGUI handleTicketClick={handleTicketClick}/> : null}
+            {gemCollected == true ? <BlimpGUI handlePlayAgain={handlePlayAgain} /> : null}                        
         </>
         )
     }

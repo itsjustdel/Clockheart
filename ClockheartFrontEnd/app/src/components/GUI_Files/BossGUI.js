@@ -122,11 +122,11 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
             
             {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false ? <InitialOptions/> : null}
 
-            {talkPanel == true ? <TalkPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} setText={setText}/> : null}
+            {talkPanel == true ? <TalkPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} setText={setText}/> : null}
 
-            {fightPanel == true ? <FightPanel characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} /> : null}
+            {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} /> : null}
 
-            {barterPanel == true ? <BarterPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
+            {barterPanel == true ? <BarterPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
 
 
             <div className="bossText">                
@@ -134,19 +134,19 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
             </div>
 
 
-            {bossDead == true ? <BossDeathScreen handleClick={handleClick} /> : null}
+            {bossDead == true ? <BossDeathScreenGUI handleClick={handleClick} /> : null}
 
-            {talkComplete == true ? <TalkCompleteScreen handleClick={handleClick} /> : null}
+            {talkComplete == true ? <TalkCompleteScreenGUI handleClick={handleClick} /> : null}
 
-            {barterComplete == true? <BarterCompleteScreen handleClick={handleClick} /> : null }
+            {barterComplete == true? <BarterCompleteScreenGUI handleClick={handleClick} /> : null }
 
-            {talkFailed == true ? <TalkFailedScreen handleFight={handleFight} /> : null}
+            {talkFailed == true ? <TalkFailedScreenGUI handleFight={handleFight} /> : null}
 
-            {barterFailed == true? <BarterFailedScreen handleFight={handleFight} /> : null }
+            {barterFailed == true? <BarterFailedScreenGUI handleFight={handleFight} /> : null }
 
-            {barterCantAfford == true ? <BarterCantAffordScreen handleFight={handleFight} /> : null}
+            {barterCantAfford == true ? <BarterCantAffordScreenGUI handleFight={handleFight} /> : null}
 
-            {playerDead == true ? <GameOverScreen handleDeath={handleDeath}/> : null}
+            {playerDead == true ? <GameOverScreenGUI handleDeath={handleDeath}/> : null}
         
 
         </div>
