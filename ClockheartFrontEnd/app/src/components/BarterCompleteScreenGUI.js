@@ -1,4 +1,4 @@
-const BarterCompleteScreen = ({handleClick}) => {
+const BarterCompleteScreenGUI = ({handleClick}) => {
     
     
     
@@ -11,4 +11,4 @@ const BarterCompleteScreen = ({handleClick}) => {
     )
 }
 
-export default BarterCompleteScreen
+export default BarterCompleteScreenGUI
