@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import BarterCompleteScreen from "./BarterCompleteScreen";
-import BarterPanel from "./BarterPanel";
+import BarterPanelGUI from "./BarterPanelGUI";
 import BossDeathScreen from "./BossDeathScreen";
 import FightPanelGUI from "./FightPanelGUI";
 import TalkCompleteScreen from "./TalkCompleteScreen";
@@ -100,7 +100,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
 
             {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} /> : null}
 
-            {barterPanel == true ? <BarterPanel characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
+            {barterPanel == true ? <BarterPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
 
             {bossDead == true ? <BossDeathScreen handleClick={handleClick} /> : null}
 
