@@ -3,7 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 
 const QuestGiver = ({questGiverOpen, setQuestGiverOpen, playerMesh, setPlayerTargets}) => {
-    const questGiverPosition = new Vector3(-2,5,-9);
+    const questGiverPosition = new Vector3(-2,5,-11);
 
     useEffect(() => {
         
@@ -41,7 +41,7 @@ const QuestGiver = ({questGiverOpen, setQuestGiverOpen, playerMesh, setPlayerTar
        
        return (
          <mesh position={questGiverPosition} rotation ={[-Math.PI/2,0,0]}>
-           <planeBufferGeometry attach="geometry" args={[1, 2]} />
+           <planeBufferGeometry attach="geometry" args={[3, 3]} />
            <meshStandardMaterial map={texture} transparent={true}/>
          </mesh>
        );
@@ -50,7 +50,7 @@ const QuestGiver = ({questGiverOpen, setQuestGiverOpen, playerMesh, setPlayerTar
     return(
         <>
             <Suspense fallback={null}>
-                <TexturedPlane url={["/redguy.png"]} />       
+                <TexturedPlane url={["/people/jawaFront.png"]} />       
             </Suspense>
         </>
     )

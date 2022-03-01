@@ -1,0 +1,12 @@
+.people
+ {
+    background-color: rgba(139, 116, 98, 0.815);
+    border: 4px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: fantasy;
+    text-align: center;
+    bottom: 5vh;
+    width: 17vh;
+  }
+
