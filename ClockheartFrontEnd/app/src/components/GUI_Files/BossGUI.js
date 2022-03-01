@@ -9,8 +9,8 @@ import TalkFailedScreenGUI from "./TalkFailedScreenGUI";
 import BarterCantAffordScreenGUI from "./BarterCantAffordScreenGUI";
 import BarterFailedScreenGUI from "./BarterFailedScreenGUI";
 import GameOverScreenGUI from "./GameOverScreenGUI";
-import { updateItemInTable } from "./Services/ItemServices";
-import {updateCharacterInTable} from "./Services/CharacterServices"
+import { updateItemInTable } from "../Services/ItemServices";
+import {updateCharacterInTable} from "../Services/CharacterServices"
 
 
 const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters, resetCharacters}) => {

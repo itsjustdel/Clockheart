@@ -1,4 +1,4 @@
-import CharacterCreation from "./CharacterCreation"
+import CharacterCreation from "../CharacterCreation"
 
 const CharacterCreationGUI = ({characters, updateCharacters, setCurrentQuest, setCharacterCreationOpen}) => {
     

@@ -11,12 +11,12 @@ import ShopListGUI from '../components/GUI_Files/ShopListGUI'
 import PlayerItemsGUI from '../components/GUI_Files/PlayerItemsGUI';
 import QuestGUI from '../components/GUI_Files/QuestGUI';
 import Street from '../components/Street';
-import BossGUI from '../components/BossGUI';
-import CharacterCreationGUI from '../components/CharacterCreationGUI';
+import BossGUI from '../components/GUI_Files/BossGUI';
+import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
 import { getPlayerItems } from '../components/Services/ItemServices';
 import { updateCharacterInTable } from '../components/Services/CharacterServices';
 import BookLocation from '../components/BookLocation';
-import BookGUI from '../components/BookGUI';
+import BookGUI from '../components/GUI_Files/BookGUI';
 
 const SceneManager = () => {
     
