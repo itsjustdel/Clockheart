@@ -44,9 +44,9 @@ const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPa
       
 
         if(player.intelligence === 10){
-            const randomNumber = randomNumber(50, 250)
-            setPrice(randomNumber)
-            setText(`That will cost + ${randomNumber}`)
+            const randomN= randomNumber(50, 250)
+            setPrice(randomN)
+            setText(`That will cost + ${randomN}`)
         }else{
             setPrice(500)
             setText(`That will cost 500`)
