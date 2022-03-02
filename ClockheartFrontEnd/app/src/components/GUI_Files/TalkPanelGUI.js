@@ -22,8 +22,7 @@ const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, se
 
     
     const handleSpeech = () => {
-        let chance = 10
-        console.log(player.charisma);
+        let chance = 10        
 
         const randomNumber = (min, max) => { // min and max included
             return Math.floor(Math.random() * (max - min+1)+min);
@@ -36,21 +35,17 @@ const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, se
         }
 
         if(chance >= 70){
-            console.log(chance);
-            console.log("YES");
+            
             transferGemToPlayer()
             setTalkPanel(false)
             setTalkComplete(true)
+            setText("Here's The Gem Oh Beautiful One!")
         }else{
-            console.log(chance);
-            console.log("NO");
+            
             setTalkFailed(true)
             setText("You have failed to convince me..")
             setTalkPanel(false)
         }
-
-
-        
     }
 
 
@@ -59,8 +54,7 @@ const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, se
              <div className="bossItems">
                 <ul className="npcItemList">
                     <li className='questItem'>                    
-                    <button onClick={handleSpeech}>Please Give Me The Gem!</button>
-                        {/* <button  onClick={talkClick}>TALK</button>                     */}
+                    <button onClick={handleSpeech}>Please Give Me The Gem!</button>                        
                     </li>
                 </ul>
             </div>

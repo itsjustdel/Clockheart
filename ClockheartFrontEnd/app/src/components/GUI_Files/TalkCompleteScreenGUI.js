@@ -4,9 +4,13 @@ const TalkCompleteScreenGUI = ({handleClick}) => {
     
     return(
         <>
-            <h1>Here's The Gem Oh Beautiful One!</h1>
-
-            <button onClick={handleClick} >Head Back to Tavern</button>
+            <div className="bossItems">
+                <ul className="npcItemList">
+                    <li className='questItem'>                    
+                        <button onClick={handleClick} >Head Back to Tavern</button>
+                    </li>                  
+                </ul>
+            </div>
         </>
     )
 }
