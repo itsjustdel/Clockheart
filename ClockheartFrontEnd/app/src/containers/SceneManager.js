@@ -166,7 +166,7 @@ const SceneManager = () => {
 
            
 
-            <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem}/>
+            {currentQuest == "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem}/>}
 
             {shopOpen == true ? <ShopListGUI updateItems={updateItems}
                 characters={characters}
