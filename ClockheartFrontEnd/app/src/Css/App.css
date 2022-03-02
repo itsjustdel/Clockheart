@@ -344,7 +344,11 @@ progress::-webkit-progress-bar {background-color: #C0392B ; width: 100%;}
 }
 
 .currency{
- 
+  background-image: url("/public/newPngs/currency.png");
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  text-shadow: 3px 3px 0px #000000;
 }
 
 /* square buttons */

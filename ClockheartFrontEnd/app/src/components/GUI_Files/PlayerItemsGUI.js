@@ -3,15 +3,11 @@ import { getPlayerItems } from "../Services/ItemServices"
 
 const PlayerItemsGUI = ({characters, items, setSelectedItem, selectedItem}) => {
 
-    // const [player, setPlayer] = useState(null)
-
-    // useEffect(() => {
-    //     const newPlayer = characters.filter((character) => {
-    //         return character.id === 1
-    //     })[0]
-    //     setPlayer(newPlayer)
-    // }, [characters])
-
+    let playerCash = 0
+    if(characters.length > 0){
+        playerCash = characters[0].currency
+    }
+    
     const handleSelectedItemClick = (event) => {
         const index = event.target.value   
         console.log("Selected item: ", items[index])
@@ -29,7 +25,8 @@ const PlayerItemsGUI = ({characters, items, setSelectedItem, selectedItem}) => {
     return(
         <>        
             <ul className='playerItemList'>
-            <img className="playerItem"  src={`/newPngs/currency.png`}></img>
+            {/* <img className="playerItem"  src={`/newPngs/currency.png`}></img> */}
+                <li className="playerItem currency">${playerCash}</li>
                 {playerItems}
             </ul>
         </>
