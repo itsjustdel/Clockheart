@@ -64,6 +64,7 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
     const handleTicketClick = () => {
         setEndScreenOpen(false)
         setGemCollected(true)
+        setCurrentQuest("Ending")
     }
 
     const handlePlayAgain = () => {
