@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { updateCharacterInTable } from "../Services/CharacterServices"
 import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
-const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPanel, setBarterComplete, setBarterFailed, setBarterCantAfford}) => {
+const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPanel, setBarterComplete, setBarterFailed, setBarterCantAfford, setText}) => {
 
     const [price, setPrice] = useState(0)
     const newCharacters = [...characters]
@@ -40,18 +40,23 @@ const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPa
       }
     
 
-    const handleBarter = () => {
-        
+    const handleBarter = () => {       
+      
+
         if(player.intelligence === 10){
-            setPrice(randomNumber(50, 250))
+            const randomNumber = randomNumber(50, 250)
+            setPrice(randomNumber)
+            setText(`That will cost + ${randomNumber}`)
         }else{
             setPrice(500)
+            setText(`That will cost 500`)
         }
     }
 
     const handleNo = () => {
         setBarterFailed(true)
         setBarterPanel(false)
+        setText("YOU THOUGHT IT WOULD BE CHEAPER?!")
     }
 
     const handleYes = () => {
@@ -61,6 +66,7 @@ const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPa
             transferGemToPlayer()
             setBarterComplete(true)
             setBarterPanel(false)
+            setText("Well done, you talk a sweet deal")
         }else{
             setBarterPanel(false)
             setBarterCantAfford(true)
@@ -71,15 +77,29 @@ const BarterPanelGUI = ({characters, setCharacters, items, setItems, setBarterPa
         if(price === 0){
             return(
                 <>
-                    <h4>Barter Panel</h4>
-                    <button onClick={handleBarter} >Can I Buy the Gem?</button>
+                    <div className="bossItems">
+                        <ul >
+                            <li className='questItem'>                    
+                                <button onClick={handleBarter} >Can I Buy the Gem?</button>
+                            </li>
+                        </ul>
+                    </div>                  
                 </>
             )
             }else{
                 return(
                     <>
-                        <h5>That will cost</h5> {price}
-                        <button onClick={handleYes}>Gimme!</button> <button onClick={handleNo}>Screw You!</button>
+                        <div className="bossItems">
+                            <ul >
+                                <li className='questItem'>                                                    
+                                    <button onClick={handleYes}>Gimme!</button> 
+                                </li>
+
+                                <li className='questItem'>                    
+                                    <button onClick={handleNo}>Screw You!</button>
+                                </li>                            
+                            </ul>
+                        </div>                        
                     </>
                 )
             }

@@ -2,9 +2,16 @@ const BarterFailedScreenGUI = ({handleFight}) => {
 
 
     return(
-        <>
-            <h1>YOU THOUGHT IT WOULD BE CHEAPER?!</h1>
-            <button onClick={handleFight}>FIGHT...</button>
+        <>            
+            <div className="bossItems">
+                <ul >
+                    <li className='questItem'>                    
+                        <button onClick={handleFight}>FIGHT...</button>
+                    </li>
+                </ul>
+            </div>
+            
+            
         </>
     )
 }

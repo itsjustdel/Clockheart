@@ -13,9 +13,7 @@ import QuestGUI from '../components/GUI_Files/QuestGUI';
 import Street from '../components/Street/Street';
 import BossGUI from '../components/GUI_Files/BossGUI';
 import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
-import { getPlayerItems } from '../components/Services/ItemServices';
 import { updateCharacterInTable } from '../components/Services/CharacterServices';
-import BookLocation from '../components/ClockTowerBar/Book/BookLocation';
 import BookGUI from '../components/GUI_Files/BookGUI';
 
 const SceneManager = () => {
@@ -26,9 +24,7 @@ const SceneManager = () => {
     const [defaultItems, setDefaultItems] = useState([])
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
-
-    const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 15)])
-
+    const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 16)])
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
     const [bossOpen, setBossOpen] = useState(false)

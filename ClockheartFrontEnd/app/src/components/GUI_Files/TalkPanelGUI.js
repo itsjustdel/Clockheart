@@ -56,7 +56,7 @@ const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, se
 
     return(
         <>
-             <div className="npcItems">
+             <div className="bossItems">
                 <ul className="npcItemList">
                     <li className='questItem'>                    
                     <button onClick={handleSpeech}>Please Give Me The Gem!</button>

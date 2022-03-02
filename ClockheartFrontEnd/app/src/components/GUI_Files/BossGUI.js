@@ -53,6 +53,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     }
 
     const handleDeath = () => {
+        
         let newNextQuest = nextQuest
         newNextQuest.name = "Street" 
         setCurrentQuest(newNextQuest)
@@ -84,7 +85,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     const InitialOptions = () => {
         return (
              <div className="bossItems">
-                <ul >
+                <ul className="bossList">
                     <li className='questItem'>                    
                         <button  onClick={talkClick}>TALK</button>                    
                     </li>
@@ -113,20 +114,15 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
             <div className="npcPortraitQuest"></div>
             <div className="portraitPlayer"></div>
 
-            <div className="healthContainerBoss">
-                <progress className="healthBar" id="healthBoss" value="100" max="100"></progress>
-            </div>
-            <div className="healthContainerPlayer">
-                <progress className="healthBar" id="healthPlayer" value="100" max="100"></progress>
-            </div>
             
-            {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false ? <InitialOptions/> : null}
+            
+            {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false && barterPanel==false? <InitialOptions/> : null}
 
             {talkPanel == true ? <TalkPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} setText={setText}/> : null}
 
-            {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} /> : null}
+            {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} setText={setText} /> : null}
 
-            {barterPanel == true ? <BarterPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} /> : null}
+            {barterPanel == true ? <BarterPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setBarterPanel={setBarterPanel} setFightPanel={setFightPanel} setCurrentQuest={setCurrentQuest} setBarterComplete={setBarterComplete} setBarterFailed={setBarterFailed} setBarterCantAfford={setBarterCantAfford} setText={setText} /> : null}
 
 
             <div className="bossText">                

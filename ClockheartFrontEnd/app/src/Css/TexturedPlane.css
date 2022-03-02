@@ -8,5 +8,6 @@
     text-align: center;
     bottom: 5vh;
     width: 17vh;
+    z-index: 10;
   }
 

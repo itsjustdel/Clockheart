@@ -1,9 +1,9 @@
 import { updateCharacterInTable } from "../Services/CharacterServices"
 import { updateItemInTable } from "../Services/ItemServices"
-
+import Carousel from 'react-elastic-carousel'
 
 const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
-    console.log("Shop list")
+    
     const newItems = [...items]
     const zebediah = characters.filter((character) => {
         return character.id === 2
@@ -107,11 +107,15 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
                 <div className="npcPortrait" ></div>               
                 <div className="npcItems">
                     <ul className="npcItemList" >
+                       
+                        <Carousel className="Carousel" pagination={false} verticalMode={true} itemsToShow={4} enableMouseSwipe={true} enableAutoPlay={false} autoPlaySpeed={10000}  >
                         <li className='npcItem'>                            
                         </li>
                         {itemsForSale}
                         <li className='npcItem'>                            
                         </li>
+                        </Carousel>                        
+                      
                         <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>       
                     </ul>
                 </div>
