@@ -5,7 +5,15 @@ const CharacterCreationGUI = ({characters, updateCharacters, setCurrentQuest, se
 
     return(
         <>
-            <CharacterCreation characters={characters} updateCharacters={updateCharacters} setCurrentQuest={setCurrentQuest} setCharacterCreationOpen={setCharacterCreationOpen}/>
+            <div className="npcContainer">
+            <div className="portraitPlayer"></div>
+                <CharacterCreation characters={characters} updateCharacters={updateCharacters} setCurrentQuest={setCurrentQuest} setCharacterCreationOpen={setCharacterCreationOpen}/>
+            <div className="npcTextBox">
+            <h1>
+                CHOOSE YOUR CLASS CLOCKHEART
+            </h1>
+            </div>
+            </div>
         </>
     )
 }
