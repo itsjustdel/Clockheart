@@ -86,16 +86,16 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
         return (
              <div className="bossItems">
                 <ul className="bossList">
-                    <li className='questItem'>                    
+                    <li className='bossItem'>                    
                         <button  onClick={talkClick}>TALK</button>                    
                     </li>
-                    <li className='questItem'>
+                    <li className='bossItem'>
                         <button onClick={banterClick}>BARTER</button>
                     </li>
-                    <li className='questItem'>
+                    <li className='bossItem'>
                         <button onClick={fightClick}>FIGHT</button>
                     </li>
-                    <li className='questItem'>
+                    <li className='bossItem'>
                         <button onClick={handleClick}>LEAVE</button>
                     </li>                    
                 </ul>
@@ -111,7 +111,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     return(
        
         <div className="bossContainer">
-            <div className="npcPortraitQuest"></div>
+            <div className="portraitBoss"></div>
             <div className="portraitPlayer"></div>
 
             
