@@ -71,7 +71,7 @@ ul{
   margin-block-start: 0em;
   margin-block-end: 0em;  
 
-  
+  z-index: 1;
 }
 
 .npcPortrait{
@@ -128,6 +128,7 @@ ul{
   padding-inline-start: 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;  
+  
 }
 
 .npcItems{
@@ -209,6 +210,8 @@ ul{
   padding-inline-start: 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;  
+
+  z-index: 1;
 }
 
 .playerItem{
@@ -358,4 +361,24 @@ progress::-webkit-progress-bar {background-color: #C0392B ; width: 100%;}
 .rec-dot{
   background-color: rgb(235, 16, 16);
   box-shadow: 0 0 1px 3px rgba(235, 16, 16, 0.5);
+}
+
+.rain{
+  background-image: url(/public/rain.gif);
+  position: absolute;
+  top:50%;
+  left:50%;     
+  width: 100%;
+  height: 100%;
+
+  /* z-index: -0100; */
+
+  background-size: contain;
+  background-repeat: repeat;
+  
+  animation-fill-mode: forwards;
+
+  z-index: 0;
+  transform:translate(-50%, -50%);
+  pointer-events: none;
 }

@@ -1,8 +1,12 @@
+import { Html } from "@react-three/drei"
+
 const Rain = () => {
 
     return (
         <>
-            <img src="/public/rain.gif"></img>
+      
+            <img unselectable="on" className="rain" src="/rain.gif"></img>
+          
         </>
     )
 }
