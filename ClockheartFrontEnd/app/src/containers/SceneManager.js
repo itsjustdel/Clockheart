@@ -4,19 +4,18 @@ import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { Canvas } from "@react-three/fiber"
 //project defined
 import Player from "../components/Player";
-import SceneHelper from '../components/SceneHelper';
-import ClockTowerBar from '../components/ClockTowerBar';
-import Cave from '../components/Cave'
-import ShopList from '../components/ShopList'
-import PlayerItems from '../components/PlayerItems';
-import QuestGUI from '../components/QuestGUI';
-import Street from '../components/Street';
-import BossGUI from '../components/BossGUI';
-import CharacterCreationGUI from '../components/CharacterCreationGUI';
-import { getPlayerItems } from '../components/ItemServices';
-import { updateCharacterInTable } from '../components/CharacterServices';
-import BookLocation from '../components/BookLocation';
-import BookGUI from '../components/BookGUI';
+import SceneHelper from '../components/Scenes/SceneHelper';
+import ClockTowerBar from '../components/ClockTowerBar/ClockTowerBar';
+import Cave from '../components/Scenes/Cave'
+import ShopListGUI from '../components/GUI_Files/ShopListGUI'
+import PlayerItemsGUI from '../components/GUI_Files/PlayerItemsGUI';
+import QuestGUI from '../components/GUI_Files/QuestGUI';
+import Street from '../components/Street/Street';
+import BossGUI from '../components/GUI_Files/BossGUI';
+import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
+import { updateCharacterInTable } from '../components/Services/CharacterServices';
+import BookGUI from '../components/GUI_Files/BookGUI';
+import Rain from '../components/Street/Rain';
 
 const SceneManager = () => {
     
@@ -26,18 +25,18 @@ const SceneManager = () => {
     const [defaultItems, setDefaultItems] = useState([])
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
-
-    // const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
-    // const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
-    const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 15)])
-
+    const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 16)])
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
     const [bossOpen, setBossOpen] = useState(false)
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
+    const [dungeonComplete, setDungeonComplete] = useState(false)
+
 
     const startLevel = { name: "Street" }
+
+
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 
@@ -54,14 +53,6 @@ const SceneManager = () => {
     useEffect(() => {
         setUsableCharacters()
     }, [defaultCharacters])
-
-    // The below will return an up-to-date array of player items every time an item is bought. DB still updating fine. This isn't stored anywhere though!
-    //The getPlayerItems() function can be imported and used anywhere you are passing in items and need to get a list of current player items.
-    // useEffect(() => {
-    //     const playerItems = getPlayerItems(items)
-    //     // console.log(playerItems)
-    // }, [items])
-    
 
     const getCharacters = () => {
         fetch('http://localhost:8080/characters')
@@ -92,13 +83,6 @@ const SceneManager = () => {
             .then(quests => setQuests(quests))
     }
 
-//     const updatePlayerTarget = (newPlayerTargetPosition) => {
-// console.log("UPDDATEETE!!!!")
-//         // setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
-//         // setPlayerTargetPosition(newPlayerTargetPosition)
-//         setPlayerTargets([playerMesh.current.position,newPlayerTargetPosition])
-
-//     }
     const updateItems = (index, newItem) => {
 
         // console.log("update player items - Scene Manager")
@@ -107,8 +91,7 @@ const SceneManager = () => {
         const newItems = [...items]
         newItems[index] = newItem
         setItems(newItems)
-        //we are re-rendering because we are setting state, so we need to update player position in state
-        // setPlayerStartPosition(playerMesh.current.position)
+        //we are re-rendering because we are setting state, so we need to update player position in state     
         //only update start position, target will be the same
         setPlayerTargets([playerMesh.current.position,playerTargets[1]])
     }
@@ -152,20 +135,19 @@ const SceneManager = () => {
                     playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
-
-                
+              
                 {currentQuest.name == "Street" ? 
 
                 <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
 
                 : null}
+
+          
             </Canvas>
 
-           
+            {currentQuest == "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>}
 
-            <PlayerItems characters={characters} items={items} setSelectedItem={setSelectedItem}/>
-
-            {shopOpen == true ? <ShopList updateItems={updateItems}
+            {shopOpen == true ? <ShopListGUI updateItems={updateItems}
                 characters={characters}
                 setCharacters={setCharacters}
                 items={items}
@@ -177,11 +159,14 @@ const SceneManager = () => {
             {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items} resetCharacters={resetCharacters} setItems={setItems} defaultItems={defaultItems} /> : null}                           
 
-            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} /> : null}
+            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} setDungeonComplete={setDungeonComplete} dungeonComplete={dungeonComplete} /> : null}
 
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 
             {bookLocationOpen == true ? <BookGUI setBookLocationOpen={setBookLocationOpen} /> : null}
+
+            {currentQuest.name == "Street"?  <Rain/> : null}
+          
         </>
     )
 }

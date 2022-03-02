@@ -1,0 +1,60 @@
+#ending {
+    background-image: url('/public/newPngs/noblimp.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#play-again {
+    position: absolute;
+    left: 90%;
+    top: 93%;
+    font-size: larger;
+    animation: fadeIn 20s;
+  	opacity: 1;
+}
+
+#end-text {
+    position: absolute;
+    text-align: center;
+    font-size: 50px;
+    left: 25%;
+    top: 32%;
+    animation: fadeIn 10s;
+  	opacity: 1;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+@keyframes fadeIn {
+  from {
+  	opacity: 0;
+  }
+  to {
+ 	opacity: 1;
+  }
+}
+
+
+#justblimp {
+    background-image: url('/public/newPngs/justblimp.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-duration: 40s;
+    animation-name: slidein;
+    animation-fill-mode: forwards;
+}
+  
+  @keyframes slidein {
+    from {
+        margin-left: 0%;
+        width: 100%;
+      
+    }
+  
+    to {
+        margin-left: 200%;
+        width: 300%;
+    }
+  }
+
+
+
