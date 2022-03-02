@@ -3,11 +3,13 @@
     margin: 1vw;
     margin-top: 35%;
     margin-left: 2vw;
+    font-size: 35px;
 }
 
 #paragraphs{
     margin-left: 1vw;
     margin-right: 1vw;
+    font-size: 35px;
 }
 
 #page{
@@ -41,6 +43,16 @@
     text-align: center;
     margin-top: 10vh;
     margin-bottom: 10vh;
+    font-size: 50px;
+}
+
+#title-publish{
+    margin-left: 1vw;
+    margin-right: 1vw;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    font-size: 25px;
 }
 
 #end-quote{
@@ -49,6 +61,7 @@
     text-align: center;
     margin-top: 10vh;
     margin-bottom: 10vh;
+    font-size: 50px;
 }
 
 .book-container{
