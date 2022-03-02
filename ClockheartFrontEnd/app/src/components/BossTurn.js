@@ -10,6 +10,8 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
     const reducePlayerHealth = () => {
 
+        console.log("heeee")
+
         let boss = characters.filter(function(item)
         {
          return item.id == enemyId;
@@ -28,8 +30,11 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
                     newCharacter.healthPoints -= boss[0].strength;
 
-                    let health = document.getElementById("healthPlayer")
+                    let health = document.getElementById("healthPlayer")                    
                     health.value = newCharacter.healthPoints
+
+                    console.log("here")
+                    
                 }
                 else{
                     newCharacter.healthPoints = 0

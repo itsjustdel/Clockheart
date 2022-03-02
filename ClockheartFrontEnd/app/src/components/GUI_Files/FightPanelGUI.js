@@ -96,8 +96,6 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
         //update characters in state with new character
         setCharacters(newCharacters)
         updateCharacterInTable(enemy)
-                
-        console.log("Player health after attack =" + characters[0].healthPoints)
 
         if(enemy.healthPoints <= 0 ){
             //boss is dead            
@@ -152,6 +150,12 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
     const FightButtons = () => {
         return(
             <> 
+            <div className="healthContainerBoss">
+                <progress className="healthBar" id="healthBoss" value="100" max="100"></progress>
+            </div>
+            <div className="healthContainerPlayer">
+                <progress className="healthBar" id="healthPlayer" value="100" max="100"></progress>
+            </div>
 
                 <div className="npcItems">
                     <ul className="npcItemList">
