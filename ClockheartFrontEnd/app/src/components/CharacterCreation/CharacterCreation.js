@@ -103,12 +103,10 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
                 <Carousel itemsToShow={1} enableMouseSwipe={true} enableAutoPlay={false} autoPlaySpeed={10000} onChange={handleChange}>
                     {listOfTypes}
                 </Carousel>
-                <input type="submit" value="Submit" />
+                <input className="character-submit" type="submit" value="Submit" />
             </form>    
-            <div className='npcItem'>
-                <div id="infotoShow" >
+            <div className='ccItem'>
             {infoToShow == null ? null : <ClassTypeInformation type={infoToShow} />}
-            </div>
             </div>
             </div>
         </>
