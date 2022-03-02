@@ -3,7 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { Vector3, TextureLoader } from "three";
 
 const QuestGiver = ({questGiverOpen, setQuestGiverOpen, playerMesh, setPlayerTargets}) => {
-    const questGiverPosition = new Vector3(-2,5,-11);
+    const questGiverPosition = new Vector3(-2,4.9,-11);
 
     useEffect(() => {
         
