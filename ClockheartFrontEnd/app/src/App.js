@@ -4,9 +4,7 @@ import SceneManager from './containers/SceneManager';
 function App() {
   return (
     <>
-    App
- 
-        
+    
     <SceneManager/>
     
       

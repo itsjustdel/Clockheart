@@ -141,6 +141,8 @@ const SceneManager = () => {
                 <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
 
                 : null}
+
+          
             </Canvas>
 
             {currentQuest == "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>}
@@ -163,8 +165,8 @@ const SceneManager = () => {
 
             {bookLocationOpen == true ? <BookGUI setBookLocationOpen={setBookLocationOpen} /> : null}
 
-
-            {/* <Rain/> */}
+            {currentQuest.name == "Street"?  <Rain/> : null}
+          
         </>
     )
 }
