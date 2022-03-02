@@ -22,19 +22,14 @@ const PlayerItemsGUI = ({characters, items, setSelectedItem}) => {
         const filename = item.name.replace(/ /g, "_");
         if(item.character.id === 1)
             return <li className='playerItem' key={index}>
-                        {/* <button onClick={handleSelectedItemClick} value={index}>{item.name}</button> */}
-                        {/* <img className='playerItemImage' src={`/newPngs/${filename}.png`}/> */}
-
-                        {/* <div className ="shopItemImage">                             */}
-                            <input onClick={handleSelectedItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
-                        {/* </div> */}
-                        
+                        <input onClick={handleSelectedItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
                     </li>
     })
 
     return(
         <>        
             <ul className='playerItemList'>
+            <img className="playerItem"  src={`/newPngs/currency.png`}></img>
                 {playerItems}
             </ul>
         </>
