@@ -64,8 +64,6 @@ const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, se
                     </li>
                 </ul>
             </div>
-
-            <button onClick={handleSpeech}>Please Give Me The Gem!</button>
         </>
     )
 }
