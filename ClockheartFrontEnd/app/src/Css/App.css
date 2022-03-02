@@ -401,7 +401,17 @@ progress::-webkit-progress-bar {background-color: #C0392B ; width: 100%;}
 }
 
 .currency{
- 
+  width: 80px;
+  height: 80px;
+  background-image: url("/public/newPngs/currency.png");
+  background-repeat: no-repeat;
+  color: var(--cwBlue);
+  text-align: center;
+  font-size: 50px;
+  padding-top: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
+  text-shadow: 3px 3px 0px #000000;
 }
 
 /* square buttons */
