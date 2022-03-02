@@ -5,6 +5,7 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
     useEffect( () => 
     {        
+        console.log("heef")
         reducePlayerHealth()
     }, [])
 
