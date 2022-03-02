@@ -3,8 +3,13 @@ const GameOverScreenGUI = ({handleDeath}) => {
 
     return(
         <>
-            <h1>You lost your last screw</h1>
-            <button onClick={handleDeath}>Play again...</button>
+            <div className="bossItems">
+                <ul >
+                    <li className='questItem'>                    
+                        <button onClick={handleDeath}>Play again...</button>
+                    </li>                                     
+                </ul>
+            </div>
         </>
     )
 }

@@ -255,13 +255,13 @@ button:focus {
 .healthBar{
   
   height:100px;
-  width:90%; 
-  border-radius: 0;
-  color: red;
-}
+  width:100%; 
+  border-radius: 0%;
 
-progress::-webkit-progress-bar {background-color: red; width: 100%;}
-progress::-webkit-progress-value { background: green; }
+  border: #272727 solid 5px;
+}
+progress::-webkit-progress-bar {background-color: indianred; width: 100%;}
+/* progress::-webkit-progress-value { background: green; } */
 
 .healthContainerBoss{
   grid-column-start: 1;  
@@ -269,6 +269,7 @@ progress::-webkit-progress-value { background: green; }
   grid-row-end: 3;
   display: flex;
   justify-content: center;
+  
 }
 
 .healthContainerPlayer{

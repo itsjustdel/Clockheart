@@ -25,7 +25,7 @@ const Street = ({playerTargets, setPlayerTargets, characterCreationOpen, setChar
             return
         //check if the player is close to the target (boss/ loot?)
         if(!playerPositionOnLoad){
-            const startPos = new Vector3(12, 5, 15)
+            const startPos = new Vector3(12, 5, 16)
             
             // setPlayerStartPosition(startPos)            
             // setPlayerTargetPosition(startPos)
