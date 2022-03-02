@@ -3,7 +3,7 @@ const TalkFailedScreen = ({handleFight}) => {
 
     return(
         <>
-          <div className="npcItems">
+          <div className="bossItems">
                 <ul className="npcItemList">
                     <li className='questItem'>                    
                     <button onClick={handleFight}>FIGHT...</button>
