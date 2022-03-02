@@ -26,7 +26,7 @@ const PlayerItemsGUI = ({characters, items, setSelectedItem, selectedItem}) => {
         <>        
             <ul className='playerItemList'>
             {/* <img className="playerItem"  src={`/newPngs/currency.png`}></img> */}
-                <li className="playerItem currency">${playerCash}</li>
+                <li className="playerItem currency">{playerCash}</li>
                 {playerItems}
             </ul>
         </>
