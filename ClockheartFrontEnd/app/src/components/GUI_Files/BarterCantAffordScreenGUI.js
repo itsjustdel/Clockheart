@@ -1,10 +1,15 @@
-const BarterCantAffordScreenGUI = ({handleFight}) => {
+const BarterCantAffordScreenGUI = ({handleFight, setText}) => {
 
 
     return(
         <>
-            <h1>STUPID CLOCKHEART YOU CANT AFFORD THIS GEM!</h1>
-            <button onClick={handleFight}>FIGHT...</button>
+            <div className="bossItems">
+                <ul >
+                    <li className='questItem'>                    
+                        <button onClick={handleFight}>FIGHT...</button>
+                    </li>                    
+                </ul>
+            </div>
         </>
     )
 }

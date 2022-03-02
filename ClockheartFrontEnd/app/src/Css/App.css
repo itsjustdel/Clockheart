@@ -1,6 +1,13 @@
+
+
 * {
   box-sizing: border-box;
- 
+  
+  --cwBrown:#96312e;
+  --cwOrange:#d1675a;
+  --cwYellow:#ffbf6b;
+  --cwBlue:#398eb2;
+  --cwGrey:#153d52;
 }
 
 html,
@@ -37,6 +44,13 @@ Canvas{
 
 ul{
   list-style: none;
+  
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em; 
+
+  
+  
 }
 
 .npcContainer{
@@ -44,8 +58,7 @@ ul{
   border: black solid 10px;
   display:grid;
   grid-template-columns: .5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  background-color: #2196F3;
+  grid-template-rows: 1fr 1fr 1fr 1fr;  
   padding: 10px;
   top:50%;
   left:50%;  
@@ -53,17 +66,19 @@ ul{
   width: 80%;
   height: 80%;
   color: white; 
-  background-color: #666666;
+  background-color: var(--cwGrey);
   padding-inline-start: 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;  
+
+  
 }
 
 .npcPortrait{
   background-image: url("/public/characters/miniShopKeeper.gif");
   margin: 40px;
   border: black solid 10px;
-  background-color: #2196F3;
+  background-color: var(--cwBlue);
   grid-row-start: 1;
   grid-row-end: 3;
   background-size: 300px;
@@ -75,7 +90,7 @@ ul{
   background-image: url("/public/characters/HoodWalker.gif");
   margin: 40px;
   border: black solid 10px;
-  background-color: #2196F3;
+  background-color: var(--cwBlue);
   grid-row-start: 1;
   grid-row-end: 3;
   background-size: 300px;
@@ -87,7 +102,7 @@ ul{
   background-image: url("/public/characters/HoodWalker.gif");
   margin: 40px;
   border: black solid 10px;
-  background-color: #2196F3;
+  background-color: var(--cwBlue);
   grid-row-start: 1;
   grid-row-end: 3;
   background-size: 300px;
@@ -97,7 +112,7 @@ ul{
 
 .npcTextBox{
   color: black;
-  background-color: yellowgreen;
+  background-color: var(--cwYellow);
   margin: 40px;
   border: black solid 10px;
   grid-column-start: 1;  
@@ -108,9 +123,16 @@ ul{
   
 }
 
+.npcItemList{
+  padding-top: 5%;
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
+}
+
 .npcItems{
   /* position: relative; */
-  background-color: rebeccapurple;
+  background-color:var(--cwOrange);
   margin: 40px;
   border: 10px black solid;
   grid-column-start: 2;  
@@ -129,10 +151,18 @@ ul{
   text-align: center;
 
   border: #272727 solid 5px;
-  background-color: #2196F3;
+  background-color: var(--cwBlue);
+  width: 100%;
   
 }
 
+.Carousel{
+  /* border: #272727 solid 5px; */
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
+  
+}
 .shopItemName{
   /* grid-column-start: 0;   */
   /* background-color: green; */
@@ -156,13 +186,15 @@ ul{
 } */
 
 .sellButton{  
-  background-color: #2196F3;
-  border: 5px solid #272727;
+  background-color: var(--cwBlue);
+  border: 5px solid var(--cwGrey);
   text-align: center;
   /* height: 4em; */
   width: 50%;
   margin: auto;
   font-size: xx-large;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .playerItemList{
@@ -172,7 +204,7 @@ ul{
   
   border: black solid 5px;
   display: flex;  
-  background-color: #2196F3;
+  background-color: var(--cwBlue);
 
   padding-inline-start: 0px;
   margin-block-start: 0em;
@@ -181,34 +213,33 @@ ul{
 
 .playerItem{
   border: black solid 5px;
-  background-color: blanchedalmond;  
+  background-color: var(--cwOrange);  
 }
 
-.playerItem::selection{
-  background-color: #272727;
-  border: red solid 10px;
+.selected-item {
+  border: goldenrod dashed 5px;
 }
 
 .questItem{
-  border: #272727 solid 5px;
-  background-color: #2196F3;
+  border: black solid 5px;
+  background-color: var(--cwBlue);
   text-align: center;
   font-size:xx-large;
-  margin-right: 5%;
+  
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
+  height:auto;
+  padding: 5%;
+
+  
+  margin: 5%;
 }
 
-.questButton{
-  /* all: unset;
-  cursor: hand; */
-}
 
 button {
   all: unset;
   
-}
-
-button:focus {
-  outline: orange 5px auto;
 }
 
 .bossContainer{
@@ -217,7 +248,7 @@ button:focus {
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    background-color: #2196F3;
+    background-color: var(--cwBlue);
     padding: 10px;
     top:50%;
     left:50%;  
@@ -225,15 +256,19 @@ button:focus {
     width: 80%;
     height: 80%;
     color: white; 
-    background-color: #666666;
+    background-color: var(--cwGrey);
     padding-inline-start: 0px;
     margin-block-start: 0em;
     margin-block-end: 0em;    
 }
 
+.bossList{
+  margin: 5%;
+}
+
 .bossItems{
   /* position: relative; */
-  background-color: rebeccapurple;
+  background-color:var(--cwYellow);
   margin: 40px;
   border: 10px black solid;
   grid-column-start: 2;  
@@ -243,7 +278,7 @@ button:focus {
 
 .bossText{
   color: black;
-  background-color: yellowgreen;
+  background-color: var(--cwOrange);
   margin: 40px;
   border: black solid 10px;
   grid-column-start: 2;  
@@ -252,16 +287,14 @@ button:focus {
   font-size: x-large;  
 }
 
-.healthBar{
-  
+.healthBar{  
   height:100px;
-  width:90%; 
-  border-radius: 0;
-  color: red;
+  width:100%; 
+  border-radius: 0%;
+  border: black solid 8px;
 }
-
-progress::-webkit-progress-bar {background-color: red; width: 100%;}
-progress::-webkit-progress-value { background: green; }
+progress::-webkit-progress-bar {background-color: #C0392B ; width: 100%;}
+/* progress::-webkit-progress-value { background: green; } */
 
 .healthContainerBoss{
   grid-column-start: 1;  
@@ -269,6 +302,7 @@ progress::-webkit-progress-value { background: green; }
   grid-row-end: 3;
   display: flex;
   justify-content: center;
+  
 }
 
 .healthContainerPlayer{
@@ -299,11 +333,6 @@ progress::-webkit-progress-value { background: green; }
   visibility: hidden;
 }
 
-
-.rec.rec-arrow {
-  border-radius: 50%;
-  background-color: rgb(60, 33, 87, 0.8)}
-
 .rec.rec-arrow:hover {
   border-radius: 50%;
   background-color: rgba(60, 33, 87, 0.425)
@@ -312,4 +341,21 @@ progress::-webkit-progress-value { background: green; }
   overflow: visible;
   background-color: rgb(60, 33, 87, 0.8);
   overflow: hidden;
+}
+
+.currency{
+ 
+}
+
+/* square buttons */
+.rec.rec-arrow {
+  border-radius: 0;
+  color: #398eb2;
+  background-color: #96312e;
+}
+
+
+.rec-dot{
+  background-color: rgb(235, 16, 16);
+  box-shadow: 0 0 1px 3px rgba(235, 16, 16, 0.5);
 }

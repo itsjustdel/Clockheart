@@ -4,9 +4,13 @@ const BossDeathScreenGUI = ({handleClick}) => {
     
     return(
         <>
-            <h1>THE BOSS DIED</h1>
-
-            <button onClick={handleClick} >Head Back to Tavern</button>
+            <div className="bossItems">
+                <ul >
+                    <li className='questItem'>                    
+                        <button onClick={handleClick} >Head Back to Tavern</button>
+                    </li>
+                </ul>
+            </div>
         </>
     )
 }

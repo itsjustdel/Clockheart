@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPlayerItems } from "../Services/ItemServices"
 
-const PlayerItemsGUI = ({characters, items, setSelectedItem}) => {
+const PlayerItemsGUI = ({characters, items, setSelectedItem, selectedItem}) => {
 
     // const [player, setPlayer] = useState(null)
 
@@ -21,20 +21,15 @@ const PlayerItemsGUI = ({characters, items, setSelectedItem}) => {
     const playerItems = items.map((item, index) => {  
         const filename = item.name.replace(/ /g, "_");
         if(item.character.id === 1)
-            return <li className='playerItem' key={index}>
-                        {/* <button onClick={handleSelectedItemClick} value={index}>{item.name}</button> */}
-                        {/* <img className='playerItemImage' src={`/newPngs/${filename}.png`}/> */}
-
-                        {/* <div className ="shopItemImage">                             */}
+            return <li className={`playerItem ${selectedItem !== null && item.id === selectedItem.id ? "selected-item" : ""}`} key={index}>
                             <input onClick={handleSelectedItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
-                        {/* </div> */}
-                        
                     </li>
     })
 
     return(
         <>        
             <ul className='playerItemList'>
+            <img className="playerItem"  src={`/newPngs/currency.png`}></img>
                 {playerItems}
             </ul>
         </>

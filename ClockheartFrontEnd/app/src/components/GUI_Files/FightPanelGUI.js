@@ -5,7 +5,7 @@ import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
 
 
-const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead}) => {
+const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead, setText}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]
@@ -44,10 +44,8 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
                 bossItems[i] = bossItems[j]
                 bossItems[j] = k
             }
-        // console.log(bossItems)
-
-        const earnedItems = bossItems.slice(0,2)
-        // console.log(earnedItems)
+        
+        const earnedItems = bossItems.slice(0,2)        
 
         newItems.map((item) => {
             if(item.id === earnedItems[0].id || item.id === earnedItems[1].id){
@@ -55,7 +53,6 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
             }
         })
         setItems(newItems)
-        // console.log(getPlayerItems(items))
 
         getPlayerItems(newItems).map((item) => {
             return updateItemInTable(item)
@@ -86,8 +83,6 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
         if(attackStrength !== undefined){
             if(enemy.healthPoints > attackStrength){
                 enemy.healthPoints -= attackStrength
-                let health = document.getElementById("healthBoss")
-                health.value = enemy.healthPoints
             }
             else{
                 enemy.healthPoints = 0
@@ -96,8 +91,6 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
         //update characters in state with new character
         setCharacters(newCharacters)
         updateCharacterInTable(enemy)
-                
-        console.log("Player health after attack =" + characters[0].healthPoints)
 
         if(enemy.healthPoints <= 0 ){
             //boss is dead            
@@ -106,10 +99,12 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
             setFightPanel(false)
         }else{
             //boss turn         
+            
             setTurn(1)
         }
 
         if(player.healthPoints <= 0){
+            setText("You lost your last screw Clockheart!")
             setPlayerDead(true)
             setFightPanel(false)
             setBossDead(false)
@@ -122,38 +117,47 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
         let healing = 0
         if(selectedItem !== null){
             healing = selectedItem.healing
-        }
+        
     
-        if(healing !== undefined){
-            if (player.healthPoints + healing < 100){
-                player.healthPoints += healing
-              
-                let health = document.getElementById("healthPlayer")
-                health.value = player.healthPoints
-
-                selectedItem.character = zebediah
-                
+            if(healing !== undefined){
+                if (player.healthPoints + healing < 100){
+                    player.healthPoints += healing                
+                    selectedItem.character = zebediah
+                    
+                }
+                else{
+                    player.healthPoints = 100
+                    console.log("selected item owner: ", selectedItem.character)
+                    selectedItem.character = zebediah
+                    console.log("selected item owner", selectedItem.character)
+                }
             }
-            else{
-                player.healthPoints = 100
-                console.log("selected item owner: ", selectedItem.character)
-                selectedItem.character = zebediah
-                console.log("selected item owner", selectedItem.character)
-            }
+            console.log("items after using healing", items)
+            updateItemInTable(selectedItem)
+            setCharacters(newCharacters)
+            updateCharacterInTable(player)
         }
-        console.log("items after using healing", items)
-        updateItemInTable(selectedItem)
-        setCharacters(newCharacters)
-        updateCharacterInTable(player)
-
         return
     }
 
     const FightButtons = () => {
+
+        
+        let bossHealth = 100 
+        if(enemy != undefined)
+            bossHealth= enemy.healthPoints
+
         return(
             <> 
+            <div className="healthContainerBoss">
+                <progress className="healthBar" id="healthBoss" value={bossHealth} max="100"></progress>
+            </div>
+            <div className="healthContainerPlayer">
+                <progress className="healthBar" id="healthPlayer" value={player.healthPoints} max="100"></progress>
+                
+            </div>
 
-                <div className="npcItems">
+                <div className="bossItems">
                     <ul className="npcItemList">
                         <li className='questItem'>                    
                             <button onClick={attackClick}>Attack</button>        
@@ -163,11 +167,8 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
                         </li>
                       
                     </ul>
-                    </div>
-
+                </div>
             </>
-
-
         )
     }
 
@@ -178,8 +179,8 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
 
         return(
         <>
-            <h3>PlayerHealth...</h3>
-            {newCharacter.healthPoints}
+            {/* <h3>PlayerHealth...</h3>
+            {newCharacter.healthPoints} */}
         </>
         )
     }
@@ -189,8 +190,8 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
         if(findEnemy().healthPoints > 0){
         return(
         <>
-            <h3>EnemyHealth...</h3>
-            {findEnemy().healthPoints} 
+            {/* <h3>EnemyHealth...</h3>
+            {findEnemy().healthPoints}              */}
         </>
         )}
         else{
@@ -207,8 +208,8 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
         <>
             {turn == 0 ? <FightButtons/>:<BossTurn characters={characters} setCharacters={setCharacters} enemyId={enemyId} setTurn={setTurn}/>}
 
-            <PlayerHealth/>
-            <EnemyHealth/>        
+            {/* <PlayerHealth/>
+            <EnemyHealth/>         */}
         </>
     )
 

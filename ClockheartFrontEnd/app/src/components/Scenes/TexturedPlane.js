@@ -45,7 +45,7 @@ const TexturedPlane =({name, url, position, args, speech, playerMesh})=>{
                 <planeBufferGeometry attach="geometry" args={args} />
                 <meshStandardMaterial map={texture} transparent={true} />
                 {close? 
-                <Html className="people" >
+                <Html zIndexRange={[-1, 0]} className="people" >
                     <div className="label">{speech}</div>
                 </Html> 
                 : null }
