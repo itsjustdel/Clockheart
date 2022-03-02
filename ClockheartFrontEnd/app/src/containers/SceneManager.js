@@ -13,9 +13,7 @@ import QuestGUI from '../components/GUI_Files/QuestGUI';
 import Street from '../components/Street/Street';
 import BossGUI from '../components/GUI_Files/BossGUI';
 import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
-import { getPlayerItems } from '../components/Services/ItemServices';
 import { updateCharacterInTable } from '../components/Services/CharacterServices';
-import BookLocation from '../components/ClockTowerBar/Book/BookLocation';
 import BookGUI from '../components/GUI_Files/BookGUI';
 
 const SceneManager = () => {
@@ -39,7 +37,7 @@ const SceneManager = () => {
     const [dungeonComplete, setDungeonComplete] = useState(false)
 
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "Street" }
 
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()

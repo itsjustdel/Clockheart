@@ -57,6 +57,8 @@ ul{
   padding-inline-start: 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;  
+
+  
 }
 
 .npcPortrait{
@@ -108,6 +110,13 @@ ul{
   
 }
 
+.npcItemList{
+  padding-top: 5%;
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
+}
+
 .npcItems{
   /* position: relative; */
   background-color: rebeccapurple;
@@ -130,9 +139,17 @@ ul{
 
   border: #272727 solid 5px;
   background-color: #2196F3;
+  width: 100%;
   
 }
 
+.Carousel{
+  /* border: #272727 solid 5px; */
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
+  
+}
 .shopItemName{
   /* grid-column-start: 0;   */
   /* background-color: green; */
@@ -163,6 +180,8 @@ ul{
   width: 50%;
   margin: auto;
   font-size: xx-large;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .playerItemList{
@@ -195,6 +214,10 @@ ul{
   text-align: center;
   font-size:xx-large;
   margin-right: 5%;
+  margin-left: 5%;
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;  
 }
 
 .questButton{

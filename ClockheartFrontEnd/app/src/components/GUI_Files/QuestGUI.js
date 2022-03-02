@@ -87,9 +87,9 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
             <div className="npcPortraitQuest"></div>    
             <div className="npcItems">
             <ul className="npcItemList">
-                <li className='npcItem'></li>
+                {/* <li className='npcItem'></li> */}
                 {questsMap}
-                <li className='npcItem'></li>
+                {/* <li className='npcItem'></li> */}
             </ul>
             </div>
             <div className="npcTextBox">
