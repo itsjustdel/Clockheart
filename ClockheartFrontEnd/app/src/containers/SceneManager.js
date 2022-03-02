@@ -24,18 +24,13 @@ const SceneManager = () => {
     const [defaultItems, setDefaultItems] = useState([])
     const [quests, setQuests] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null)
-
-    // const [playerStartPosition, setPlayerStartPosition] = useState(new Vector3(12, 5, 15))
-    // const [playerTargetPosition, setPlayerTargetPosition] = useState(new Vector3(12, 5, 15))
     const [playerTargets, setPlayerTargets] = useState([new Vector3(12, 5, 15),new Vector3(12, 5, 16)])
-
     const [shopOpen, setShopOpen] = useState(false)
     const [questGiverOpen, setQuestGiverOpen] = useState(false)
     const [bossOpen, setBossOpen] = useState(false)
     const [characterCreationOpen, setCharacterCreationOpen] = useState(false)
     const [bookLocationOpen, setBookLocationOpen] = useState(false)
     const [dungeonComplete, setDungeonComplete] = useState(false)
-
 
     const startLevel = { name: "ClockTowerBar" }
 
@@ -55,14 +50,6 @@ const SceneManager = () => {
     useEffect(() => {
         setUsableCharacters()
     }, [defaultCharacters])
-
-    // The below will return an up-to-date array of player items every time an item is bought. DB still updating fine. This isn't stored anywhere though!
-    //The getPlayerItems() function can be imported and used anywhere you are passing in items and need to get a list of current player items.
-    // useEffect(() => {
-    //     const playerItems = getPlayerItems(items)
-    //     // console.log(playerItems)
-    // }, [items])
-    
 
     const getCharacters = () => {
         fetch('http://localhost:8080/characters')
@@ -153,8 +140,7 @@ const SceneManager = () => {
                     playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
-
-                
+              
                 {currentQuest.name == "Street" ? 
 
                 <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
@@ -162,9 +148,7 @@ const SceneManager = () => {
                 : null}
             </Canvas>
 
-           
-
-            <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem}/>
+            {currentQuest == "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem}/>}
 
             {shopOpen == true ? <ShopListGUI updateItems={updateItems}
                 characters={characters}

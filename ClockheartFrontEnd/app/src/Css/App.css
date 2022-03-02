@@ -2,23 +2,13 @@
 
 * {
   box-sizing: border-box;
-
-
-
-  --cwBrown:#96312e	;
-  --cwOrange:#d1675a	;
-  --cwYellow:#ffbf6b	;
-  --cwBlue:#398eb2	;
-  --cwGrey:#153d52	;
-
+  
+  --cwBrown:#96312e;
+  --cwOrange:#d1675a;
+  --cwYellow:#ffbf6b;
+  --cwBlue:#398eb2;
+  --cwGrey:#153d52;
 }
-
-
-/* #887972	(136,121,114) */
-/* #e1c289	(225,194,137) */
-/* #a7793e	(167,121,62) */
-/* #6b4131	(107,65,49) */
-/* #856045	(133,96,69) */
 
 html,
 body,
@@ -224,6 +214,10 @@ ul{
 .playerItem{
   border: black solid 5px;
   background-color: var(--cwOrange);  
+}
+
+.selected-item {
+  border: goldenrod dashed 5px;
 }
 
 .questItem{
