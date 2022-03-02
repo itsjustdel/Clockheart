@@ -315,9 +315,34 @@ progress::-webkit-progress-bar {background-color: #C0392B ; width: 100%;}
 
 .create-name{
   margin-top: 5vh;
-  margin-bottom: 1.5vh;
+  margin-bottom: 2vh;
   margin-left: 7%;
 }
+
+.character-submit{
+  background-color: rgb(140, 115, 165);
+  color: white;
+  font-family: 'VT323', monospace;
+  border-radius: 5px;
+  padding: 0.5vh;
+  margin-left: 88%;
+}
+
+.ccItem{
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 14%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  border: #272727 solid 5px;
+  background-color: var(--cwBlue);
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+}
+
 
 .name-box{
   border-radius: 5px;
@@ -325,9 +350,6 @@ progress::-webkit-progress-bar {background-color: #C0392B ; width: 100%;}
 
 }
 
-#infoToShow{
-  margin-top: 10%;
-}
 
 .rec.rec-arrow:disabled {
   visibility: hidden;
