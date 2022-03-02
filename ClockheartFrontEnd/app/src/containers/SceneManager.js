@@ -34,7 +34,7 @@ const SceneManager = () => {
     const [dungeonComplete, setDungeonComplete] = useState(false)
 
 
-    const startLevel = { name: "Rust and Dust" }
+    const startLevel = { name: "Street" }
 
 
     const [currentQuest, setCurrentQuest] = useState(startLevel)
