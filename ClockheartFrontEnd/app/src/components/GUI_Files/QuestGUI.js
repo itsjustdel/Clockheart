@@ -94,7 +94,7 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
             </div>
             <div className="npcTextBox">
             <h1>
-                Questing is my liiiife, questing is my gaaaame, come get me some gemmmssssss, come get you some ticket to another land... 
+                Quests.... Gems..... Tickets??
             </h1>
 
             </div>

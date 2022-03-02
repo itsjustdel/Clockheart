@@ -85,7 +85,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     const InitialOptions = () => {
         return (
              <div className="bossItems">
-                <ul >
+                <ul className="bossList">
                     <li className='questItem'>                    
                         <button  onClick={talkClick}>TALK</button>                    
                     </li>
