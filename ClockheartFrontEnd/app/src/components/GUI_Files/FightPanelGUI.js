@@ -104,6 +104,7 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
             setFightPanel(false)
         }else{
             //boss turn         
+            
             setTurn(1)
         }
 

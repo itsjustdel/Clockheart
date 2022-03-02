@@ -4,13 +4,13 @@ import { updateCharacterInTable } from "./CharacterServices"
 const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
     useEffect( () => 
-    {
+    {        
         reducePlayerHealth()
     }, [])
 
     const reducePlayerHealth = () => {
 
-        console.log("heeee")
+
 
         let boss = characters.filter(function(item)
         {
