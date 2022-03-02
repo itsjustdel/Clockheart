@@ -97,6 +97,7 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
             transferItemsToPlayer()
             setBossDead(true)
             setFightPanel(false)
+            setText("I'll get you next time Clockheart!!")
         }else{
             //boss turn         
             
