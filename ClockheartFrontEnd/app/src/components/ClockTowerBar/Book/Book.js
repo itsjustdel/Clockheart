@@ -6,9 +6,10 @@ const Book = () => {
     
 
         return (
-          <HTMLFlipBook 
-          width={300}
-          height={400}
+        
+          <HTMLFlipBook  className="book-container"
+          width={600}
+          height={800}
           drawShadow={true}
           maxShadowOpacity={0.5}
           showCover={true}
@@ -63,6 +64,7 @@ const Book = () => {
                 <h2 id="end-quote">"Things end, but memories last forever" </h2>
             </div>
           </HTMLFlipBook>
+       
         );
       
 }
