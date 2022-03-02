@@ -15,6 +15,7 @@ import BossGUI from '../components/GUI_Files/BossGUI';
 import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
 import { updateCharacterInTable } from '../components/Services/CharacterServices';
 import BookGUI from '../components/GUI_Files/BookGUI';
+import Rain from '../components/Street/Rain';
 
 const SceneManager = () => {
     
@@ -82,13 +83,6 @@ const SceneManager = () => {
             .then(quests => setQuests(quests))
     }
 
-//     const updatePlayerTarget = (newPlayerTargetPosition) => {
-// console.log("UPDDATEETE!!!!")
-//         // setPlayerStartPosition(playerMesh.current.position) //combine with state below to reduce renders
-//         // setPlayerTargetPosition(newPlayerTargetPosition)
-//         setPlayerTargets([playerMesh.current.position,newPlayerTargetPosition])
-
-//     }
     const updateItems = (index, newItem) => {
 
         // console.log("update player items - Scene Manager")
@@ -97,8 +91,7 @@ const SceneManager = () => {
         const newItems = [...items]
         newItems[index] = newItem
         setItems(newItems)
-        //we are re-rendering because we are setting state, so we need to update player position in state
-        // setPlayerStartPosition(playerMesh.current.position)
+        //we are re-rendering because we are setting state, so we need to update player position in state     
         //only update start position, target will be the same
         setPlayerTargets([playerMesh.current.position,playerTargets[1]])
     }
@@ -150,7 +143,7 @@ const SceneManager = () => {
                 : null}
             </Canvas>
 
-            {currentQuest == "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem}/>}
+            {currentQuest == "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>}
 
             {shopOpen == true ? <ShopListGUI updateItems={updateItems}
                 characters={characters}
@@ -169,6 +162,9 @@ const SceneManager = () => {
             {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 
             {bookLocationOpen == true ? <BookGUI setBookLocationOpen={setBookLocationOpen} /> : null}
+
+
+            {/* <Rain/> */}
         </>
     )
 }
