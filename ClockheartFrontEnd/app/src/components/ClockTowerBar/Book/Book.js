@@ -8,8 +8,8 @@ const Book = () => {
         return (
         
           <HTMLFlipBook  className="book-container"
-          width={600}
-          height={800}
+          width={500}
+          height={700}
           drawShadow={true}
           maxShadowOpacity={0.5}
           showCover={true}
@@ -19,7 +19,7 @@ const Book = () => {
             </div>
             <div id="page">
               <h1 id="title">History of The Machines</h1>
-              <h5 id="title">Published by 'Red Guy'</h5>
+              <h5 id="title-publish">Published by 'Red Guy'</h5>
             </div>
             <div id="page">
             <p id="paragraphs">During the days before man and machine lived side by side, there was a group of individuals who set out to learn and discover more about how to interact with machines. </p>

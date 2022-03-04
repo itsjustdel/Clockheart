@@ -114,7 +114,7 @@ const SceneManager = () => {
 
     return (
         <>
-             <Canvas  linear flat gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 60, position: [0, 5, 0] }}>
+             <Canvas  linear flat gl={{ antialias: false }} orthographic camera={{near:-25,far:25, zoom: 100, position: [0, 5, 0] }}>
              <SceneHelper playerMesh={playerMesh}/>
 
             <Suspense fallback={null}>

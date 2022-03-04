@@ -7,7 +7,6 @@ const BookGUI = ({setBookLocationOpen}) => {
 
     return(
         <>
-        <h2>Memory Book</h2>
             <Book />
         </>
     )
