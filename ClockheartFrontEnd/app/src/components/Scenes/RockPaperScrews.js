@@ -1,11 +1,11 @@
 import GroundPlane from './GroundPlane'
 import React, { useEffect, useState, Suspense } from 'react'
-import Boss from '../Boss/RubyBoss'
+import SapphireBoss from '../Boss/SapphireBoss'
 import TexturedPlane from './TexturedPlane'
-import { Vector3 } from 'three';
+import { Vector3 } from 'three'
 import { useFrame } from '@react-three/fiber'
 
-const Cave = ({ playerMesh, bossOpen, setBossOpen, setPlayerTargets }) => {
+const RockPaperScrews = ({ playerMesh, bossOpen, setBossOpen, setPlayerTargets }) => {
     
     const [playerPositionOnLoad, setPlayerPositionOnLoad] = useState(false)
 
@@ -42,10 +42,10 @@ const Cave = ({ playerMesh, bossOpen, setBossOpen, setPlayerTargets }) => {
                 <GroundPlane playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} colour={"brown"} size={[sizeX, sizeY]}/>
                 <TexturedPlane url={["/levels/caveLevel.png"]} position={[0, 2, 0]} args={[sizeX, sizeY]} />
 
-                <Boss playerMesh={playerMesh} bossOpen={bossOpen} setBossOpen={setBossOpen} setPlayerTargets={setPlayerTargets} />
+                <SapphireBoss playerMesh={playerMesh} bossOpen={bossOpen} setBossOpen={setBossOpen} setPlayerTargets={setPlayerTargets} />
             </Suspense>
         </>
     )
 }
 
-export default Cave;
+export default RockPaperScrews;
