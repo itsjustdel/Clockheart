@@ -7,6 +7,7 @@ import Player from "../components/Player";
 import SceneHelper from '../components/Scenes/SceneHelper';
 import ClockTowerBar from '../components/ClockTowerBar/ClockTowerBar';
 import Cave from '../components/Scenes/Cave'
+import RockPaperScrews from '../components/Scenes/RockPaperScrews';
 import ShopListGUI from '../components/GUI_Files/ShopListGUI'
 import PlayerItemsGUI from '../components/GUI_Files/PlayerItemsGUI';
 import QuestGUI from '../components/GUI_Files/QuestGUI';
@@ -34,8 +35,7 @@ const SceneManager = () => {
     const [dungeonComplete, setDungeonComplete] = useState(false)
 
 
-    const startLevel = { name: "Street" }
-
+    const startLevel = { name: "Rock Paper Screws" }
 
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
@@ -141,6 +141,8 @@ const SceneManager = () => {
                 <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
 
                 : null}
+
+                {currentQuest.name == "Rock Paper Screws" ? <RockPaperScrews playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
 
           
             </Canvas>

@@ -16,9 +16,6 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
 
     const handleQuestClick = (event) => {
 
-
-        console.log("hi")
-
         const questToSet = quests[event.target.value]
 
         //test for quest complete
@@ -28,8 +25,9 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         setQuests(newQuests)
 
         //front end update state
-        setCurrentQuest(questToSet)
-
+        setCurrentQuest({name: questToSet.name})
+        console.log(questToSet);
+        console.log(questToSet.name);
         //reset gui panel in state
         setQuestGiverOpen(false)
 
