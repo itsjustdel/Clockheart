@@ -92,6 +92,9 @@ public class DataLoader implements ApplicationRunner {
         Healing sage = new Healing("Sage", 3, shop, 3);
         itemRepository.save(sage);
 
+        Healing wd40 = new Healing("WD-Fortify", 25, shop, 40);
+        itemRepository.save(wd40);
+
         //RUBY ITEMS
 
         Item rubyGem = new Item("Ruby Gem", 500, rubyBoss);
