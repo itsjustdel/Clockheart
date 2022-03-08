@@ -42,7 +42,7 @@ public class GameCharacter {
         this.intelligence = intelligence;
         this.strength = strength;
         this.charisma = charisma;
-        this.currency = 50;
+        this.currency = 20;
         this.type = type;
         this.quests = new ArrayList<Quest>();
         this.items = new ArrayList<Item>();
@@ -50,7 +50,7 @@ public class GameCharacter {
 
     public GameCharacter() {
         this.healthPoints = 100;
-        this.currency = 10;
+        this.currency = 20;
     }
 
     public void canAddQuest(Quest quest){
