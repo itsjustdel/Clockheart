@@ -1,7 +1,7 @@
 Clockheart!
 
 An interactive game created with a Javascript/React frontend and a Java spring backend. <br>
-Using react three/
+Using react three/drei, and react-flipbook + react-elastic-carousel
 
 To play:
 
