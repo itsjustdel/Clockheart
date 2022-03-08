@@ -106,6 +106,8 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
     const getBossIdFromQuest = () => {
         if(currentQuest.name == "Rust and Dust")
             return 4
+        else if(currentQuest.name == "Rock Paper Screws")
+            return 5
     }
 
     return(
