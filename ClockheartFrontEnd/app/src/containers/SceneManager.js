@@ -35,7 +35,7 @@ const SceneManager = () => {
     const [dungeonComplete, setDungeonComplete] = useState(false)
 
 
-    const startLevel = { name: "Rock Paper Screws" }
+    const startLevel = { name: "ClockTowerBar" }
 
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
@@ -58,7 +58,6 @@ const SceneManager = () => {
         fetch('http://localhost:8080/characters')
             .then(res => res.json())
             .then(characterData => setDefaultCharacters(characterData))
-            // .then(characters => setCharacters(characters))
     }
 
     const setUsableCharacters = () => {
