@@ -9,6 +9,10 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
         reducePlayerHealth()
     }, [])
 
+    const randomNumber = (min, max) => { // min and max included
+        return Math.floor(Math.random() * (max - min+1)+min);
+      }
+
     const reducePlayerHealth = () => {
 
         let boss = characters.filter(function(item)
@@ -26,7 +30,9 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
                 //we found the player 
                 newCharacter = newCharacters[i]
                 if(newCharacter.healthPoints > boss[0].strength){
-                    newCharacter.healthPoints -= boss[0].strength;
+                    const bossAttack = boss[0].strength * randomNumber(1, 3)
+                    console.log(bossAttack);
+                    newCharacter.healthPoints -= bossAttack;
 
                     // let health = document.getElementById("healthPlayer")
                     // health.value = newCharacter.healthPoints 
