@@ -38,13 +38,13 @@ public class DataLoader implements ApplicationRunner {
         GameCharacter rubyBoss = new GameCharacter("Ruby Boss", 3, 5, 3, "Boss");
         gameCharacterRepository.save(rubyBoss);
 
-        GameCharacter sapphireBoss = new GameCharacter("Sapphire Boss", 5, 3, 3, "Boss");
+        GameCharacter sapphireBoss = new GameCharacter("Sapphire Boss", 5, 6, 3, "Boss");
         gameCharacterRepository.save(sapphireBoss);
 
-        GameCharacter emeraldBoss = new GameCharacter("Emerald Boss", 3, 3,5, "Boss");
+        GameCharacter emeraldBoss = new GameCharacter("Emerald Boss", 3, 7,5, "Boss");
         gameCharacterRepository.save(emeraldBoss);
 
-        GameCharacter diamondBoss = new GameCharacter("Diamond Boss", 8, 5, 8, "Boss");
+        GameCharacter diamondBoss = new GameCharacter("Diamond Boss", 8, 8, 8, "Boss");
         gameCharacterRepository.save(diamondBoss);
 
         //QUESTS
@@ -57,6 +57,9 @@ public class DataLoader implements ApplicationRunner {
 
         Quest rockPaperScrews = new Quest("Rock Paper Screws", 20, questGiver);
         questRepository.save(rockPaperScrews);
+
+        Quest beltAndBraces = new Quest("Belt and Braces", 25, questGiver);
+        questRepository.save(beltAndBraces);
 
         Quest clockTowerBar = new Quest("ClockTowerBar", 0, shop);
         questRepository.save(clockTowerBar);

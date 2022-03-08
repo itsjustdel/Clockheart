@@ -17,6 +17,8 @@ import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
 import { updateCharacterInTable } from '../components/Services/CharacterServices';
 import BookGUI from '../components/GUI_Files/BookGUI';
 import Rain from '../components/Street/Rain';
+import DefeatDellyWelly from '../components/Scenes/DefeatDellyWelly';
+import BeltAndBraces from '../components/Scenes/BeltAndBraces';
 
 const SceneManager = () => {
     
@@ -35,7 +37,7 @@ const SceneManager = () => {
     const [dungeonComplete, setDungeonComplete] = useState(false)
 
 
-    const startLevel = { name: "ClockTowerBar" }
+    const startLevel = { name: "Street" }
 
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
@@ -129,19 +131,24 @@ const SceneManager = () => {
                      /> 
                 : null}
 
-                {currentQuest.name == "Rust and Dust" ? 
-                <Cave playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen}
-                    playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
-                /> 
-                : null}
-              
+                
                 {currentQuest.name == "Street" ? 
 
                 <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
 
                 : null}
+                
+                {currentQuest.name == "Rust and Dust" ? 
+                <Cave playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen}
+                    playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
+                /> 
+                : null}
 
                 {currentQuest.name == "Rock Paper Screws" ? <RockPaperScrews playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
+
+                {currentQuest.name == "Defeat Delly Welly" ? <DefeatDellyWelly playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
+
+                {currentQuest.name == "Belt and Braces" ? <BeltAndBraces playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
 
           
             </Canvas>

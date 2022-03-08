@@ -45,7 +45,7 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
             return item.name.includes('Gem')
         })
         console.log(gemsList)
-        if(gemsList.length == 2){
+        if(gemsList.length == 4){
             setEndScreenOpen(true)
         }
         return gemsList.length === 1
@@ -70,6 +70,7 @@ const QuestGUI = ({characters, quests, setQuests, setCurrentQuest, setQuestGiver
         newNextQuest.name = "Street" 
         setCurrentQuest(newNextQuest)
         const itemsToReset = [...defaultItems]
+        console.log(defaultItems);
         console.log(itemsToReset);
         setItems(itemsToReset)
         itemsToReset.forEach((item) => {
