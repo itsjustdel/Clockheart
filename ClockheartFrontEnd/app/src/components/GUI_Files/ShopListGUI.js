@@ -98,6 +98,36 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
         }                
     }
 
+    const handleHealClick = () => {
+        console.log(selectedItem);
+        if(selectedItem !== null && selectedItem.healing != null){
+            player.healthPoints += selectedItem.healing
+            console.log("healed by " + selectedItem.healing);
+            console.log(selectedItem);
+            console.log("health " + player.healthPoints);
+            const updatedCharacters = characters.map((character) => {
+                if(character.id === player.id){
+                    return player
+                }
+                return character
+            })
+            console.log("characters after sale: ", updatedCharacters)
+            setCharacters(updatedCharacters)
+            updateCharacterInTable(player)
+
+            selectedItem.character = zebediah
+            const updatedItems = newItems.map((item) => {
+                if(item.id === selectedItem.id){
+                    return selectedItem
+                }
+                return item
+            })
+            setItems(updatedItems)
+            updateItemInTable(selectedItem)
+            setSelectedItem(null)
+        }
+    }
+
     return (
         <>
            
@@ -116,7 +146,8 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
                         </li>
                         </Carousel>                        
                       
-                        <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>       
+                        <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>
+                        <li className="sellButton" onClick={handleHealClick}>Heal</li>       
                     </ul>
                 </div>
             <div className="npcTextBox">

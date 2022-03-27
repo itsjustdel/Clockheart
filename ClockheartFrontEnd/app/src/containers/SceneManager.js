@@ -106,7 +106,7 @@ const SceneManager = () => {
     const resetCharacters = () => {
         const charactersToReset = [...characters]
         charactersToReset.forEach((character) => {
-                character.currency = 50
+                character.currency = 20
                 character.healthPoints = 100
                 updateCharacterInTable(character)
         })
@@ -122,7 +122,7 @@ const SceneManager = () => {
                 <Player playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} mesh={playerMesh} items={items} />
               </Suspense>
 
-                {currentQuest.name == "ClockTowerBar" ? 
+                {currentQuest.name === "ClockTowerBar" ? 
                 <ClockTowerBar  playerMesh={playerMesh}
                     shopOpen={shopOpen} setShopOpen={setShopOpen} questGiverOpen={questGiverOpen}
                     setQuestGiverOpen={setQuestGiverOpen} 
@@ -132,30 +132,30 @@ const SceneManager = () => {
                 : null}
 
                 
-                {currentQuest.name == "Street" ? 
+                {currentQuest.name === "Street" ? 
 
                 <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} /> 
 
                 : null}
                 
-                {currentQuest.name == "Rust and Dust" ? 
+                {currentQuest.name === "Rust and Dust" ? 
                 <Cave playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen}
                     playerTargets={playerTargets} setPlayerTargets={setPlayerTargets}
                 /> 
                 : null}
 
-                {currentQuest.name == "Rock Paper Screws" ? <RockPaperScrews playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
+                {currentQuest.name === "Rock Paper Screws" ? <RockPaperScrews playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
 
-                {currentQuest.name == "Defeat Delly Welly" ? <DefeatDellyWelly playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
+                {currentQuest.name === "Defeat Delly Welly" ? <DefeatDellyWelly playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
 
-                {currentQuest.name == "Belt and Braces" ? <BeltAndBraces playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
+                {currentQuest.name === "Belt and Braces" ? <BeltAndBraces playerMesh={playerMesh} bossOpen ={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
 
           
             </Canvas>
 
-            {currentQuest == "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>}
+            {currentQuest === "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>}
 
-            {shopOpen == true ? <ShopListGUI updateItems={updateItems}
+            {shopOpen === true ? <ShopListGUI updateItems={updateItems}
                 characters={characters}
                 setCharacters={setCharacters}
                 items={items}
@@ -164,16 +164,16 @@ const SceneManager = () => {
                 setSelectedItem={setSelectedItem}                
                 /> : null}
 
-            {questGiverOpen == true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
+            {questGiverOpen === true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
                 setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items} resetCharacters={resetCharacters} setItems={setItems} defaultItems={defaultItems} /> : null}                           
 
-            {bossOpen == true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} setDungeonComplete={setDungeonComplete} dungeonComplete={dungeonComplete} /> : null}
+            {bossOpen === true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} setDungeonComplete={setDungeonComplete} dungeonComplete={dungeonComplete} /> : null}
 
-            {characterCreationOpen == true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
+            {characterCreationOpen === true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
 
-            {bookLocationOpen == true ? <BookGUI setBookLocationOpen={setBookLocationOpen} /> : null}
+            {bookLocationOpen === true ? <BookGUI setBookLocationOpen={setBookLocationOpen} /> : null}
 
-            {currentQuest.name == "Street"?  <Rain/> : null}
+            {currentQuest.name === "Street"?  <Rain/> : null}
           
         </>
     )
