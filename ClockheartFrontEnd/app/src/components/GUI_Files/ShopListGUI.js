@@ -4,6 +4,7 @@ import Carousel from 'react-elastic-carousel'
 
 const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
     
+    const newCharacters = [...characters]
     const newItems = [...items]
     const zebediah = characters.filter((character) => {
         return character.id === 2
@@ -99,38 +100,28 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
     }
 
     const handleHealClick = () => {
-        console.log(selectedItem);
+        let healing = 0
         if(selectedItem !== null && selectedItem.healing != null){
-            if(player.healthPoints < 100){
-            player.healthPoints += selectedItem.healing
-            console.log("healed by " + selectedItem.healing);
-            console.log(selectedItem);
-            console.log("health " + player.healthPoints);
-            const updatedCharacters = characters.map((character) => {
-                if(character.id === player.id){
-                    return player
+            healing = selectedItem.healing
+        
+            if(player.healthPoints === 100){
+                console.log("You are already full health");
+                return <h1>You are already full health</h1>
+            }else if(player.healthPoints + healing < 100){
+                    player.healthPoints += healing                
+                    selectedItem.character = zebediah
+            }else{
+                player.healthPoints = 100
+                    console.log("selected item owner: ", selectedItem.character)
+                selectedItem.character = zebediah
+                console.log("selected item owner", selectedItem.character)
                 }
-                return character
-            })
-            console.log("characters after sale: ", updatedCharacters)
-            setCharacters(updatedCharacters)
-            updateCharacterInTable(player)
-
-            selectedItem.character = zebediah
-            const updatedItems = newItems.map((item) => {
-                if(item.id === selectedItem.id){
-                    return selectedItem
-                }
-                return item
-            })
-            setItems(updatedItems)
+            }
+            console.log("items after using healing", items)
             updateItemInTable(selectedItem)
-            setSelectedItem(null)
-        } else{
-            console.log("YOU ARE FULL HEALTH IDIOT");
+            setCharacters(newCharacters)
+            updateCharacterInTable(player)
         }
-        }
-    }
 
     return (
         <>
