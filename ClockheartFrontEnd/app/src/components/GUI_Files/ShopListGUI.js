@@ -101,6 +101,7 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
     const handleHealClick = () => {
         console.log(selectedItem);
         if(selectedItem !== null && selectedItem.healing != null){
+            if(player.healthPoints < 100){
             player.healthPoints += selectedItem.healing
             console.log("healed by " + selectedItem.healing);
             console.log(selectedItem);
@@ -125,6 +126,9 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
             setItems(updatedItems)
             updateItemInTable(selectedItem)
             setSelectedItem(null)
+        } else{
+            console.log("YOU ARE FULL HEALTH IDIOT");
+        }
         }
     }
 
