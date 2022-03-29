@@ -116,29 +116,26 @@ const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, sel
 
     const healClick= () => {
         let healing = 0
-        if(selectedItem !== null){
+        if(selectedItem !== null && selectedItem.healing != null){
             healing = selectedItem.healing
         
-    
-            if(healing !== undefined){
-                if (player.healthPoints + healing < 100){
+            if(player.healthPoints === 100){
+                console.log("You are already full health");
+                return <h1>You are already full health</h1>
+            }else if(player.healthPoints + healing < 100){
                     player.healthPoints += healing                
                     selectedItem.character = zebediah
-                    
-                }
-                else{
-                    player.healthPoints = 100
+            }else{
+                player.healthPoints = 100
                     console.log("selected item owner: ", selectedItem.character)
-                    selectedItem.character = zebediah
-                    console.log("selected item owner", selectedItem.character)
+                selectedItem.character = zebediah
+                console.log("selected item owner", selectedItem.character)
                 }
             }
             console.log("items after using healing", items)
             updateItemInTable(selectedItem)
             setCharacters(newCharacters)
             updateCharacterInTable(player)
-        }
-        return
     }
 
     const FightButtons = () => {
