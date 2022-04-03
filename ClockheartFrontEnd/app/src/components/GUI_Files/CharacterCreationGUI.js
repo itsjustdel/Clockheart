@@ -1,13 +1,13 @@
 import CharacterCreation from "../CharacterCreation/CharacterCreation"
 
-const CharacterCreationGUI = ({characters, updateCharacters, setCurrentQuest, setCharacterCreationOpen}) => {
+const CharacterCreationGUI = ({characters, setCharacters, setCurrentQuest, setCharacterCreationOpen}) => {
     
 
     return(
         <>
             <div className="npcContainer">
             <div className="portraitPlayer"></div>
-                <CharacterCreation characters={characters} updateCharacters={updateCharacters} setCurrentQuest={setCurrentQuest} setCharacterCreationOpen={setCharacterCreationOpen}/>
+                <CharacterCreation characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} setCharacterCreationOpen={setCharacterCreationOpen}/>
             <div className="npcTextBox">
             <h1>
                 CHOOSE YOUR CLASS CLOCKHEART

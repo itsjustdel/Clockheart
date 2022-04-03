@@ -3,9 +3,7 @@ import BossTurn from "../Boss/BossTurn"
 import { updateCharacterInTable } from "../Services/CharacterServices"
 import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
-
-
-const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setCurrentQuest, quests, setFightPanel, setBossOpen, setBossDead, setPlayerDead, setText}) => {
+const FightPanelGUI = ({characters, setCharacters, enemyId, items, setItems, selectedItem, setFightPanel, setBossDead, setPlayerDead, setText}) => {
     const [turn, setTurn] = useState(0)
     const [enemy, setEnemy] = useState(null)
     const newItems = [...items]

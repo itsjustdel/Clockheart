@@ -42,44 +42,11 @@ const SceneManager = () => {
     const [currentQuest, setCurrentQuest] = useState(startLevel)
     const playerMesh = useRef()
 
-    useEffect(() => {
-       
-    }, [])
-
     useCharacters(defaultCharacters, setDefaultCharacters, setCharacters)
 
     useItems(defaultItems, setDefaultItems, setItems)
 
     useQuests(setQuests)
-
-    const updateItems = (index, newItem) => {
-
-        // console.log("update player items - Scene Manager")
-        //create new list with current player items and the passed new item
-
-        const newItems = [...items]
-        newItems[index] = newItem
-        setItems(newItems)
-        //we are re-rendering because we are setting state, so we need to update player position in state     
-        //only update start position, target will be the same
-        //setPlayerTargets([playerMesh.current.position, playerTargets[1]]) //needed?
-    }
-
-    const updateCharacters = (index, newCharacter) => {
-        const newCharacters = [...characters]
-        newCharacters[index] = newCharacter
-        setCharacters(newCharacters)
-    }
-
-    const resetCharacters = () => {
-        const charactersToReset = [...characters]
-        charactersToReset.forEach((character) => {
-            character.currency = 20
-            character.healthPoints = 100
-            updateCharacterInTable(character)
-        })
-        setCharacters(charactersToReset)
-    }
 
     return (
         <>
@@ -99,11 +66,9 @@ const SceneManager = () => {
                     />
                     : null}
 
-
                 {currentQuest.name === "Street" ?
 
-                    <Street playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} updateCharacters={updateCharacters} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} />
-
+                    <Street playerMesh={playerMesh} setPlayerTargets={setPlayerTargets} characterCreationOpen={characterCreationOpen} setCharacterCreationOpen={setCharacterCreationOpen} />
                     : null}
 
                 {currentQuest.name === "Rust and Dust" ?
@@ -118,29 +83,63 @@ const SceneManager = () => {
 
                 {currentQuest.name === "Belt and Braces" ? <BeltAndBraces playerMesh={playerMesh} bossOpen={bossOpen} setBossOpen={setBossOpen} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} /> : null}
 
-
             </Canvas>
 
-            {currentQuest === "Ending" ? null 
-                : <PlayerItemsGUI playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem} />}
+            {currentQuest === "Ending" ? null
+                : <PlayerItemsGUI
+                    playerMesh={playerMesh}
+                    playerTargets={playerTargets}
+                    setPlayerTargets={setPlayerTargets}
+                    characters={characters}
+                    items={items}
+                    setSelectedItem={setSelectedItem}
+                    selectedItem={selectedItem} />}
 
-            {shopOpen === true ? <ShopListGUI updateItems={updateItems}
+            {shopOpen === true ? <ShopListGUI
                 characters={characters}
                 setCharacters={setCharacters}
                 items={items}
                 setItems={setItems}
                 selectedItem={selectedItem}
-                setSelectedItem={setSelectedItem}
-            /> : null}
+                setSelectedItem={setSelectedItem} />
+                : null}
 
-            {questGiverOpen === true ? <QuestGUI characters={characters} quests={quests} setQuests={setQuests}
-                setCurrentQuest={setCurrentQuest} setQuestGiverOpen={setQuestGiverOpen} items={items} resetCharacters={resetCharacters} setItems={setItems} defaultItems={defaultItems} /> : null}
+            {questGiverOpen === true ? <QuestGUI
+                characters={characters}
+                setCharacters={setCharacters}
+                quests={quests}
+                setQuests={setQuests}
+                setCurrentQuest={setCurrentQuest}
+                setQuestGiverOpen={setQuestGiverOpen}
+                items={items}
+                setItems={setItems}
+                defaultItems={defaultItems} />
+                : null}
 
-            {bossOpen === true ? <BossGUI characters={characters} setCharacters={setCharacters} currentQuest={currentQuest} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setBossOpen={setBossOpen} defaultItems={defaultItems} defaultCharacters={defaultCharacters} resetCharacters={resetCharacters} setDungeonComplete={setDungeonComplete} dungeonComplete={dungeonComplete} /> : null}
+            {bossOpen === true ? <BossGUI characters={characters}
+                setCharacters={setCharacters}
+                currentQuest={currentQuest}
+                items={items} setItems={setItems}
+                selectedItem={selectedItem}
+                setCurrentQuest={setCurrentQuest}
+                quests={quests}
+                setBossOpen={setBossOpen}
+                defaultItems={defaultItems}
+                defaultCharacters={defaultCharacters}
+                setDungeonComplete={setDungeonComplete}
+                dungeonComplete={dungeonComplete} />
+                : null}
 
-            {characterCreationOpen === true ? <CharacterCreationGUI characters={characters} setCharacters={setCharacters} setCurrentQuest={setCurrentQuest} updateCharacters={updateCharacters} setCharacterCreationOpen={setCharacterCreationOpen} /> : null}
+            {characterCreationOpen === true ? <CharacterCreationGUI
+                characters={characters}
+                setCharacters={setCharacters}
+                setCurrentQuest={setCurrentQuest}
+                setCharacterCreationOpen={setCharacterCreationOpen} />
+                : null}
 
-            {bookLocationOpen === true ? <BookGUI setBookLocationOpen={setBookLocationOpen} /> : null}
+            {bookLocationOpen === true ? <BookGUI
+                setBookLocationOpen={setBookLocationOpen} />
+                : null}
 
             {currentQuest.name === "Street" ? <Rain /> : null}
 

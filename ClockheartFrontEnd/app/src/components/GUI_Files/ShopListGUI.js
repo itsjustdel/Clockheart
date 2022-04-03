@@ -2,36 +2,31 @@ import { updateCharacterInTable } from "../Services/CharacterServices"
 import { updateItemInTable } from "../Services/ItemServices"
 import Carousel from 'react-elastic-carousel'
 
-const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
-    
+const ShopListGUI = ({ characters, setCharacters, items, setItems, selectedItem, setSelectedItem }) => {
+
     const newCharacters = [...characters]
     const newItems = [...items]
     const zebediah = characters.filter((character) => {
         return character.id === 2
     })[0]
-    // console.log("zebidiah character object: ", zebediah)
+
     const player = characters.filter((character) => {
         return character.id === 1
     })[0]
-    // console.log("player character object", player)   
 
     const handleBuyItemClick = (event) => {
 
-
-        console.log("item clcik")
         const index = event.target.value
-        if(player.currency >= items[index].value){
+        if (player.currency >= items[index].value) {
 
-            // const updatedCharacter = player
-            console.log("characters before purchase: ", characters)
             player.currency -= items[index].value
             const updatedCharacters = characters.map((character) => {
-                if(character.id === player.id){
+                if (character.id === player.id) {
                     return player
                 }
                 return character
             })
-            console.log("characters after purchase: ", updatedCharacters)
+
             setCharacters(updatedCharacters)
             updateCharacterInTable(player)
 
@@ -51,44 +46,52 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
                 body: JSON.stringify(updatedShopItem),
                 headers: { 'Content-Type': 'application/json' }
             })
-                .then(res => res.json()) 
+                .then(res => res.json())
         }
-        else {console.log("NOT ENOUGH MONEY")}
+        else { console.log("NOT ENOUGH MONEY") }
 
+    }
+
+    const updateItems = (index, newItem) => {
+        const newItems = [...items]
+        newItems[index] = newItem
+        setItems(newItems)
     }
 
     const itemsForSale = items.map((item, index) => {
         const filename = item.name.replace(/ /g, "_");
         if (item.character.name == "Zebediah Flint")
-            return    <li className='npcItem' key={index}>                          
-                        <div>
-                            <h1 className ="shopItemName">{item.name}</h1>
-                        </div>
-                        <div>
-                            <h1  className ="shopItemPrice" > $ {item.value}</h1>
-                        </div>
-                        <div className ="shopItemImage">                            
-                            <input onClick={handleBuyItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
-                        </div>
-                     </li>
+            return <li className='npcItem' key={index}>
+                <div>
+                    <h1 className="shopItemName">{item.name}</h1>
+                </div>
+                <div>
+                    <h1 className="shopItemPrice" > $ {item.value}</h1>
+                </div>
+                <div className="shopItemImage">
+                    <input onClick={handleBuyItemClick} value={index} type="image" src={`/newPngs/${filename}.png`} />
+                </div>
+            </li>
     })
 
     const handleSellItemClick = () => {
-        if(selectedItem !== null && !selectedItem.name.includes("Gem")){
+        if (selectedItem !== null && !selectedItem.name.includes("Gem")) {
+
             player.currency += selectedItem.value
+
             const updatedCharacters = characters.map((character) => {
-                if(character.id === player.id){
+                if (character.id === player.id) {
                     return player
                 }
                 return character
             })
-            console.log("characters after sale: ", updatedCharacters)
+
             setCharacters(updatedCharacters)
             updateCharacterInTable(player)
 
             selectedItem.character = zebediah
             const updatedItems = newItems.map((item) => {
-                if(item.id === selectedItem.id){
+                if (item.id === selectedItem.id) {
                     return selectedItem
                 }
                 return item
@@ -96,64 +99,56 @@ const ShopListGUI = ({ updateItems, characters, setCharacters, items, setItems, 
             setItems(updatedItems)
             updateItemInTable(selectedItem)
             setSelectedItem(null)
-        }                
+        }
     }
 
     const handleHealClick = () => {
         let healing = 0
-        if(selectedItem !== null && selectedItem.healing != null){
+        if (selectedItem !== null && selectedItem.healing != null) {
             healing = selectedItem.healing
-        
-            if(player.healthPoints === 100){
-                console.log("You are already full health");
+
+            if (player.healthPoints === 100) {
                 return <h1>You are already full health</h1>
-            }else if(player.healthPoints + healing < 100){
-                    player.healthPoints += healing                
-                    selectedItem.character = zebediah
-            }else{
-                player.healthPoints = 100
-                    console.log("selected item owner: ", selectedItem.character)
+            } else if (player.healthPoints + healing < 100) {
+                player.healthPoints += healing
                 selectedItem.character = zebediah
-                console.log("selected item owner", selectedItem.character)
-                }
+            } else {
+                player.healthPoints = 100
+                selectedItem.character = zebediah
+
             }
-            console.log("items after using healing", items)
-            updateItemInTable(selectedItem)
-            setCharacters(newCharacters)
-            updateCharacterInTable(player)
         }
+
+        updateItemInTable(selectedItem)
+        setCharacters(newCharacters)
+        updateCharacterInTable(player)
+    }
 
     return (
         <>
-           
-
-                
             <div className="npcContainer">
-                <div className="npcPortrait" ></div>               
+                <div className="npcPortrait" ></div>
                 <div className="npcItems">
-                    <ul className="npcItemList" >
-                       
+                    <ul className="npcItemList">
                         <Carousel className="Carousel" pagination={false} verticalMode={true} itemsToShow={4} enableMouseSwipe={true} enableAutoPlay={false} autoPlaySpeed={10000}  >
-                        <li className='npcItem'>                            
-                        </li>
-                        {itemsForSale}
-                        <li className='npcItem'>                            
-                        </li>
-                        </Carousel>                        
-                      
+                            <li className='npcItem'>
+                            </li>
+                            {itemsForSale}
+                            <li className='npcItem'>
+                            </li>
+                        </Carousel>
+
                         <li className="sellButton" onClick={handleSellItemClick}>Sell selected item</li>
-                        <li className="sellButton" onClick={handleHealClick}>Heal</li>       
+                        <li className="sellButton" onClick={handleHealClick}>Heal</li>
                     </ul>
                 </div>
-            <div className="npcTextBox">
-                <h1>
-                    Howdy, Everything is for sale, some may call this junk...me? I call them treasures
-                </h1>
+                <div className="npcTextBox">
+                    <h1>
+                        Howdy, Everything is for sale, some may call this junk...me? I call them treasures
+                    </h1>
 
                 </div>
-              
             </div>
-
         </>
     )
 }
