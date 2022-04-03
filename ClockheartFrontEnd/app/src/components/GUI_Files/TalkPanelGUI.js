@@ -1,6 +1,6 @@
 import { getPlayerItems, updateItemInTable } from "../Services/ItemServices"
 
-const TalkPanel = ({characters, items, setItems, setTalkPanel, setFightPanel, setTalkComplete, setTalkFailed, setText}) => {
+const TalkPanel = ({characters, items, setItems, setTalkPanel, setTalkComplete, setTalkFailed, setText}) => {
     const newCharacters = [...characters]
     const player = newCharacters[0]
     const newItems = [...items]

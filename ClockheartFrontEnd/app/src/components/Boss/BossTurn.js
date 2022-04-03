@@ -5,7 +5,6 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
 
     useEffect( () => 
     {
-        console.log("Hehehehehe")
         reducePlayerHealth()
     }, [])
 
@@ -30,12 +29,8 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
                 //we found the player 
                 newCharacter = newCharacters[i]
                 if(newCharacter.healthPoints > boss[0].strength){
-                    const bossAttack = boss[0].strength * randomNumber(1, 3)
-                    console.log(bossAttack);
+                    const bossAttack = boss[0].strength * randomNumber(1, 3)                   
                     newCharacter.healthPoints -= bossAttack;
-
-                    // let health = document.getElementById("healthPlayer")
-                    // health.value = newCharacter.healthPoints 
                 }
                 else{
                     newCharacter.healthPoints = 0
@@ -46,8 +41,6 @@ const BossTurn = ({characters, setCharacters, enemyId, setTurn}) => {
         setCharacters(newCharacters)
         updateCharacterInTable(newCharacter)
         
-        //check for player death?
-
         //go to player turn
         setTurn(0)
     }

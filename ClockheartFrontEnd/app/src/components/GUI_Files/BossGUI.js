@@ -10,11 +10,9 @@ import BarterCantAffordScreenGUI from "./BarterCantAffordScreenGUI";
 import BarterFailedScreenGUI from "./BarterFailedScreenGUI";
 import GameOverScreenGUI from "./GameOverScreenGUI";
 import { updateItemInTable } from "../Services/ItemServices";
-import {updateCharacterInTable} from "../Services/CharacterServices"
+import { resetCharacters } from "../../helpers/CharacterHelpers";
 
-
-
-const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems, defaultCharacters, resetCharacters}) => {
+const BossGUI = ({characters, setCharacters, currentQuest, items, setItems, selectedItem, setCurrentQuest, quests, setBossOpen, defaultItems}) => {
 
 
     const [fightPanel, setFightPanel] = useState(false)
@@ -64,7 +62,8 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
         itemsToReset.forEach((item) => {
             updateItemInTable(item)
         })
-        resetCharacters()
+        
+        resetCharacters(characters, setCharacters)
     }
 
     const talkClick = () =>{
@@ -124,7 +123,7 @@ const BossGUI = ({characters,setCharacters, currentQuest, items, setItems, selec
             
             {fightPanel == false && bossDead == false && talkComplete == false && barterComplete == false && barterCantAfford == false &&  barterFailed == false && talkFailed == false && playerDead == false && barterPanel==false? <InitialOptions/> : null}
 
-            {talkPanel == true ? <TalkPanelGUI characters={characters} setCharacters={setCharacters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} setText={setText}/> : null}
+            {talkPanel == true ? <TalkPanelGUI characters={characters} items={items} setItems={setItems} setFightPanel={setFightPanel} setTalkPanel={setTalkPanel} setCurrentQuest={setCurrentQuest} setTalkComplete={setTalkComplete} setTalkFailed={setTalkFailed} setText={setText}/> : null}
 
             {fightPanel == true ? <FightPanelGUI characters={characters} setCharacters={setCharacters} enemyId={getBossIdFromQuest()} items={items} setItems={setItems} selectedItem={selectedItem} setCurrentQuest={setCurrentQuest} quests={quests} setFightPanel={setFightPanel} setBossOpen={setBossOpen} setBossDead={setBossDead} setPlayerDead={setPlayerDead} setText={setText} /> : null}
 

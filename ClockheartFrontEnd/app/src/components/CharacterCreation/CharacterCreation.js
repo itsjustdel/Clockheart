@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import ClassType from './ClassType'
 import ClassTypeInformation from './ClassTypeInformation'
 
-const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCharacterCreationOpen}) => {
+const CharacterCreation = ({characters, setCharacters, setCurrentQuest, setCharacterCreationOpen}) => {
     
     const [infoToShow, setInfoToShow] = useState()
     const [nextQuest, setNextQuest] = useState()
@@ -77,6 +77,8 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
         
         updateCharacters(0, newCharacter)
 
+     
+
         const str = `http://localhost:8080/characters/1`
         fetch(str, {
             method: 'PUT',
@@ -90,7 +92,11 @@ const CharacterCreation = ({characters, updateCharacters, setCurrentQuest, setCh
 
     }
 
-
+    const updateCharacters = (index, newCharacter) => {
+        const newCharacters = [...characters]
+        newCharacters[index] = newCharacter
+        setCharacters(newCharacters)
+    }
 
     return(
         <>
