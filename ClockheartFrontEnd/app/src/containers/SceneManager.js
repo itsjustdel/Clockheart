@@ -14,7 +14,6 @@ import QuestGUI from '../components/GUI_Files/QuestGUI';
 import Street from '../components/Street/Street';
 import BossGUI from '../components/GUI_Files/BossGUI';
 import CharacterCreationGUI from '../components/GUI_Files/CharacterCreationGUI';
-import { updateCharacterInTable } from '../components/Services/CharacterServices';
 import BookGUI from '../components/GUI_Files/BookGUI';
 import Rain from '../components/Street/Rain';
 import DefeatDellyWelly from '../components/Scenes/DefeatDellyWelly';
@@ -85,15 +84,15 @@ const SceneManager = () => {
 
             </Canvas>
 
-            {currentQuest === "Ending" ? null
-                : <PlayerItemsGUI
-                    playerMesh={playerMesh}
-                    playerTargets={playerTargets}
-                    setPlayerTargets={setPlayerTargets}
-                    characters={characters}
-                    items={items}
-                    setSelectedItem={setSelectedItem}
-                    selectedItem={selectedItem} />}
+            {currentQuest === "Ending" ? null : 
+                <PlayerItemsGUI
+                playerMesh={playerMesh}
+                playerTargets={playerTargets}
+                setPlayerTargets={setPlayerTargets}
+                characters={characters}
+                items={items}
+                setSelectedItem={setSelectedItem}
+                selectedItem={selectedItem} />}
 
             {shopOpen === true ? <ShopListGUI
                 characters={characters}
