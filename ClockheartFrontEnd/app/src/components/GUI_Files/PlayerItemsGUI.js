@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPlayerItems } from "../Services/ItemServices"
 
-const PlayerItemsGUI = ({characters, items, setSelectedItem, selectedItem}) => {
+const PlayerItemsGUI = ({ playerMesh, playerTargets, setPlayerTargets, characters, items, setSelectedItem, selectedItem}) => {
 
     let playerCash = 0
     if(characters.length > 0){
@@ -12,6 +12,8 @@ const PlayerItemsGUI = ({characters, items, setSelectedItem, selectedItem}) => {
         const index = event.target.value   
         console.log("Selected item: ", items[index])
         setSelectedItem(items[index])
+        //update player movement targets on state change
+        setPlayerTargets([playerMesh.current.position, playerTargets[1]])
     }
 
     const playerItems = items.map((item, index) => {  

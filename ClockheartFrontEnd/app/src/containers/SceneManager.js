@@ -43,7 +43,7 @@ const SceneManager = () => {
     const playerMesh = useRef()
 
     useEffect(() => {
-
+       
     }, [])
 
     useCharacters(defaultCharacters, setDefaultCharacters, setCharacters)
@@ -62,7 +62,7 @@ const SceneManager = () => {
         setItems(newItems)
         //we are re-rendering because we are setting state, so we need to update player position in state     
         //only update start position, target will be the same
-        setPlayerTargets([playerMesh.current.position, playerTargets[1]])
+        //setPlayerTargets([playerMesh.current.position, playerTargets[1]]) //needed?
     }
 
     const updateCharacters = (index, newCharacter) => {
@@ -121,7 +121,8 @@ const SceneManager = () => {
 
             </Canvas>
 
-            {currentQuest === "Ending" ? null : <PlayerItemsGUI characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem} />}
+            {currentQuest === "Ending" ? null 
+                : <PlayerItemsGUI playerMesh={playerMesh} playerTargets={playerTargets} setPlayerTargets={setPlayerTargets} characters={characters} items={items} setSelectedItem={setSelectedItem} selectedItem={selectedItem} />}
 
             {shopOpen === true ? <ShopListGUI updateItems={updateItems}
                 characters={characters}
